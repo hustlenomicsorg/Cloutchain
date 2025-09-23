@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CloutChain | Coming Soon</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-dark: #0d0d0d;
+      --text-dark: #ffffff;
+      --accent: #f1c40f;
+      --bg-light: #ffffff;
+      --text-light: #0d0d0d;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg-dark);
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    h1 {
+      font-size: 3rem;
+      margin-bottom: 0.3em;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    h2 {
+      font-weight: 400;
+      margin: 0.3em 0 1.2em;
+      font-size: 1.4rem;
+      color: var(--accent);
+    }
+
+    #countdown {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 2em;
+    }
+
+    .updates {
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px;
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .updates h3 {
+      margin-top: 0;
+      font-weight: 600;
+    }
+
+    .updates p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.85rem;
+      opacity: 0.8;
+    }
+
+    /* Toggle Button */
+    .toggle-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: transparent;
+      border: 2px solid var(--accent);
+      padding: 6px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .light-theme {
+      background: var(--bg-light);
+      color: var(--text-light);
+    }
+
+    .light-theme .updates {
+      background: rgba(0, 0, 0, 0.05);
+    }
+
+    .light-theme .toggle-btn {
+      border: 2px solid #0d0d0d;
+      color: #0d0d0d;
+    }
+  </style>
+</head>
+<body>
+  <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+
+  <h1>CloutChain</h1>
+  <h2>Launching Soon</h2>
+  <div id="countdown"></div>
+
+  <div class="updates">
+    <h3>Latest Update</h3>
+    <p><strong>15 September 2025:</strong> Launch adjusted to 26 September at 12:00 PM IST.  
+    <a href="Official_Announcement.pdf" target="_blank">Read Official PDF</a></p>
+  </div>
+
+  <footer>
+    Contact: thecloutchain@gmail.com
+  </footer>
+
+  <script>
+    // Launch date: 26 September 2025, 12:00 PM IST
+    var launchDate = new Date("Sep 26, 2025 12:00:00 GMT+0530").getTime();
+
+    var x = setInterval(function() {
+      var now = new Date().getTime();
+      var distance = launchDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("countdown").innerHTML = 
+        days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "We Are Live!";
+      }
+    }, 1000);
+
+    function toggleTheme() {
+      document.body.classList.toggle("light-theme");
+    }
+  </script>
+</body>
+</html>
