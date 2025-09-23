@@ -15,6 +15,8 @@
       --accent: #f1c40f;
       --bg-light: #f9f9f9;
       --text-light: #0d0d0d;
+      --gradient-start: #f1c40f;
+      --gradient-end: #e67e22;
     }
 
     body {
@@ -31,7 +33,7 @@
       text-align: center;
       overflow-x: hidden;
       transition: background 0.3s, color 0.3s;
-      padding-top: 40px; /* Make space for the banner */
+      padding-top: 60px;
       box-sizing: border-box;
     }
 
@@ -47,9 +49,9 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
+      background: rgba(255,255,255,0.07);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
       border-bottom: 1px solid rgba(255,255,255,0.2);
       color: var(--accent);
       font-weight: 600;
@@ -57,7 +59,7 @@
       white-space: nowrap;
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       z-index: 1000;
-      height: 35px;
+      height: 28px;
       display: flex;
       align-items: center;
     }
@@ -65,7 +67,8 @@
     .notice-banner p {
       display: inline-block;
       padding-left: 100%;
-      animation: scrollNotice 15s linear infinite;
+      font-size: 0.85rem;
+      animation: scrollNotice 20s linear infinite;
       margin: 0;
     }
 
@@ -74,110 +77,12 @@
       100% { transform: translateX(-100%); }
     }
 
-    h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      text-transform: uppercase;
-      margin-bottom: 0.2em;
-      letter-spacing: 3px;
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards;
-    }
-
-    h2 {
-      font-weight: 500;
-      margin: 0.3em 0 1.5em;
-      font-size: 1.3rem;
-      color: var(--accent);
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 0.5s;
-    }
-
-    #countdown {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 15px;
-      margin-bottom: 2em;
-      opacity: 0;
-      animation: fadeInScale 1s ease forwards 1s;
-    }
-
-    .time-box {
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      width: 80px;
-      text-align: center;
-    }
-
-    .time-value {
-      font-size: 1.8rem;
-      font-weight: 700;
-    }
-
-    .time-label {
-      font-size: 0.8rem;
-      opacity: 0.8;
-      margin-top: 5px;
-    }
-
-    .updates {
-      margin-top: 20px;
-      padding: 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      width: 100%;
-      max-width: 500px;
-      text-align: left;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      opacity: 0;
-      animation: fadeInUp 1s ease forwards 1.5s;
-    }
-
-    .updates h3 {
-      margin-top: 0;
-      font-weight: 600;
-    }
-
-    .updates p {
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-
-    a {
-      color: var(--accent);
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
-
-    a:hover {
-      color: #ffd700;
-      text-shadow: 0px 0px 8px rgba(241,196,15,0.6);
-    }
-
-    footer {
-      margin-top: 30px;
-      font-size: 0.8rem;
-      opacity: 0.8;
-      animation: fadeInUp 1s ease forwards 2s;
-    }
-
-    /* Toggle Switch Button */
+    /* Toggle Switch below banner */
     .theme-switch {
-      position: absolute;
-      top: 20px;
+      position: fixed;
+      top: 35px;
       right: 20px;
-      opacity: 0;
-      animation: fadeIn 1s ease forwards 2.5s;
+      z-index: 1001;
     }
 
     .switch {
@@ -187,15 +92,12 @@
       height: 26px;
     }
 
-    .switch input {display: none;}
+    .switch input { display: none; }
 
     .slider {
       position: absolute;
       cursor: pointer;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
       background-color: #444;
       transition: 0.4s;
       border-radius: 34px;
@@ -204,53 +106,120 @@
     .slider:before {
       position: absolute;
       content: "";
-      height: 20px;
-      width: 20px;
-      left: 3px;
-      bottom: 3px;
+      height: 20px; width: 20px;
+      left: 3px; bottom: 3px;
       background-color: white;
       transition: 0.4s;
       border-radius: 50%;
     }
 
-    input:checked + .slider {
-      background-color: var(--accent);
+    input:checked + .slider { background: var(--accent); }
+    input:checked + .slider:before { transform: translateX(24px); }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      margin-bottom: 0.2em;
+      letter-spacing: 2px;
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards;
     }
 
-    input:checked + .slider:before {
-      transform: translateX(24px);
+    h2 {
+      font-weight: 500;
+      margin: 0.3em 0 1.5em;
+      font-size: 1.2rem;
+      color: var(--accent);
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 0.5s;
     }
 
-    .light-theme {
-      background: linear-gradient(135deg, #ffffff, #f4f4f4, #eaeaea);
-      color: var(--text-light);
+    #countdown {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 2em;
+      opacity: 0;
+      animation: fadeInScale 1s ease forwards 1s;
     }
 
-    .light-theme .time-box,
-    .light-theme .updates {
-      background: rgba(0, 0, 0, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.2);
+    .time-box {
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.06);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      width: 70px;
+      text-align: center;
+      transition: transform 0.3s, background 0.3s;
     }
 
-    @keyframes fadeInUp { from {opacity: 0; transform: translateY(30px);} to {opacity: 1; transform: translateY(0);} }
-    @keyframes fadeInScale { from {opacity: 0; transform: scale(0.9);} to {opacity: 1; transform: scale(1);} }
+    .time-box:hover {
+      transform: scale(1.05);
+      background: linear-gradient(145deg, var(--gradient-start), var(--gradient-end));
+      color: #fff;
+    }
+
+    .time-value { font-size: 1.5rem; font-weight: 700; }
+    .time-label { font-size: 0.75rem; opacity: 0.8; margin-top: 3px; }
+
+    .updates {
+      margin-top: 15px;
+      padding: 15px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      max-width: 480px;
+      width: 90%;
+      text-align: left;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.35);
+      opacity: 0;
+      animation: fadeInUp 1s ease forwards 1.5s;
+    }
+
+    .updates h3 { margin-top: 0; font-weight: 600; }
+    .updates p { font-size: 0.9rem; line-height: 1.4; }
+
+    a { color: var(--accent); text-decoration: none; font-weight: 600; transition: 0.3s; }
+    a:hover { color: #ffd700; text-shadow: 0px 0px 8px rgba(241,196,15,0.6); }
+
+    footer {
+      margin-top: 25px;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      animation: fadeInUp 1s ease forwards 2s;
+    }
+
+    .light-theme { background: linear-gradient(135deg, #ffffff, #f4f4f4, #eaeaea); color: var(--text-light); }
+    .light-theme .time-box, .light-theme .updates { background: rgba(0, 0, 0, 0.05); border: 1px solid rgba(0,0,0,0.2); }
+
+    @keyframes fadeInUp { from {opacity: 0; transform: translateY(20px);} to {opacity: 1; transform: translateY(0);} }
+    @keyframes fadeInScale { from {opacity: 0; transform: scale(0.95);} to {opacity: 1; transform: scale(1);} }
     @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
 
+    /* Responsive */
     @media (max-width: 480px) {
-      h1 { font-size: 2.2rem; }
-      h2 { font-size: 1.1rem; }
-      .time-box { width: 60px; padding: 10px; }
-      .time-value { font-size: 1.5rem; }
-      .time-label { font-size: 0.7rem; }
+      body { padding-top: 50px; }
+      h1 { font-size: 2rem; }
+      h2 { font-size: 1rem; }
+      .time-box { width: 55px; padding: 8px; }
+      .time-value { font-size: 1.2rem; }
+      .time-label { font-size: 0.65rem; }
+      .notice-banner { height: 25px; font-size: 0.7rem; }
     }
   </style>
 </head>
 <body>
   <!-- Notice Banner -->
   <div class="notice-banner">
-    <p>⚠️ This is a temporary launch website. A beautiful official Clout Chain website is under development! ⚠️</p>
+    <p>⚠️ This is a temporary launch website. The official Clout Chain site is under development! ⚠️</p>
   </div>
 
+  <!-- Toggle -->
   <div class="theme-switch">
     <label class="switch">
       <input type="checkbox" onclick="toggleTheme()">
@@ -258,26 +227,15 @@
     </label>
   </div>
 
+  <!-- Page Content -->
   <h1>CLOUTCHAIN</h1>
   <h2>Launching Soon</h2>
 
   <div id="countdown">
-    <div class="time-box">
-      <div id="days" class="time-value">00</div>
-      <div class="time-label">Days</div>
-    </div>
-    <div class="time-box">
-      <div id="hours" class="time-value">00</div>
-      <div class="time-label">Hours</div>
-    </div>
-    <div class="time-box">
-      <div id="minutes" class="time-value">00</div>
-      <div class="time-label">Minutes</div>
-    </div>
-    <div class="time-box">
-      <div id="seconds" class="time-value">00</div>
-      <div class="time-label">Seconds</div>
-    </div>
+    <div class="time-box"><div id="days" class="time-value">00</div><div class="time-label">Days</div></div>
+    <div class="time-box"><div id="hours" class="time-value">00</div><div class="time-label">Hours</div></div>
+    <div class="time-box"><div id="minutes" class="time-value">00</div><div class="time-label">Minutes</div></div>
+    <div class="time-box"><div id="seconds" class="time-value">00</div><div class="time-label">Seconds</div></div>
   </div>
 
   <div class="updates">
@@ -286,9 +244,7 @@
     <a href="Official_Announcement.pdf" target="_blank">Read Official PDF</a></p>
   </div>
 
-  <footer>
-    Contact: thecloutchain@gmail.com
-  </footer>
+  <footer>Contact: thecloutchain@gmail.com</footer>
 
   <script>
     var launchDate = new Date("Sep 26, 2025 12:00:00 GMT+0530").getTime();
