@@ -7,34 +7,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
+    :root {
+      --bg-dark: #000000;
+      --accent: #00d4ff;
+      --accent-2: #0077ff;
+      --text-light: #ffffff;
+    }
+
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: radial-gradient(circle at top, #0d1b2a, #000000 80%);
-      color: #ffffff;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      min-height: 100vh;
-      padding: 20px;
-      box-sizing: border-box;
+      background: linear-gradient(135deg, #000000 70%, #0a0f1e 100%);
+      color: var(--text-light);
+      padding: 0;
       overflow-x: hidden;
-    }
-
-    /* Background glow animation */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: conic-gradient(from 180deg at 50% 50%, #0d1b2a, #1b263b, #000000, #1b263b, #0d1b2a);
-      opacity: 0.15;
-      animation: rotateGradient 20s linear infinite;
-      z-index: -1;
-    }
-    @keyframes rotateGradient {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
+      min-height: 100vh;
     }
 
     /* Notice Banner */
@@ -43,7 +30,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(0, 150, 255, 0.9);
+      background: var(--accent);
       color: #000;
       font-size: 0.8rem;
       padding: 6px;
@@ -55,14 +42,14 @@
     .notice-banner span {
       display: inline-block;
       padding-left: 100%;
-      animation: scroll-left 12s linear infinite;
+      animation: scroll-left 10s linear infinite;
     }
     @keyframes scroll-left {
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
 
-    /* Header with logo + menu */
+    /* Header */
     .header {
       position: fixed;
       top: 30px;
@@ -77,7 +64,7 @@
       height: 40px;
     }
 
-    /* Hamburger Menu */
+    /* Hamburger */
     .hamburger {
       cursor: pointer;
     }
@@ -89,15 +76,15 @@
       transition: 0.4s;
     }
 
-    /* Sidebar Menu */
+    /* Sidebar */
     .sidebar {
       position: fixed;
       right: -250px;
       top: 0;
       width: 250px;
       height: 100%;
-      background: rgba(0, 0, 20, 0.95);
-      backdrop-filter: blur(12px);
+      background: rgba(10, 15, 30, 0.98);
+      backdrop-filter: blur(10px);
       padding-top: 60px;
       transition: 0.3s;
       z-index: 1050;
@@ -110,30 +97,32 @@
       font-weight: 600;
     }
     .sidebar a:hover {
-      background: rgba(0, 150, 255, 0.3);
+      background: rgba(0, 180, 255, 0.2);
+      color: var(--accent);
     }
     .sidebar.active { right: 0; }
 
+    /* Main content */
+    main {
+      margin-top: 140px;
+      text-align: center;
+      padding: 20px;
+    }
     h1 {
-      margin-top: 120px;
-      font-size: 3rem;
+      font-size: 2.8rem;
       font-weight: 800;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: #00aaff;
-      text-shadow: 0 0 10px rgba(0,170,255,0.8);
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(0, 212, 255, 0.7);
     }
     h2 {
       font-weight: 500;
-      font-size: 1.3rem;
-      color: #00aaff;
-      margin-bottom: 1em;
+      color: var(--accent-2);
+      margin-bottom: 1.5rem;
     }
 
     /* Countdown */
     #countdown {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
       margin-bottom: 2em;
@@ -141,54 +130,48 @@
     .time-box {
       padding: 15px;
       border-radius: 12px;
-      border: 1px solid rgba(0, 150, 255, 0.4);
-      background: rgba(0, 150, 255, 0.1);
-      backdrop-filter: blur(12px);
-      width: 80px;
-      text-align: center;
-      box-shadow: 0 0 10px rgba(0,150,255,0.2);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      width: 70px;
     }
     .time-value {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      color: #00c3ff;
     }
     .time-label {
       font-size: 0.8rem;
-      opacity: 0.8;
+      opacity: 0.7;
     }
 
     /* Updates */
     .updates {
-      margin-top: 20px;
+      margin: 20px auto;
       padding: 15px;
       border-radius: 12px;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 150, 255, 0.2);
-      width: 100%;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       max-width: 500px;
       text-align: left;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
     .updates h3 { margin-top: 0; }
-    .updates p { font-size: 0.9rem; line-height: 1.5; }
+    .updates p { font-size: 0.9rem; }
 
     footer {
-      margin-top: 30px;
+      margin-top: 40px;
+      text-align: center;
       font-size: 0.8rem;
-      opacity: 0.8;
+      opacity: 0.7;
     }
 
     @media (max-width: 480px) {
-      h1 { font-size: 2.2rem; }
+      h1 { font-size: 2rem; }
       h2 { font-size: 1rem; }
       .time-box { width: 60px; padding: 10px; }
-      .time-value { font-size: 1.4rem; }
     }
   </style>
 </head>
 <body>
-  <!-- Notice Banner -->
+  <!-- Notice -->
   <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
 
   <!-- Header -->
@@ -203,29 +186,39 @@
   <div class="sidebar" id="sidebar">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
+    <a href="onboarding.html">Onboarding</a>
   </div>
 
-  <h1>CLOUTCHAIN</h1>
-  <h2>Launching Soon</h2>
+  <!-- Main -->
+  <main>
+    <h1>CLOUTCHAIN</h1>
+    <h2>Launching Soon</h2>
 
-  <!-- Countdown -->
-  <div id="countdown">
-    <div class="time-box"><div id="days" class="time-value">00</div><div class="time-label">Days</div></div>
-    <div class="time-box"><div id="hours" class="time-value">00</div><div class="time-label">Hours</div></div>
-    <div class="time-box"><div id="minutes" class="time-value">00</div><div class="time-label">Minutes</div></div>
-    <div class="time-box"><div id="seconds" class="time-value">00</div><div class="time-label">Seconds</div></div>
-  </div>
+    <div id="countdown">
+      <div class="time-box"><div id="days" class="time-value">00</div><div class="time-label">Days</div></div>
+      <div class="time-box"><div id="hours" class="time-value">00</div><div class="time-label">Hours</div></div>
+      <div class="time-box"><div id="minutes" class="time-value">00</div><div class="time-label">Minutes</div></div>
+      <div class="time-box"><div id="seconds" class="time-value">00</div><div class="time-label">Seconds</div></div>
+    </div>
 
-  <!-- Updates -->
-  <div class="updates">
-    <h3>Latest Update</h3>
-    <p><strong>15 September 2025:</strong> Launch adjusted to 26 September at 12:00 PM IST.  
-    <a href="Official_Announcement.pdf" target="_blank">Read Official PDF</a></p>
-  </div>
+    <div class="updates">
+      <h3>Latest Update</h3>
+      <p><strong>15 September 2025:</strong> Launch adjusted to 26 September at 12:00 PM IST.  
+      <a href="Official_Announcement.pdf" target="_blank">Read Official PDF</a></p>
+    </div>
+  </main>
 
-  <footer>Contact: thecloutchain@gmail.com</footer>
+  <footer>
+    Contact: thecloutchain@gmail.com
+  </footer>
 
   <script>
+    // Sidebar toggle
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+
+    // Countdown
     var launchDate = new Date("Sep 26, 2025 12:00:00 GMT+0530").getTime();
     function updateCountdown() {
       var now = new Date().getTime();
@@ -236,22 +229,18 @@
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      document.getElementById("days").textContent = days < 10 ? "0" + days : days;
-      document.getElementById("hours").textContent = hours < 10 ? "0" + hours : hours;
-      document.getElementById("minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
-      document.getElementById("seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
+      document.getElementById("days").textContent = days < 10 ? '0'+days : days;
+      document.getElementById("hours").textContent = hours < 10 ? '0'+hours : hours;
+      document.getElementById("minutes").textContent = minutes < 10 ? '0'+minutes : minutes;
+      document.getElementById("seconds").textContent = seconds < 10 ? '0'+seconds : seconds;
 
       if (distance < 0) {
-        clearInterval(timer);
+        clearInterval(x);
         document.getElementById("countdown").innerHTML = "<h2>We Are Live!</h2>";
       }
     }
-    var timer = setInterval(updateCountdown, 1000);
+    var x = setInterval(updateCountdown, 1000);
     updateCountdown();
-
-    function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("active");
-    }
   </script>
 </body>
 </html>
