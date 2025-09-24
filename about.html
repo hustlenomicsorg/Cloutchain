@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | CLOUTCHAIN</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #111);
+      color: white;
+      padding: 20px;
+      box-sizing: border-box;
+    }
+
+    h1 { margin-top: 60px; font-size: 2.2rem; text-align: center; }
+    p { max-width: 700px; margin: 15px auto; font-size: 1rem; line-height: 1.6; text-align: center; }
+
+    .hamburger { position: fixed; top: 15px; left: 20px; cursor: pointer; z-index: 1100; }
+    .hamburger div { width: 28px; height: 3px; background-color: white; margin: 5px 0; transition: 0.4s; }
+
+    .sidebar { position: fixed; left: -250px; top: 0; width: 250px; height: 100%; background: rgba(0, 0, 0, 0.95); padding-top: 60px; transition: 0.3s; z-index: 1050; }
+    .sidebar a { display: block; padding: 12px 20px; color: white; text-decoration: none; font-weight: 600; }
+    .sidebar a:hover { background: rgba(241, 196, 15, 0.3); }
+    .sidebar.active { left: 0; }
+
+    footer { text-align: center; margin-top: 40px; font-size: 0.8rem; opacity: 0.8; }
+  </style>
+</head>
+<body>
+  <!-- Hamburger -->
+  <div class="hamburger" onclick="toggleSidebar()">
+    <div></div><div></div><div></div>
+  </div>
+
+  <div class="sidebar" id="sidebar">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+  </div>
+
+  <h1>About CloutChain</h1>
+  <p>CLOUTCHAIN is designed to empower creators across multiple platforms. Our mission is to provide seamless monetization tools for Instagram, YouTube, and beyond, making it a one-stop solution for digital creators.</p>
+  <p>We believe creators deserve transparent, fair, and accessible systems to grow their audience and income. Our upcoming platform integrates cutting-edge features to ensure creators get the most out of their content.</p>
+  <p>Stay tuned for more updates as we prepare for launch. Thank you for your patience and trust in CloutChain!</p>
+
+  <footer>Contact: thecloutchain@gmail.com</footer>
+
+  <script>
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
