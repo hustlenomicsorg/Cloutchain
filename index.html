@@ -4,220 +4,236 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CLOUTCHAIN | COMING SOON</title>
-
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
   <style>
-    :root {
-      --bg-dark: #000000;
-      --text-dark: #ffffff;
-      --accent: #00ffff;
-    }
-
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #000, #111, #000);
-      color: var(--text-dark);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      text-align: center;
-      overflow-x: hidden;
+      background: #ffffff;
+      color: #000000;
       padding: 20px;
       box-sizing: border-box;
+      min-height: 100vh;
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
+    /* Notice Banner */
+    .notice-banner {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      color: #fff;
+      font-size: 0.8rem;
+      padding: 6px;
+      text-align: center;
+      z-index: 1000;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+    .notice-banner span {
+      display: inline-block;
+      padding-left: 100%;
+      animation: scroll-left 12s linear infinite;
+    }
+    @keyframes scroll-left {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 40px;
+      left: 20px;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 900;
+    }
+    .header img {
+      height: 60px; /* bigger logo for visibility */
+    }
+
+    /* Hamburger */
+    .hamburger {
+      cursor: pointer;
+    }
+    .hamburger div {
+      width: 28px;
+      height: 3px;
+      background-color: black;
+      margin: 5px 0;
+      transition: 0.4s;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      position: fixed;
+      right: -250px;
+      top: 0;
+      width: 250px;
+      height: 100%;
+      background: #f4f4f4;
+      box-shadow: -3px 0 8px rgba(0,0,0,0.1);
+      padding-top: 60px;
+      transition: 0.3s;
+      z-index: 1050;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      color: #000;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .sidebar a:hover {
+      background: #ddd;
+    }
+    .sidebar.active { right: 0; }
+
+    /* Countdown */
     h1 {
-      font-size: 3rem;
+      font-size: 2.5rem;
+      margin-top: 140px;
       font-weight: 800;
-      margin-bottom: 0.2em;
-      letter-spacing: 3px;
+      text-transform: uppercase;
     }
-
     h2 {
+      font-size: 1.2rem;
       font-weight: 500;
-      margin: 0.3em 0 1.5em;
-      font-size: 1.3rem;
-      color: var(--accent);
+      margin-bottom: 1.5rem;
+      color: #444;
     }
-
     #countdown {
       display: flex;
+      gap: 15px;
+      margin-bottom: 2rem;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 15px;
-      margin-bottom: 2em;
     }
-
     .time-box {
       padding: 15px;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.08);
-      backdrop-filter: blur(12px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-      width: 80px;
+      border-radius: 10px;
+      background: #f2f2f2;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+      width: 70px;
       text-align: center;
     }
-
     .time-value {
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: 700;
     }
-
     .time-label {
-      font-size: 0.8rem;
-      opacity: 0.8;
-      margin-top: 5px;
+      font-size: 0.7rem;
+      color: #555;
     }
 
+    /* Updates */
     .updates {
       margin-top: 20px;
       padding: 15px;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(12px);
-      width: 100%;
+      background: #f8f8f8;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       max-width: 500px;
       text-align: left;
     }
-
     .updates h3 {
       margin-top: 0;
       font-weight: 600;
     }
-
     .updates p {
       font-size: 0.9rem;
       line-height: 1.5;
     }
-
     a {
-      color: var(--accent);
+      color: #0073e6;
       text-decoration: none;
       font-weight: 600;
     }
-
     a:hover {
-      color: #00ffff;
-      text-shadow: 0px 0px 8px rgba(0,255,255,0.6);
-    }
-
-    footer {
-      margin-top: 30px;
-      font-size: 0.8rem;
-      opacity: 0.8;
-      text-align: center;
-      background: #111;
-      padding: 15px;
-      width: 100%;
-    }
-
-    footer img {
-      width: 24px;
-      margin: 0 5px;
-    }
-
-    /* Hamburger Menu */
-    .hamburger-container {
-      position: fixed;
-      top: 10px;
-      right: 20px;
-      z-index: 999;
-    }
-
-    .hamburger {
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      width: 30px;
-      height: 25px;
-    }
-
-    .hamburger div {
-      width: 30px;
-      height: 4px;
-      background: var(--accent);
-      border-radius: 2px;
-      transition: all 0.3s ease;
-    }
-
-    .menu {
-      display: none;
-      position: fixed;
-      top: 60px;
-      right: 20px;
-      background: #111;
-      padding: 15px;
-      border-radius: 8px;
-      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-    }
-
-    .menu a {
-      display: block;
-      padding: 10px;
-      color: var(--accent);
-    }
-
-    .menu a:hover {
       text-decoration: underline;
     }
 
-    /* Responsive adjustments */
+    /* Footer */
+    footer {
+      margin-top: auto;
+      padding: 20px;
+      background: #111;
+      color: #fff;
+      width: 100%;
+      text-align: center;
+      border-radius: 12px 12px 0 0;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
+    }
+    .footer-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+    .social-icons {
+      display: flex;
+      gap: 15px;
+    }
+    .social-icons a {
+      color: white;
+      font-size: 1.3rem;
+      transition: 0.3s;
+    }
+    .social-icons a:hover {
+      color: #0073e6;
+      transform: scale(1.1);
+    }
+    .footer-bottom {
+      font-size: 0.8rem;
+      opacity: 0.7;
+      margin-top: 10px;
+    }
+
     @media (max-width: 480px) {
-      h1 { font-size: 2.2rem; }
-      h2 { font-size: 1.1rem; }
+      h1 { font-size: 1.8rem; }
+      h2 { font-size: 1rem; }
       .time-box { width: 60px; padding: 10px; }
-      .time-value { font-size: 1.5rem; }
-      .time-label { font-size: 0.7rem; }
+      .time-value { font-size: 1.2rem; }
     }
   </style>
 </head>
 <body>
+  <!-- Notice Banner -->
+  <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
 
-  <!-- Logo -->
-  <img src="logo.png" alt="CLOUTCHAIN Logo" style="position:absolute;top:10px;left:20px;width:50px;height:auto;z-index:999;">
-
-  <!-- Hamburger Menu -->
-  <div class="hamburger-container">
-    <div class="hamburger" onclick="toggleMenu()">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <div class="menu" id="menu">
-      <a href="index.html">Home</a>
-      <a href="onboarding.html">Onboarding</a>
-      <a href="about.html">About Us</a>
+  <!-- Header -->
+  <div class="header">
+    <img src="logo.png" alt="CLOUTCHAIN Logo">
+    <div class="hamburger" onclick="toggleSidebar()">
+      <div></div><div></div><div></div>
     </div>
   </div>
 
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="index.html">Home</a>
+    <a href="onboarding.html">Onboarding</a>
+  </div>
+
+  <!-- Main -->
   <h1>CLOUTCHAIN</h1>
   <h2>Launching Soon</h2>
 
   <div id="countdown">
-    <div class="time-box">
-      <div id="days" class="time-value">00</div>
-      <div class="time-label">Days</div>
-    </div>
-    <div class="time-box">
-      <div id="hours" class="time-value">00</div>
-      <div class="time-label">Hours</div>
-    </div>
-    <div class="time-box">
-      <div id="minutes" class="time-value">00</div>
-      <div class="time-label">Minutes</div>
-    </div>
-    <div class="time-box">
-      <div id="seconds" class="time-value">00</div>
-      <div class="time-label">Seconds</div>
-    </div>
+    <div class="time-box"><div id="days" class="time-value">00</div><div class="time-label">Days</div></div>
+    <div class="time-box"><div id="hours" class="time-value">00</div><div class="time-label">Hours</div></div>
+    <div class="time-box"><div id="minutes" class="time-value">00</div><div class="time-label">Minutes</div></div>
+    <div class="time-box"><div id="seconds" class="time-value">00</div><div class="time-label">Seconds</div></div>
   </div>
 
   <div class="updates">
@@ -228,17 +244,20 @@
 
   <!-- Footer -->
   <footer>
-    <p>© 2025-2026 All rights reserved</p>
-    <div>
-      <a href="https://youtube.com" target="_blank"><img src="youtube-icon.png" alt="YouTube"></a>
-      <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
-      <a href="https://discord.com" target="_blank"><img src="discord-icon.png" alt="Discord"></a>
-      <a href="https://x.com" target="_blank"><img src="x-icon.png" alt="X"></a>
+    <div class="footer-content">
+      <div class="social-icons">
+        <a href="#"><i class="fab fa-youtube"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-discord"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+      </div>
+      <div class="footer-bottom">
+        © 2025–2026 CLOUTCHAIN. All rights reserved.
+      </div>
     </div>
   </footer>
 
   <script>
-    // Countdown Timer
     var launchDate = new Date("Sep 26, 2025 12:00:00 GMT+0530").getTime();
     function updateCountdown() {
       var now = new Date().getTime();
@@ -262,7 +281,9 @@
     var x = setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Hamburger toggle
-    function toggleMenu() {
-      document.getElementById("menu").classList.toggle("show");
-      const menu = document.getElementById("
+    function toggleSidebar() {
+      document.getElementById("sidebar").classList.toggle("active");
+    }
+  </script>
+</body>
+</html>
