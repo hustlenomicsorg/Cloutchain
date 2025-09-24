@@ -1,168 +1,268 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CloutChain</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --primary-color: #4e54c8;
-  --secondary-color: #8f94fb;
-  --bg-dark: #000;
-  --bg-light: #fff;
-  --text-light: #fff;
-}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CLOUTCHAIN | COMING SOON</title>
 
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: var(--bg-dark);
-  color: var(--text-light);
-}
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 20px;
-  background: #111;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
+  <style>
+    :root {
+      --bg-dark: #000000;
+      --text-dark: #ffffff;
+      --accent: #00ffff;
+    }
 
-header img {
-  height: 50px;
-}
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #000, #111, #000);
+      color: var(--text-dark);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+      overflow-x: hidden;
+      padding: 20px;
+      box-sizing: border-box;
+    }
 
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
+    h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 0.2em;
+      letter-spacing: 3px;
+    }
 
-.menu-toggle span {
-  height: 3px;
-  width: 25px;
-  background: white;
-  margin: 4px;
-  border-radius: 2px;
-}
+    h2 {
+      font-weight: 500;
+      margin: 0.3em 0 1.5em;
+      font-size: 1.3rem;
+      color: var(--accent);
+    }
 
-nav {
-  display: flex;
-  gap: 20px;
-}
+    #countdown {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      margin-bottom: 2em;
+    }
 
-nav a {
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-}
+    .time-box {
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      width: 80px;
+      text-align: center;
+    }
 
-nav a:hover {
-  text-decoration: underline;
-}
+    .time-value {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
 
-@media screen and (max-width: 768px) {
-  nav {
-    display: none;
-    flex-direction: column;
-    background: #111;
-    position: absolute;
-    top: 60px;
-    right: 20px;
-    width: 200px;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  nav.show {
-    display: flex;
-  }
-  .menu-toggle {
-    display: flex;
-  }
-}
+    .time-label {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-top: 5px;
+    }
 
-/* Hero */
-.hero {
-  height: calc(100vh - 60px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  text-align: center;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  padding: 20px;
-}
+    .updates {
+      margin-top: 20px;
+      padding: 15px;
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(12px);
+      width: 100%;
+      max-width: 500px;
+      text-align: left;
+    }
 
-.hero h1 {
-  font-size: 2.5rem;
-  margin: 0;
-}
+    .updates h3 {
+      margin-top: 0;
+      font-weight: 600;
+    }
 
-.hero p {
-  font-size: 1.2rem;
-  margin-top: 10px;
-}
+    .updates p {
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
 
-/* Footer */
-footer {
-  background: #111;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-footer .social-icons {
-  margin: 10px 0;
-}
-footer .social-icons a {
-  margin: 0 10px;
-  text-decoration: none;
-  color: white;
-}
-</style>
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a:hover {
+      color: #00ffff;
+      text-shadow: 0px 0px 8px rgba(0,255,255,0.6);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 0.8rem;
+      opacity: 0.8;
+      text-align: center;
+      background: #111;
+      padding: 15px;
+      width: 100%;
+    }
+
+    footer img {
+      width: 24px;
+      margin: 0 5px;
+    }
+
+    /* Hamburger Menu */
+    .hamburger-container {
+      position: fixed;
+      top: 10px;
+      right: 20px;
+      z-index: 999;
+    }
+
+    .hamburger {
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      width: 30px;
+      height: 25px;
+    }
+
+    .hamburger div {
+      width: 30px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .menu {
+      display: none;
+      position: fixed;
+      top: 60px;
+      right: 20px;
+      background: #111;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
+    }
+
+    .menu a {
+      display: block;
+      padding: 10px;
+      color: var(--accent);
+    }
+
+    .menu a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 480px) {
+      h1 { font-size: 2.2rem; }
+      h2 { font-size: 1.1rem; }
+      .time-box { width: 60px; padding: 10px; }
+      .time-value { font-size: 1.5rem; }
+      .time-label { font-size: 0.7rem; }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <img src="logo.png" alt="CloutChain Logo">
-  <div class="menu-toggle" id="menu-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
+  <!-- Logo -->
+  <img src="logo.png" alt="CLOUTCHAIN Logo" style="position:absolute;top:10px;left:20px;width:50px;height:auto;z-index:999;">
+
+  <!-- Hamburger Menu -->
+  <div class="hamburger-container">
+    <div class="hamburger" onclick="toggleMenu()">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <div class="menu" id="menu">
+      <a href="index.html">Home</a>
+      <a href="onboarding.html">Onboarding</a>
+      <a href="about.html">About Us</a>
+    </div>
   </div>
-  <nav id="nav-menu">
-    <a href="index.html">Home</a>
-    <a href="onboarding.html">Onboarding</a>
-    <a href="about.html">About Us</a>
-  </nav>
-</header>
 
-<section class="hero">
-  <h1>Welcome to CloutChain</h1>
-  <p>Your gateway to creator partnerships & monetization.</p>
-</section>
+  <h1>CLOUTCHAIN</h1>
+  <h2>Launching Soon</h2>
 
-<footer>
-  <p>© 2025-2026 CloutChain. All Rights Reserved.</p>
-  <div class="social-icons">
-    <a href="#"><img src="youtube-icon.png" alt="YouTube" width="24"></a>
-    <a href="#"><img src="instagram-icon.png" alt="Instagram" width="24"></a>
-    <a href="#"><img src="discord-icon.png" alt="Discord" width="24"></a>
-    <a href="#"><img src="x-icon.png" alt="X" width="24"></a>
+  <div id="countdown">
+    <div class="time-box">
+      <div id="days" class="time-value">00</div>
+      <div class="time-label">Days</div>
+    </div>
+    <div class="time-box">
+      <div id="hours" class="time-value">00</div>
+      <div class="time-label">Hours</div>
+    </div>
+    <div class="time-box">
+      <div id="minutes" class="time-value">00</div>
+      <div class="time-label">Minutes</div>
+    </div>
+    <div class="time-box">
+      <div id="seconds" class="time-value">00</div>
+      <div class="time-label">Seconds</div>
+    </div>
   </div>
-</footer>
 
-<script>
-const menuToggle = document.getElementById('menu-toggle');
-const navMenu = document.getElementById('nav-menu');
+  <div class="updates">
+    <h3>Latest Update</h3>
+    <p><strong>15 September 2025:</strong> Launch adjusted to 26 September at 12:00 PM IST.  
+    <a href="Official_Announcement.pdf" target="_blank">Read Official PDF</a></p>
+  </div>
 
-menuToggle.addEventListener('click', () => {
-  navMenu.classList.toggle('show');
-});
-</script>
+  <!-- Footer -->
+  <footer>
+    <p>© 2025-2026 All rights reserved</p>
+    <div>
+      <a href="https://youtube.com" target="_blank"><img src="youtube-icon.png" alt="YouTube"></a>
+      <a href="https://instagram.com" target="_blank"><img src="instagram-icon.png" alt="Instagram"></a>
+      <a href="https://discord.com" target="_blank"><img src="discord-icon.png" alt="Discord"></a>
+      <a href="https://x.com" target="_blank"><img src="x-icon.png" alt="X"></a>
+    </div>
+  </footer>
 
-</body>
-</html>
+  <script>
+    // Countdown Timer
+    var launchDate = new Date("Sep 26, 2025 12:00:00 GMT+0530").getTime();
+    function updateCountdown() {
+      var now = new Date().getTime();
+      var distance = launchDate - now;
+
+      var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      document.getElementById("days").textContent = days < 10 ? '0'+days : days;
+      document.getElementById("hours").textContent = hours < 10 ? '0'+hours : hours;
+      document.getElementById("minutes").textContent = minutes < 10 ? '0'+minutes : minutes;
+      document.getElementById("seconds").textContent = seconds < 10 ? '0'+seconds : seconds;
+
+      if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("countdown").innerHTML = "<h2>We Are Live!</h2>";
+      }
+    }
+    var x = setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Hamburger toggle
+    function toggleMenu() {
+      document.getElementById("menu").classList.toggle("show");
+      const menu = document.getElementById("
