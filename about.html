@@ -3,218 +3,96 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Us | CloutChain</title>
+<title>CLOUTCHAIN | About</title>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-<style>
-:root {
-  --primary-color: #4e54c8;
-  --secondary-color: #8f94fb;
-  --accent-color: #ff6363;
-  --text-dark: #111;
-  --bg-light: #f8f9fa;
-  --card-bg: #fff;
-}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
+<style>
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: var(--bg-light);
-  color: var(--text-dark);
+  background: #fff;
+  color: #000;
+  padding: 20px;
+  box-sizing: border-box;
 }
-
-header {
+.header {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 15px 20px;
-  background: #111;
-  color: white;
+  align-items: center;
+  padding: 20px;
 }
-
-header img {
-  height: 40px;
+.header img {
+  height: 60px;
 }
-
-.nav {
-  display: flex;
-  gap: 15px;
+.hamburger {
+  cursor: pointer;
 }
-
-.nav a {
-  color: white;
+.hamburger div {
+  width: 28px;
+  height: 3px;
+  background-color: black;
+  margin: 5px 0;
+}
+.sidebar {
+  position: fixed;
+  right: -250px;
+  top: 0;
+  width: 250px;
+  height: 100%;
+  background: #f4f4f4;
+  padding-top: 60px;
+  transition: 0.3s;
+  z-index: 1050;
+}
+.sidebar a {
+  display: block;
+  padding: 12px 20px;
+  color: #000;
   text-decoration: none;
   font-weight: 600;
 }
-
-.nav a:hover {
-  text-decoration: underline;
+.sidebar a:hover {
+  background: #ddd;
 }
-
-/* Hero Section */
-.hero {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: white;
-  padding: 60px 20px;
-  text-align: center;
+.sidebar.active {
+  right: 0;
 }
-
-.hero h1 {
-  font-size: 2.5rem;
-  margin-bottom: 10px;
-}
-
-.hero p {
-  font-size: 1.2rem;
-}
-
-/* How It Works Section */
-.section {
-  padding: 50px 20px;
-  text-align: center;
-}
-
-.section h2 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
-
-.steps {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.step {
-  background: var(--card-bg);
+.content {
   padding: 20px;
-  border-radius: 12px;
-  width: 280px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.step h3 {
-  color: var(--primary-color);
-  font-size: 1.2rem;
-}
-
-.step p {
-  font-size: 0.95rem;
-}
-
-/* Creator Perks Section */
-.perks {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-}
-
-.perk {
-  background: var(--card-bg);
-  border-radius: 12px;
-  padding: 20px;
-  width: 280px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-}
-
-.perk h3 {
-  color: var(--accent-color);
-}
-
-.perk p {
-  font-size: 0.95rem;
-}
-
-/* Footer */
-footer {
-  background: #111;
-  color: white;
-  padding: 20px;
-  text-align: center;
-}
-
-footer .social-icons {
-  margin: 10px 0;
-}
-
-footer .social-icons a {
-  margin: 0 10px;
-  color: white;
-  font-size: 1.5rem;
-  text-decoration: none;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .steps, .perks {
-    flex-direction: column;
-    align-items: center;
-  }
 }
 </style>
 </head>
 <body>
 
-<header>
-  <img src="logo.png" alt="CloutChain Logo">
-  <nav class="nav">
-    <a href="index.html">Home</a>
-    <a href="onboarding.html">Onboarding</a>
-    <a href="about.html">About Us</a>
-  </nav>
-</header>
-
-<section class="hero">
-  <h1>About CloutChain</h1>
-  <p>Your ultimate creator partnership platform — empowering digital creators with monetization, exposure, and community.</p>
-</section>
-
-<section class="section">
-  <h2>How It Works</h2>
-  <div class="steps">
-    <div class="step">
-      <h3>Step 1: Apply</h3>
-      <p>Submit your application to join the CloutChain creator program.</p>
-    </div>
-    <div class="step">
-      <h3>Step 2: Review</h3>
-      <p>Our team evaluates your application and verifies your channel or profile.</p>
-    </div>
-    <div class="step">
-      <h3>Step 3: Monetize</h3>
-      <p>Start earning revenue through YouTube & Instagram monetization.</p>
-    </div>
+<!-- Header -->
+<div class="header">
+  <img src="logo.png" alt="CLOUTCHAIN Logo">
+  <div class="hamburger" onclick="toggleSidebar()">
+    <div></div>
+    <div></div>
+    <div></div>
   </div>
-</section>
+</div>
 
-<section class="section" style="background: #fff">
-  <h2>Creator Perks</h2>
-  <div class="perks">
-    <div class="perk">
-      <h3>Monetization</h3>
-      <p>Access monetization tools for YouTube and Instagram with higher payouts.</p>
-    </div>
-    <div class="perk">
-      <h3>Exposure</h3>
-      <p>Get featured in CloutChain’s promotional campaigns to grow your audience.</p>
-    </div>
-    <div class="perk">
-      <h3>Community</h3>
-      <p>Join a network of creators and collaborate for bigger projects.</p>
-    </div>
-  </div>
-</section>
+<!-- Sidebar -->
+<div class="sidebar" id="sidebar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="onboarding.html">Onboarding</a>
+</div>
 
-<footer>
-  <p>© 2025-2026 CloutChain. All Rights Reserved.</p>
-  <div class="social-icons">
-    <a href="#"><img src="youtube-icon.png" alt="YouTube" width="24"></a>
-    <a href="#"><img src="instagram-icon.png" alt="Instagram" width="24"></a>
-    <a href="#"><img src="discord-icon.png" alt="Discord" width="24"></a>
-    <a href="#"><img src="x-icon.png" alt="X" width="24"></a>
-  </div>
-</footer>
+<!-- Main Content -->
+<div class="content">
+  <h1>About CLOUTCHAIN</h1>
+  <p>CLOUTCHAIN is a revolutionary platform designed to ...</p>
+  <p>Our mission is to ...</p>
+</div>
 
+<script>
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("active");
+}
+</script>
 </body>
 </html>
