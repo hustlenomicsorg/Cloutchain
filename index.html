@@ -7,21 +7,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
 
   <style>
-    :root {
-      --bg-dark: #0d0d0d;
-      --text-dark: #ffffff;
-      --accent: #f1c40f;
-      --bg-light: #f9f9f9;
-      --text-light: #0d0d0d;
-    }
-
     body {
       margin: 0;
       font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #0d0d0d, #1a1a1a, #111);
-      background-size: 300% 300%;
-      animation: gradientShift 15s ease infinite;
-      color: var(--text-dark);
+      background: radial-gradient(circle at top, #0d1b2a, #000000 80%);
+      color: #ffffff;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -32,10 +22,20 @@
       overflow-x: hidden;
     }
 
-    @keyframes gradientShift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Futuristic gradient animation */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: conic-gradient(from 180deg at 50% 50%, #0d1b2a, #1b263b, #000000, #1b263b, #0d1b2a);
+      opacity: 0.15;
+      animation: rotateGradient 20s linear infinite;
+      z-index: -1;
+    }
+
+    @keyframes rotateGradient {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
     /* Notice Banner */
@@ -44,7 +44,7 @@
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(241, 196, 15, 0.9);
+      background: rgba(0, 150, 255, 0.9);
       color: #000;
       font-size: 0.8rem;
       padding: 6px;
@@ -68,10 +68,10 @@
     /* Hamburger Menu */
     .hamburger {
       position: fixed;
-      top: 15px;
+      top: 40px; /* moved down to avoid overlap */
       left: 20px;
       cursor: pointer;
-      z-index: 1100;
+      z-index: 900;
     }
 
     .hamburger div {
@@ -89,7 +89,7 @@
       top: 0;
       width: 250px;
       height: 100%;
-      background: rgba(0, 0, 0, 0.95);
+      background: rgba(0, 0, 20, 0.95);
       backdrop-filter: blur(12px);
       padding-top: 60px;
       transition: 0.3s;
@@ -105,7 +105,7 @@
     }
 
     .sidebar a:hover {
-      background: rgba(241, 196, 15, 0.3);
+      background: rgba(0, 150, 255, 0.3);
     }
 
     .sidebar.active {
@@ -113,35 +113,20 @@
     }
 
     h1 {
-      margin-top: 80px;
+      margin-top: 100px;
       font-size: 3rem;
       font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 2px;
+      color: #00aaff;
+      text-shadow: 0 0 10px rgba(0,170,255,0.8);
     }
 
     h2 {
       font-weight: 500;
       font-size: 1.3rem;
-      color: var(--accent);
+      color: #00aaff;
       margin-bottom: 1em;
-    }
-
-    /* Progress Bar */
-    .progress-container {
-      width: 100%;
-      max-width: 500px;
-      background: rgba(255, 255, 255, 0.15);
-      border-radius: 10px;
-      overflow: hidden;
-      margin-bottom: 20px;
-    }
-
-    .progress-bar {
-      height: 12px;
-      background: var(--accent);
-      width: 0%;
-      transition: width 1s linear;
     }
 
     /* Countdown */
@@ -156,16 +141,18 @@
     .time-box {
       padding: 15px;
       border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(0, 150, 255, 0.4);
+      background: rgba(0, 150, 255, 0.1);
       backdrop-filter: blur(12px);
       width: 80px;
       text-align: center;
+      box-shadow: 0 0 10px rgba(0,150,255,0.2);
     }
 
     .time-value {
       font-size: 1.8rem;
       font-weight: 700;
+      color: #00c3ff;
     }
 
     .time-label {
@@ -177,7 +164,8 @@
       margin-top: 20px;
       padding: 15px;
       border-radius: 12px;
-      background: rgba(255, 255, 255, 0.1);
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(0, 150, 255, 0.2);
       width: 100%;
       max-width: 500px;
       text-align: left;
@@ -221,11 +209,6 @@
   <h1>CLOUTCHAIN</h1>
   <h2>Launching Soon</h2>
 
-  <!-- Progress Bar -->
-  <div class="progress-container">
-    <div class="progress-bar" id="progress-bar"></div>
-  </div>
-
   <!-- Countdown -->
   <div id="countdown">
     <div class="time-box"><div id="days" class="time-value">00</div><div class="time-label">Days</div></div>
@@ -245,12 +228,10 @@
 
   <script>
     var launchDate = new Date("Sep 26, 2025 12:00:00 GMT+0530").getTime();
-    var startDate = new Date().getTime();
 
     function updateCountdown() {
       var now = new Date().getTime();
       var distance = launchDate - now;
-      var total = launchDate - startDate;
 
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
       var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -262,14 +243,9 @@
       document.getElementById("minutes").textContent = minutes < 10 ? "0" + minutes : minutes;
       document.getElementById("seconds").textContent = seconds < 10 ? "0" + seconds : seconds;
 
-      // Progress bar
-      var percent = ((total - distance) / total) * 100;
-      document.getElementById("progress-bar").style.width = percent + "%";
-
       if (distance < 0) {
         clearInterval(timer);
         document.getElementById("countdown").innerHTML = "<h2>We Are Live!</h2>";
-        document.getElementById("progress-bar").style.width = "100%";
       }
     }
 
