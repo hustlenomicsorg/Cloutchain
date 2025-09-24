@@ -22,7 +22,6 @@
       align-items: center;
     }
 
-    /* Notice Banner */
     .notice-banner {
       position: fixed;
       top: 0;
@@ -47,7 +46,6 @@
       100% { transform: translateX(-100%); }
     }
 
-    /* Header */
     .header {
       position: fixed;
       top: 40px;
@@ -59,10 +57,9 @@
       z-index: 900;
     }
     .header img {
-      height: 60px; /* bigger logo for visibility */
+      height: 60px;
     }
 
-    /* Hamburger */
     .hamburger {
       cursor: pointer;
     }
@@ -74,7 +71,6 @@
       transition: 0.4s;
     }
 
-    /* Sidebar */
     .sidebar {
       position: fixed;
       right: -250px;
@@ -97,9 +93,10 @@
     .sidebar a:hover {
       background: #ddd;
     }
-    .sidebar.active { right: 0; }
+    .sidebar.active {
+      right: 0;
+    }
 
-    /* Countdown */
     h1 {
       font-size: 2.5rem;
       margin-top: 140px;
@@ -136,7 +133,6 @@
       color: #555;
     }
 
-    /* Updates */
     .updates {
       margin-top: 20px;
       padding: 15px;
@@ -163,7 +159,6 @@
       text-decoration: underline;
     }
 
-    /* Footer */
     footer {
       margin-top: auto;
       padding: 20px;
@@ -208,10 +203,8 @@
   </style>
 </head>
 <body>
-  <!-- Notice Banner -->
   <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
 
-  <!-- Header -->
   <div class="header">
     <img src="logo.png" alt="CLOUTCHAIN Logo">
     <div class="hamburger" onclick="toggleSidebar()">
@@ -219,13 +212,12 @@
     </div>
   </div>
 
-  <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <a href="index.html">Home</a>
     <a href="onboarding.html">Onboarding</a>
+    <a href="about.html">About</a>
   </div>
 
-  <!-- Main -->
   <h1>CLOUTCHAIN</h1>
   <h2>Launching Soon</h2>
 
@@ -238,11 +230,10 @@
 
   <div class="updates">
     <h3>Latest Update</h3>
-    <p><strong>15 September 2025:</strong> Launch adjusted to 26 September at 12:00 PM IST.  
+    <p><strong>15 September 2025:</strong> Launch adjusted to 26 September at 12:00 PM IST.
     <a href="Official_Announcement.pdf" target="_blank">Read Official PDF</a></p>
   </div>
 
-  <!-- Footer -->
   <footer>
     <div class="footer-content">
       <div class="social-icons">
