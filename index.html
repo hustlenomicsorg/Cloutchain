@@ -22,7 +22,7 @@
       overflow-x: hidden;
     }
 
-    /* Futuristic gradient animation */
+    /* Background glow animation */
     body::before {
       content: "";
       position: fixed;
@@ -32,7 +32,6 @@
       animation: rotateGradient 20s linear infinite;
       z-index: -1;
     }
-
     @keyframes rotateGradient {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
@@ -53,27 +52,35 @@
       white-space: nowrap;
       overflow: hidden;
     }
-
     .notice-banner span {
       display: inline-block;
       padding-left: 100%;
       animation: scroll-left 12s linear infinite;
     }
-
     @keyframes scroll-left {
       0% { transform: translateX(0); }
       100% { transform: translateX(-100%); }
     }
 
-    /* Hamburger Menu */
-    .hamburger {
+    /* Header with logo + menu */
+    .header {
       position: fixed;
-      top: 40px; /* moved down to avoid overlap */
+      top: 30px;
       left: 20px;
-      cursor: pointer;
+      right: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       z-index: 900;
     }
+    .header img {
+      height: 40px;
+    }
 
+    /* Hamburger Menu */
+    .hamburger {
+      cursor: pointer;
+    }
     .hamburger div {
       width: 28px;
       height: 3px;
@@ -85,7 +92,7 @@
     /* Sidebar Menu */
     .sidebar {
       position: fixed;
-      left: -250px;
+      right: -250px;
       top: 0;
       width: 250px;
       height: 100%;
@@ -95,7 +102,6 @@
       transition: 0.3s;
       z-index: 1050;
     }
-
     .sidebar a {
       display: block;
       padding: 12px 20px;
@@ -103,17 +109,13 @@
       text-decoration: none;
       font-weight: 600;
     }
-
     .sidebar a:hover {
       background: rgba(0, 150, 255, 0.3);
     }
-
-    .sidebar.active {
-      left: 0;
-    }
+    .sidebar.active { right: 0; }
 
     h1 {
-      margin-top: 100px;
+      margin-top: 120px;
       font-size: 3rem;
       font-weight: 800;
       text-transform: uppercase;
@@ -121,7 +123,6 @@
       color: #00aaff;
       text-shadow: 0 0 10px rgba(0,170,255,0.8);
     }
-
     h2 {
       font-weight: 500;
       font-size: 1.3rem;
@@ -137,7 +138,6 @@
       gap: 15px;
       margin-bottom: 2em;
     }
-
     .time-box {
       padding: 15px;
       border-radius: 12px;
@@ -148,18 +148,17 @@
       text-align: center;
       box-shadow: 0 0 10px rgba(0,150,255,0.2);
     }
-
     .time-value {
       font-size: 1.8rem;
       font-weight: 700;
       color: #00c3ff;
     }
-
     .time-label {
       font-size: 0.8rem;
       opacity: 0.8;
     }
 
+    /* Updates */
     .updates {
       margin-top: 20px;
       padding: 15px;
@@ -171,7 +170,6 @@
       text-align: left;
       box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
-
     .updates h3 { margin-top: 0; }
     .updates p { font-size: 0.9rem; line-height: 1.5; }
 
@@ -181,7 +179,6 @@
       opacity: 0.8;
     }
 
-    /* Responsive */
     @media (max-width: 480px) {
       h1 { font-size: 2.2rem; }
       h2 { font-size: 1rem; }
@@ -194,13 +191,15 @@
   <!-- Notice Banner -->
   <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
 
-  <!-- Hamburger Menu -->
-  <div class="hamburger" onclick="toggleSidebar()">
-    <div></div>
-    <div></div>
-    <div></div>
+  <!-- Header -->
+  <div class="header">
+    <img src="logo.png" alt="CLOUTCHAIN Logo">
+    <div class="hamburger" onclick="toggleSidebar()">
+      <div></div><div></div><div></div>
+    </div>
   </div>
 
+  <!-- Sidebar -->
   <div class="sidebar" id="sidebar">
     <a href="index.html">Home</a>
     <a href="about.html">About</a>
@@ -228,7 +227,6 @@
 
   <script>
     var launchDate = new Date("Sep 26, 2025 12:00:00 GMT+0530").getTime();
-
     function updateCountdown() {
       var now = new Date().getTime();
       var distance = launchDate - now;
@@ -248,7 +246,6 @@
         document.getElementById("countdown").innerHTML = "<h2>We Are Live!</h2>";
       }
     }
-
     var timer = setInterval(updateCountdown, 1000);
     updateCountdown();
 
