@@ -1,147 +1,84 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Onboarding | CLOUTCHAIN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-
-  <style>
-  :root {
-    --primary: #0073e6;
-    --secondary: #00c3ff;
-    --text: #222;
-    --muted: #666;
-    --bg-light: #f7f9fc;
-  }
-  body {
-    margin: 0; font-family: 'Poppins', sans-serif;
-    background: #fff; color: var(--text);
-    min-height: 100vh; display: flex; flex-direction: column;
-  }
-
-  /* Notice */
-  .notice-banner {
-    position: fixed; top: 0; left: 0; width: 100%;
-    background: var(--primary); color: #fff;
-    font-size: 0.85rem; padding: 6px; text-align: center;
-    z-index: 1000; white-space: nowrap; overflow: hidden;
-  }
-  .notice-banner span { display: inline-block; padding-left: 100%; animation: scroll-left 12s linear infinite; }
-  @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
-  /* Header */
-  .header { position: fixed; top: 40px; left: 20px; right: 20px;
-    display: flex; justify-content: space-between; align-items: center; z-index: 900; }
-  .header img { height: 55px; }
-  .hamburger { cursor: pointer; }
-  .hamburger div { width: 28px; height: 3px; background: var(--text); margin: 5px 0; border-radius: 2px; }
-
-  /* Sidebar */
-  .sidebar {
-    position: fixed; right: -270px; top: 0; width: 250px; height: 100%;
-    background: #fff; box-shadow: -3px 0 12px rgba(0,0,0,0.1);
-    padding-top: 80px; transition: 0.4s; z-index: 1050;
-  }
-  .sidebar a { display: block; padding: 14px 24px; color: var(--text); text-decoration: none; font-weight: 600; }
-  .sidebar a:hover { background: var(--bg-light); border-left: 4px solid var(--primary); }
-  .sidebar.active { right: 0; }
-
-  /* Main */
-  main {
-    margin-top: 140px; padding: 20px; flex: 1;
-    max-width: 900px; margin-left: auto; margin-right: auto;
-  }
-  h1 { text-align: center; font-size: 2rem; margin-bottom: 30px; }
-
-  .guidelines {
-    background: #fff; padding: 25px; border-left: 4px solid var(--primary);
-    border-radius: 12px; margin-bottom: 25px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  }
-  .guidelines strong { color: var(--primary); }
-
-  .link-box { text-align: center; margin: 30px 0; }
-  .link-box a {
-    text-decoration: none; font-weight: 600;
-    color: #fff; background: linear-gradient(45deg, var(--primary), var(--secondary));
-    padding: 12px 24px; border-radius: 30px; display: inline-block; transition: 0.3s;
-  }
-  .link-box a:hover { opacity: 0.85; transform: scale(1.05); }
-
-  .onboard-card {
-    background: var(--bg-light);
-    padding: 30px; text-align: center;
-    border-radius: 14px;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.06);
-  }
-  .onboard-card h2 { margin-bottom: 10px; color: var(--primary); }
-  .blink { color: red; font-weight: bold; animation: blink 1.2s infinite; }
-  @keyframes blink { 0%{opacity:1;}50%{opacity:0;}100%{opacity:1;} }
-
-  /* Footer */
-  footer {
-    margin-top: auto; padding: 20px;
-    background: var(--bg-light); color: var(--text);
-    text-align: center; border-top: 1px solid #eee;
-  }
-  .footer-content { display: flex; flex-direction: column; align-items: center; gap: 10px; }
-  .social-icons { display: flex; gap: 15px; }
-  .social-icons a { color: var(--text); font-size: 1.3rem; transition: 0.3s; }
-  .social-icons a:hover { color: var(--primary); transform: scale(1.15); }
-  .footer-bottom { font-size: 0.8rem; opacity: 0.7; margin-top: 10px; }
-  </style>
-</head>
-<body>
-  <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
-
-  <div class="header">
-    <img src="logo.png" alt="CLOUTCHAIN Logo">
-    <div class="hamburger" onclick="toggleSidebar()"><div></div><div></div><div></div></div>
-  </div>
-
-  <div class="sidebar" id="sidebar">
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="onboarding.html">Onboarding</a>
-  </div>
-
-  <main>
-    <h1>Onboarding Guidelines</h1>
-
-    <div class="guidelines">
-      <p>To maintain professionalism, CloutChain does not allow onboarding of YouTubers with fewer than 
-      <strong>3,000 subscribers</strong> unless the channel meets exceptional quality standards.</p>
-    </div>
-
-    <div class="link-box">
-      <a href="#">📄 Terms & Conditions (Coming Soon)</a>
-    </div>
-
-    <div class="onboard-card">
-      <h2><i class="fas fa-lock"></i> Onboarding Form</h2>
-      <p><span class="blink">DELAYED</span> – Opening Soon</p>
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer>
-    <div class="footer-content">
-      <div class="social-icons">
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#"><i class="fab fa-instagram"></i></a>
-        <a href="#"><i class="fab fa-discord"></i></a>
-        <a href="#"><i class="fab fa-x-twitter"></i></a>
-      </div>
-      <div class="footer-bottom">© 2025–2026 CLOUTCHAIN. All rights reserved.</div>
-    </div>
-  </footer>
-
-  <script>
-    function toggleSidebar() {
-      document.getElementById("sidebar").classList.toggle("active");
-    }
-  </script>
-</body>
-</html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Onboarding | CLOUTCHAIN</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+<style>
+:root {
+  --primary: #0073e6;
+  --secondary: #00c3ff;
+  --text: #222;
+  --muted: #666;
+  --bg-light: #f7f9fc;
+}
+body {
+  margin: 0; font-family: 'Poppins', sans-serif;
+  background: #fff; color: var(--text);
+  min-height: 100vh; display: flex; flex-direction: column;
+}
+.notice-banner {
+  position: fixed; top: 0; left: 0; width: 100%;
+  background: var(--primary); color: #fff;
+  font-size: 0.85rem; padding: 6px; text-align: center;
+  z-index: 1000; white-space: nowrap; overflow: hidden;
+}
+.notice-banner span { display: inline-block; padding-left: 100%; animation: scroll-left 12s linear infinite; }
+@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
+.header { position: fixed; top: 40px; left: 20px; right: 20px;
+  display: flex; justify-content: space-between; align-items: center; z-index: 900; }
+.header img { height: 55px; }
+.hamburger { cursor: pointer; display: flex; flex-direction: column; justify-content: center; }
+.hamburger div { width: 28px; height: 3px; background: var(--text); margin: 5px 0; border-radius: 2px; transition: all 0.4s ease; }
+.sidebar {
+  position: fixed; right: -300px; top: 0; width: 300px; height: 100%;
+  background: #fff; box-shadow: -3px 0 20px rgba(0,0,0,0.2);
+  padding-top: 80px; transition: right 0.5s ease;
+  z-index: 1050; border-radius: 8px 0 0 8px;
+}
+.sidebar.active { right: 0; }
+.sidebar a { display: block; padding: 14px 24px; color: var(--text); text-decoration: none; font-weight: 600; transition: background 0.3s; }
+.sidebar a:hover { background: var(--bg-light); border-left: 4px solid var(--primary); }
+main { margin-top: 140px; padding: 20px; flex: 1; max-width: 900px; margin-left: auto; margin-right: auto; }
+h1 { text-align: center; font-size: 2rem; margin-bottom: 30px; }
+.guidelines {
+  background: #fff; padding: 25px; border-left: 4px solid var(--primary);
+  border-radius: 12px; margin-bottom: 25px; box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+}
+.guidelines strong { color: var(--primary); }
+.link-box { text-align: center; margin: 30px 0; }
+.link-box a {
+  text-decoration: none; font-weight: 600;
+  color: #fff; background: linear-gradient(45deg, var(--primary), var(--secondary));
+  padding: 12px 24px; border-radius: 30px; display: inline-block; transition: 0.3s;
+}
+.link-box a:hover { opacity: 0.85; transform: scale(1.05); }
+.onboard-card {
+  background: var(--bg-light);
+  padding: 30px; text-align: center;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+  position: relative;
+  overflow: hidden;
+}
+.onboard-card::before {
+  content: '';
+  position: absolute;
+  top: -50%; left: -50%;
+  width: 200%; height: 200%;
+  background: linear-gradient(45deg, rgba(0, 115, 230, 0.2), rgba(0, 195, 255, 0.2));
+  animation: rotate 6s linear infinite;
+}
+@keyframes rotate {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.onboard-card h2 { margin-bottom: 10px; color: var(--primary); position: relative; z-index: 1; }
+.blink { color: red; font-weight: bold; animation: blink 1.2s infinite; }
+@keyframes blink { 0%{opacity:1;}50%{opacity:0;}100%{opacity:1;} }
+footer { margin-top: auto; padding: 20px; background: var(--bg-light); color: var(--text); text-align: center; border-top: 1px solid #eee; }
+.footer-content { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.social-icons { display: flex; gap: 15px; }
+.social-icons a { color: var(--text); font-size: 1.3rem; transition: 0.3s; }
+.social-icons a:hover { color: var(--primary
