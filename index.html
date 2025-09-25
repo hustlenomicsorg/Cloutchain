@@ -11,15 +11,16 @@
 :root {
   --primary: #0073e6;
   --secondary: #00c3ff;
-  --dark: #0a0a0a;
-  --light: #f9f9f9;
+  --text: #222;
+  --muted: #666;
+  --bg-light: #f7f9fc;
 }
 
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
-  background: linear-gradient(135deg, var(--dark), #1b1b1b);
-  color: #fff;
+  background: #fff;
+  color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -28,21 +29,17 @@ body {
 
 /* Notice Banner */
 .notice-banner {
-  position: fixed;
-  top: 0; left: 0; width: 100%;
-  background: rgba(0,0,0,0.8);
-  color: #fff; font-size: 0.85rem;
-  padding: 6px; text-align: center; z-index: 1000;
+  position: fixed; top: 0; left: 0; width: 100%;
+  background: var(--primary); color: #fff;
+  font-size: 0.85rem; padding: 6px;
+  text-align: center; z-index: 1000;
   white-space: nowrap; overflow: hidden;
 }
 .notice-banner span {
   display: inline-block; padding-left: 100%;
-  animation: scroll-left 14s linear infinite;
+  animation: scroll-left 12s linear infinite;
 }
-@keyframes scroll-left {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-100%); }
-}
+@keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
 
 /* Header */
 .header {
@@ -50,51 +47,42 @@ body {
   display: flex; justify-content: space-between; align-items: center;
   z-index: 900;
 }
-.header img { height: 60px; }
-
-/* Hamburger */
+.header img { height: 55px; }
 .hamburger { cursor: pointer; }
 .hamburger div {
   width: 28px; height: 3px;
-  background-color: #fff;
+  background-color: var(--text);
   margin: 5px 0; border-radius: 2px;
-  transition: 0.4s;
 }
 
 /* Sidebar */
 .sidebar {
   position: fixed; right: -270px; top: 0;
   width: 250px; height: 100%;
-  backdrop-filter: blur(12px);
-  background: rgba(20,20,20,0.9);
-  box-shadow: -3px 0 12px rgba(0,0,0,0.3);
+  background: #fff;
+  box-shadow: -3px 0 12px rgba(0,0,0,0.1);
   padding-top: 80px; transition: 0.4s; z-index: 1050;
 }
 .sidebar a {
   display: block; padding: 14px 24px;
-  color: #fff; text-decoration: none;
+  color: var(--text); text-decoration: none;
   font-weight: 600; transition: 0.3s;
 }
-.sidebar a:hover { background: rgba(255,255,255,0.1); border-left: 4px solid var(--secondary); }
+.sidebar a:hover { background: var(--bg-light); border-left: 4px solid var(--primary); }
 .sidebar.active { right: 0; }
 
 /* Hero */
 .hero {
-  margin-top: 160px;
-  text-align: center;
+  margin-top: 160px; text-align: center;
 }
 .hero h1 {
-  font-size: 2.8rem;
-  font-weight: 800;
+  font-size: 2.6rem; font-weight: 800;
   background: linear-gradient(45deg, var(--primary), var(--secondary));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
 }
 .hero h2 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  color: #bbb;
-  margin-top: 10px;
+  font-size: 1.1rem; font-weight: 500;
+  color: var(--muted); margin-top: 8px;
 }
 
 /* Countdown */
@@ -104,75 +92,76 @@ body {
   flex-wrap: wrap;
 }
 .time-box {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.2);
-  border-radius: 15px;
+  background: #fff;
+  border-radius: 14px;
   padding: 20px;
-  width: 80px; text-align: center;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  width: 85px; text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
   transition: transform 0.3s;
 }
 .time-box:hover { transform: translateY(-6px); }
 .time-value {
   font-size: 1.6rem; font-weight: 700;
-  color: var(--secondary);
+  color: var(--primary);
 }
-.time-label { font-size: 0.75rem; color: #aaa; }
+.time-label { font-size: 0.75rem; color: var(--muted); }
 
 /* Updates */
 .updates {
   margin: 0 auto 40px;
   max-width: 600px;
-  background: rgba(255,255,255,0.05);
-  border: 1px solid rgba(255,255,255,0.15);
-  padding: 20px; border-radius: 15px;
-  backdrop-filter: blur(8px);
-  box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+  background: #fff;
+  border-left: 4px solid var(--primary);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.06);
 }
 .updates h3 {
-  margin-top: 0; color: var(--secondary);
+  margin-top: 0; color: var(--primary);
 }
 .updates p {
-  font-size: 0.95rem; line-height: 1.5;
+  font-size: 0.95rem; line-height: 1.6;
 }
 .updates a {
-  color: var(--secondary); text-decoration: none; font-weight: 600;
+  color: var(--primary); text-decoration: none; font-weight: 600;
 }
 .updates a:hover { text-decoration: underline; }
+
+/* Buttons */
+.btn-pill {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 22px;
+  border-radius: 30px;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  color: #fff; font-weight: 600;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn-pill:hover { opacity: 0.85; transform: scale(1.05); }
 
 /* Footer */
 footer {
   margin-top: auto;
   padding: 20px;
-  background: rgba(0,0,0,0.9);
-  color: #fff;
+  background: var(--bg-light);
+  color: var(--text);
   text-align: center;
-  border-radius: 12px 12px 0 0;
-  box-shadow: 0 -4px 12px rgba(0,0,0,0.4);
+  border-top: 1px solid #eee;
 }
 .footer-content {
   display: flex; flex-direction: column; align-items: center; gap: 10px;
 }
-.social-icons {
-  display: flex; gap: 15px;
-}
-.social-icons a {
-  color: white; font-size: 1.3rem;
-  transition: 0.3s;
-}
-.social-icons a:hover {
-  color: var(--secondary); transform: scale(1.15);
-}
-.footer-bottom {
-  font-size: 0.8rem; opacity: 0.7; margin-top: 10px;
-}
+.social-icons { display: flex; gap: 15px; }
+.social-icons a { color: var(--text); font-size: 1.3rem; transition: 0.3s; }
+.social-icons a:hover { color: var(--primary); transform: scale(1.15); }
+.footer-bottom { font-size: 0.8rem; opacity: 0.7; margin-top: 10px; }
 
 /* Responsive */
 @media (max-width: 600px) {
   .hero h1 { font-size: 2rem; }
   #countdown { gap: 12px; }
-  .time-box { width: 65px; padding: 15px; }
+  .time-box { width: 70px; padding: 15px; }
   .time-value { font-size: 1.3rem; }
 }
 </style>
@@ -208,6 +197,8 @@ footer {
     <div class="time-box"><div id="minutes" class="time-value">00</div><div class="time-label">Minutes</div></div>
     <div class="time-box"><div id="seconds" class="time-value">00</div><div class="time-label">Seconds</div></div>
   </div>
+
+  <a href="about.html" class="btn-pill">Learn More</a>
 </section>
 
 <!-- Updates -->
