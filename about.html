@@ -8,113 +8,113 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
+:root {
+  --primary: #0073e6;
+  --dark: #111;
+  --light: #f9f9f9;
+  --text: #333;
+}
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: #fff;
-  color: #000;
+  color: var(--text);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  line-height: 1.6;
 }
 
 /* Header */
 .header {
   position: fixed;
-  top: 40px;
-  left: 20px;
-  right: 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  top: 20px; left: 20px; right: 20px;
+  display: flex; justify-content: space-between; align-items: center;
   z-index: 900;
 }
-.header img {
-  height: 60px;
-}
-
-/* Hamburger */
-.hamburger {
-  cursor: pointer;
-}
+.header img { height: 50px; }
+.hamburger { cursor: pointer; }
 .hamburger div {
-  width: 28px;
-  height: 3px;
-  background-color: black;
-  margin: 5px 0;
-  transition: 0.4s;
+  width: 28px; height: 3px;
+  background-color: var(--dark);
+  margin: 5px 0; border-radius: 2px;
+  transition: 0.3s;
 }
 
 /* Sidebar */
 .sidebar {
-  position: fixed;
-  right: -250px;
-  top: 0;
-  width: 250px;
-  height: 100%;
-  background: #f4f4f4;
+  position: fixed; right: -260px; top: 0;
+  width: 250px; height: 100%;
+  background: var(--light);
   box-shadow: -3px 0 8px rgba(0,0,0,0.1);
-  padding-top: 60px;
-  transition: 0.3s;
-  z-index: 1050;
+  padding-top: 60px; transition: 0.3s; z-index: 1050;
 }
 .sidebar a {
-  display: block;
-  padding: 12px 20px;
-  color: #000;
-  text-decoration: none;
-  font-weight: 600;
+  display: block; padding: 14px 20px;
+  color: var(--dark); text-decoration: none; font-weight: 600;
 }
-.sidebar a:hover {
-  background: #ddd;
-}
-.sidebar.active {
-  right: 0;
-}
+.sidebar a:hover { background: #eee; }
+.sidebar.active { right: 0; }
 
 /* Content */
 .content {
-  margin-top: 140px;
+  margin-top: 120px;
   padding: 20px;
-  max-width: 800px;
+  max-width: 1100px;
   margin-left: auto;
   margin-right: auto;
+}
+h1 {
+  font-size: 2.2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: var(--light);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+}
+.card h2 {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+  color: var(--primary);
+}
+.card p {
+  font-size: 0.95rem;
+  color: var(--text);
 }
 
 /* Footer */
 footer {
   margin-top: auto;
   padding: 20px;
-  background: #111;
+  background: var(--dark);
   color: #fff;
-  width: 100%;
   text-align: center;
   border-radius: 12px 12px 0 0;
   box-shadow: 0 -4px 12px rgba(0,0,0,0.15);
 }
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-}
-.social-icons {
-  display: flex;
-  gap: 15px;
-}
-.social-icons a {
-  color: white;
-  font-size: 1.3rem;
-  transition: 0.3s;
-}
-.social-icons a:hover {
-  color: #0073e6;
-  transform: scale(1.1);
-}
-.footer-bottom {
-  font-size: 0.8rem;
-  opacity: 0.7;
-  margin-top: 10px;
+.footer-content { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.social-icons { display: flex; gap: 15px; }
+.social-icons a { color: white; font-size: 1.3rem; transition: 0.3s; }
+.social-icons a:hover { color: var(--primary); transform: scale(1.1); }
+.footer-bottom { font-size: 0.8rem; opacity: 0.7; margin-top: 10px; }
+
+/* Responsive */
+@media (max-width: 600px) {
+  h1 { font-size: 1.6rem; }
+  .card { padding: 18px; }
 }
 </style>
 </head>
@@ -124,9 +124,7 @@ footer {
 <div class="header">
   <img src="logo.png" alt="CLOUTCHAIN Logo">
   <div class="hamburger" onclick="toggleSidebar()">
-    <div></div>
-    <div></div>
-    <div></div>
+    <div></div><div></div><div></div>
   </div>
 </div>
 
@@ -140,8 +138,20 @@ footer {
 <!-- Main Content -->
 <div class="content">
   <h1>About CLOUTCHAIN</h1>
-  <p>CLOUTCHAIN is a revolutionary platform designed to ...</p>
-  <p>Our mission is to ...</p>
+  <div class="cards">
+    <div class="card">
+      <h2>Our Mission</h2>
+      <p>CLOUTCHAIN aims to revolutionize influencer-brand collaboration with transparency and measurable impact.</p>
+    </div>
+    <div class="card">
+      <h2>Our Vision</h2>
+      <p>We envision a digital-first ecosystem where creators of all scales can monetize their influence effectively.</p>
+    </div>
+    <div class="card">
+      <h2>Why Choose Us</h2>
+      <p>Our platform ensures fair partnerships, professional onboarding, and innovative campaign strategies.</p>
+    </div>
+  </div>
 </div>
 
 <!-- Footer -->
