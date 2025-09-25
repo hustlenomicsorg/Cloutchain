@@ -14,11 +14,9 @@
   --accent-grad: linear-gradient(135deg,#0073e6,#6a11cb,#ff4d6d);
   --muted:#6b7280;
   --soft:#f6f8fb;
-  --success:#16a34a;
-  --danger:#dc2626;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:linear-gradient(135deg,#f9fbff,#f6f8fb);min-height:100vh;display:flex;flex-direction:column}
+body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:#f9fbff;min-height:100vh;display:flex;flex-direction:column}
 
 /* Notice banner */
 .notice-banner {
@@ -46,41 +44,36 @@ body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:linear-gra
 .sidebar a:hover{background:var(--soft);border-left:4px solid var(--primary)}
 
 /* Main */
-main{margin-top:140px;padding:20px;max-width:1100px;margin-left:auto;margin-right:auto;text-align:center}
-h1,h2{font-family:"Outfit";color:var(--primary)}
+main{margin-top:140px;padding:20px;max-width:800px;margin-left:auto;margin-right:auto;text-align:center}
+h1,h2{font-family:"Outfit";color:var(--primary);margin-bottom:12px}
 p{color:var(--muted)}
 
-/* Pricing */
-.pricing {
-  display:flex;
-  gap:24px;
-  justify-content:center;
-  flex-wrap:nowrap; /* prevents stacking */
-  overflow-x:auto; /* allow scroll on very small screens */
-  padding-bottom:10px;
-}
+/* Pricing Section */
+.pricing-section{background:linear-gradient(135deg,#f9fbff,#eef3ff);padding:40px 20px;border-radius:20px;box-shadow:0 8px 22px rgba(0,0,0,0.05);margin-bottom:40px}
+.pricing{display:flex;flex-direction:column;gap:28px;margin-top:30px}
 .plan {
   position:relative;
-  flex:1 1 300px;
-  max-width:400px;
-  background:rgba(255,255,255,0.8);
-  backdrop-filter:blur(12px);
+  background:#fff;
   border-radius:18px;
   padding:28px;
   box-shadow:0 8px 28px rgba(0,0,0,0.08);
   transition:all .25s ease;
+  opacity:0;transform:translateY(40px);
+  animation:fadeUp .8s forwards;
 }
-.plan:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgba(0,0,0,0.15)}
+.plan:nth-child(2){animation-delay:.2s}
+@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
+.plan:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,0.12)}
 .plan h3{font-family:"Outfit";margin-top:0;font-size:1.4rem}
 .price{font-size:2rem;font-weight:800;margin:14px 0;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .plan ul{list-style:none;padding:0;margin:0;text-align:left}
 .plan ul li{margin:12px 0;font-size:1rem;font-weight:600;display:flex;align-items:center;gap:10px}
-.plan ul li .icon{font-size:1.1rem}
+.plan ul li .icon{font-size:1.1rem;color:#111}
 
 /* Pro highlight */
 .plan.pro{border:2px solid transparent;background-clip:padding-box,border-box;background-origin:border-box;background-image:linear-gradient(#fff,#fff),var(--accent-grad)}
 .ribbon{
-  position:absolute;top:12px;right:-34px;transform:rotate(45deg);
+  position:absolute;top:14px;right:-34px;transform:rotate(45deg);
   background:var(--accent-grad);color:#fff;font-size:0.75rem;
   padding:4px 40px;font-weight:700;box-shadow:0 3px 8px rgba(0,0,0,0.2)
 }
@@ -117,34 +110,36 @@ footer{margin-top:auto;padding:20px;background:var(--soft);text-align:center;bor
 </div>
 
 <main>
-  <h1>Pricing</h1>
-  <div class="pricing">
-    <!-- Free Plan -->
-    <div class="plan">
-      <h3>Free Plan</h3>
-      <div class="price">₹0</div>
-      <ul>
-        <li><span class="icon" style="color:var(--danger)">❌</span>No guarantee of brand deals</li>
-        <li><span class="icon" style="color:var(--danger)">❌</span>High commission cut (up to 35%)</li>
-        <li><span class="icon" style="color:var(--danger)">❌</span>No premium deals</li>
-        <li><span class="icon" style="color:var(--danger)">❌</span>Partner badge locked</li>
-      </ul>
-    </div>
+  <section class="pricing-section">
+    <h1>Pricing</h1>
+    <div class="pricing">
+      <!-- Free Plan -->
+      <div class="plan">
+        <h3>Free Plan</h3>
+        <div class="price">₹0</div>
+        <ul>
+          <li><i class="fas fa-times-circle icon"></i>No guarantee of brand deals</li>
+          <li><i class="fas fa-times-circle icon"></i>High commission cut (up to 35%)</li>
+          <li><i class="fas fa-times-circle icon"></i>No premium deals</li>
+          <li><i class="fas fa-times-circle icon"></i>Partner badge locked</li>
+        </ul>
+      </div>
 
-    <!-- Pro Plan -->
-    <div class="plan pro">
-      <div class="ribbon">Most Popular</div>
-      <h3>Pro Plan</h3>
-      <div class="price">₹49</div>
-      <p style="margin-top:-8px;font-size:0.85rem;color:var(--muted)">One-time • Refunded after 180 days</p>
-      <ul>
-        <li><span class="icon" style="color:var(--success)">✅</span>1+ brand deal guaranteed in 150 days</li>
-        <li><span class="icon" style="color:var(--success)">✅</span>0% commission on first brand deal</li>
-        <li><span class="icon" style="color:var(--success)">✅</span>Access to premium deals</li>
-        <li><span class="icon" style="color:var(--success)">✅</span>Partner badge unlocked</li>
-      </ul>
+      <!-- Pro Plan -->
+      <div class="plan pro">
+        <div class="ribbon">Most Popular</div>
+        <h3>Pro Plan</h3>
+        <div class="price">₹49</div>
+        <p style="margin-top:-8px;font-size:0.85rem;color:var(--muted)">One-time • Refunded after 180 days</p>
+        <ul>
+          <li><i class="fas fa-check-circle icon"></i>1+ brand deal guaranteed in 150 days</li>
+          <li><i class="fas fa-check-circle icon"></i>0% commission on first brand deal</li>
+          <li><i class="fas fa-check-circle icon"></i>Access to premium deals</li>
+          <li><i class="fas fa-check-circle icon"></i>Partner badge unlocked</li>
+        </ul>
+      </div>
     </div>
-  </div>
+  </section>
 
   <h2>Onboarding Guidelines</h2>
   <div class="guidelines">
