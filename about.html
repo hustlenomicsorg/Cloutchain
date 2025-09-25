@@ -16,9 +16,7 @@
   --bg-light: #f7f9fc;
   --accent-light: #eaf5ff;
 }
-* {
-  box-sizing: border-box;
-}
+* { box-sizing: border-box; }
 body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
@@ -36,43 +34,35 @@ body {
   top: 0;
   left: 0;
   right: 0;
-  padding: 10px 20px;
   background: #fff;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 900;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
-.header img {
-  height: 50px;
-}
-.hamburger {
-  cursor: pointer;
-}
+.header img { height: 50px; }
+.hamburger { cursor: pointer; }
 .hamburger div {
-  width: 28px;
-  height: 3px;
+  width: 25px; height: 3px;
   background: var(--text);
-  margin: 5px 0;
+  margin: 4px 0;
   border-radius: 2px;
-  transition: 0.3s;
 }
 .sidebar {
   position: fixed;
-  right: -280px;
-  top: 0;
-  width: 260px;
-  height: 100%;
+  right: -260px; top: 0;
+  width: 260px; height: 100%;
   background: #fff;
   box-shadow: -3px 0 15px rgba(0,0,0,0.1);
-  padding-top: 70px;
+  padding-top: 80px;
   transition: 0.4s;
   z-index: 1000;
 }
 .sidebar a {
   display: block;
-  padding: 16px 24px;
+  padding: 16px 20px;
   color: var(--text);
   text-decoration: none;
   font-weight: 600;
@@ -81,16 +71,13 @@ body {
   background: var(--bg-light);
   border-left: 4px solid var(--primary);
 }
-.sidebar.active {
-  right: 0;
-}
+.sidebar.active { right: 0; }
 
-/* Intro Banner */
+/* Hero / Intro Banner */
 .intro-banner {
-  position: relative;
-  padding: 140px 20px 60px;
+  padding: 120px 20px 60px;
   text-align: center;
-  overflow: hidden;
+  position: relative;
 }
 .intro-banner .shape {
   position: absolute;
@@ -99,38 +86,25 @@ body {
   opacity: 0.5;
 }
 .intro-banner .shape.one {
-  width: 200px;
-  height: 200px;
-  top: -60px;
-  left: -40px;
+  width: 200px; height: 200px;
+  top: -60px; left: -40px;
 }
 .intro-banner .shape.two {
-  width: 150px;
-  height: 150px;
-  bottom: -40px;
-  right: -30px;
+  width: 150px; height: 150px;
+  bottom: -40px; right: -30px;
 }
 .intro-banner h1 {
-  font-size: 2.2rem;
+  font-size: 2.4rem;
   font-weight: 800;
-  margin: 0;
   color: var(--primary);
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease-out forwards;
-  animation-delay: 0.2s;
 }
 .intro-banner p.lead {
   font-size: 1rem;
   color: var(--muted);
-  margin-top: 16px;
+  margin-top: 12px;
   max-width: 90%;
   margin-left: auto;
   margin-right: auto;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.8s ease-out forwards;
-  animation-delay: 0.4s;
 }
 
 /* Sections */
@@ -140,45 +114,40 @@ body {
   margin: 0 auto;
 }
 .section h2 {
-  font-size: 1.8rem;
+  font-size: 2rem;
   color: var(--primary);
   text-align: center;
-  margin-bottom: 40px;
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 0.8s ease-out forwards;
+  margin-bottom: 30px;
 }
 .features-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
 }
 .feature {
   background: #fff;
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
-  transition: transform 0.3s, box-shadow 0.3s;
-  opacity: 0;
-  transform: translateY(40px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .feature:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
 }
 .feature .icon {
   font-size: 2rem;
   color: var(--primary);
-  margin-bottom: 16px;
+  margin-bottom: 15px;
 }
 .feature h3 {
-  margin: 0 0 12px 0;
   font-size: 1.2rem;
+  margin-bottom: 10px;
 }
 .feature p {
+  font-size: 0.95rem;
   color: var(--muted);
   line-height: 1.5;
-  font-size: 0.95rem;
 }
 
 /* Growth Steps */
@@ -187,29 +156,24 @@ body {
 }
 .step {
   display: flex;
+  flex-direction: row;
   align-items: flex-start;
-  margin-bottom: 20px;
-  opacity: 0;
-  transform: translateY(40px);
+  margin-bottom: 25px;
 }
 .step .step-num {
-  font-size: 1.6rem;
+  font-size: 1.5rem;
   font-weight: 800;
   color: var(--secondary);
-  margin-right: 16px;
-}
-.step .step-body {
-  flex: 1;
+  margin-right: 15px;
 }
 .step .step-body h4 {
-  margin: 0 0 8px 0;
-  font-size: 1.2rem;
+  margin: 0 0 6px;
+  font-size: 1.1rem;
 }
 .step .step-body p {
   margin: 0;
   color: var(--muted);
-  line-height: 1.5;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
 }
 
 /* Footer */
@@ -218,84 +182,37 @@ footer {
   background: var(--bg-light);
   padding: 20px;
   text-align: center;
-  border-top: 1px solid #eee;
 }
 .footer .social-icons {
   display: flex;
   justify-content: center;
-  gap: 16px;
-  margin-bottom: 12px;
+  gap: 15px;
+  margin-bottom: 10px;
 }
 .footer .social-icons a {
   color: var(--text);
-  font-size: 1.3rem;
-  transition: 0.3s;
+  font-size: 1.4rem;
 }
 .footer .social-icons a:hover {
   color: var(--primary);
-  transform: scale(1.2);
 }
 .footer .footer-note {
   color: var(--muted);
-  font-size: 0.85rem;
+  font-size: 0.9rem;
 }
 
-/* Animations */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.reveal {
-  opacity: 1 !important;
-  transform: translateY(0) !important;
-}
-
-/* MOBILE RESPONSIVENESS */
+/* Responsive tweaks */
 @media (max-width: 768px) {
-  .intro-banner {
-    padding: 100px 15px 40px;
-  }
-  .intro-banner h1 {
-    font-size: 1.8rem;
-  }
-  .intro-banner p.lead {
-    font-size: 0.95rem;
-  }
-  .features-grid {
-    grid-template-columns: 1fr;
-    gap: 15px;
-  }
-  .feature {
-    padding: 15px;
-  }
-  .step {
-    flex-direction: column;
-  }
-  .step .step-num {
-    margin-bottom: 8px;
-  }
+  .intro-banner h1 { font-size: 2rem; }
+  .intro-banner p.lead { font-size: 0.95rem; }
+  .features-grid { gap: 15px; }
+  .step { flex-direction: column; }
+  .step .step-num { margin-bottom: 8px; }
 }
-
-/* SMALLER PHONES */
 @media (max-width: 480px) {
-  .header img {
-    height: 40px;
-  }
-  .intro-banner h1 {
-    font-size: 1.5rem;
-  }
-  .intro-banner p.lead {
-    font-size: 0.9rem;
-  }
-  .feature h3 {
-    font-size: 1.1rem;
-  }
+  .intro-banner h1 { font-size: 1.6rem; }
+  .intro-banner p.lead { font-size: 0.9rem; }
+  .features-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -341,3 +258,60 @@ footer {
       <h3>Benchmark & Compare</h3>
       <p>See how you stack up against creators in your niche—engagement, content frequency, brand deals, etc.</p>
     </div>
+    <div class="feature">
+      <div class="icon"><i class="fas fa-bullhorn"></i></div>
+      <h3>Promotion Insights</h3>
+      <p>Get tips on which content to boost, when to post, and which brands are a good match for you.</p>
+    </div>
+  </div>
+
+  <div class="growth-steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-body">
+        <h4>Audit your current metrics</h4>
+        <p>Upload or connect your stats. We’ll analyze your reach, engagement, content style & audience demographics.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-body">
+        <h4>Get your pricing & invoice template</h4>
+        <p>Receive a tailored price sheet and invoice template you can send to brands, prefilled with all necessary fields.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-body">
+        <h4>Optimize & pitch with confidence</h4>
+        <p>See which content types, posting times, and brand niches suit you best. Launch proposals with clarity.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">04</div>
+      <div class="step-body">
+        <h4>Grow your brand network</h4>
+        <p>Get matched with brands aligned with your niche. Leverage your data & portfolio to secure deals that pay you what you deserve.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="social-icons">
+    <a href="#"><i class="fab fa-youtube"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+    <a href="#"><i class="fab fa-discord"></i></a>
+    <a href="#"><i class="fab fa-x-twitter"></i></a>
+  </div>
+  <div class="footer-note">© 2025–2026 CLOUTCHAIN. All rights reserved.</div>
+</footer>
+
+<script>
+function toggleSidebar() {
+  document.getElementById("sidebar").classList.toggle("active");
+}
+</script>
+</body>
+</html>
