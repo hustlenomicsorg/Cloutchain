@@ -16,7 +16,7 @@
   --soft:#f6f8fb;
 }
 *{box-sizing:border-box}
-body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column}
+body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:linear-gradient(135deg,#f9fbff,#f6f8fb);min-height:100vh;display:flex;flex-direction:column}
 
 /* Notice banner */
 .notice-banner {
@@ -44,20 +44,35 @@ body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:#fff;min-h
 .sidebar a:hover{background:var(--soft);border-left:4px solid var(--primary)}
 
 /* Main */
-main{margin-top:140px;padding:20px;max-width:1000px;margin-left:auto;margin-right:auto;text-align:center}
+main{margin-top:140px;padding:20px;max-width:1100px;margin-left:auto;margin-right:auto;text-align:center}
 h1,h2{font-family:"Outfit";color:var(--primary)}
 p{color:var(--muted)}
 
 /* Pricing */
-.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:40px}
-.plan{background:#fff;border-radius:14px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,0.06);transition:transform .2s}
-.plan:hover{transform:translateY(-6px)}
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin:40px 0}
+.plan {
+  position:relative;
+  background:rgba(255,255,255,0.7);
+  backdrop-filter:blur(12px);
+  border-radius:18px;
+  padding:28px;
+  box-shadow:0 8px 28px rgba(0,0,0,0.08);
+  transition:all .25s ease;
+}
+.plan:hover{transform:translateY(-8px);box-shadow:0 12px 32px rgba(0,0,0,0.12)}
 .plan h3{font-family:"Outfit";margin-top:0;font-size:1.4rem}
-.price{font-size:1.6rem;font-weight:800;margin:10px 0;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.price{font-size:2rem;font-weight:800;margin:14px 0;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
 .plan ul{list-style:none;padding:0;margin:0;text-align:left}
-.plan ul li{margin:8px 0;color:var(--muted);font-size:0.95rem}
-.plan.pro{border:2px solid var(--primary)}
-.plan .badge{display:inline-block;background:var(--primary);color:#fff;font-size:0.75rem;padding:3px 8px;border-radius:999px;margin-left:6px}
+.plan ul li{margin:10px 0;color:#374151;font-size:0.95rem;display:flex;align-items:center;gap:8px}
+.plan ul li::before{content:"✔";color:var(--primary);font-weight:700}
+
+/* Pro highlight */
+.plan.pro{border:2px solid transparent;background-clip:padding-box,border-box;background-origin:border-box;background-image:linear-gradient(#fff,#fff),var(--accent-grad)}
+.ribbon{
+  position:absolute;top:12px;right:-34px;transform:rotate(45deg);
+  background:var(--accent-grad);color:#fff;font-size:0.75rem;
+  padding:4px 40px;font-weight:700;box-shadow:0 3px 8px rgba(0,0,0,0.2)
+}
 
 /* Guidelines */
 .guidelines{background:#fff;border-left:5px solid var(--primary);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);margin-top:20px}
@@ -95,7 +110,7 @@ footer{margin-top:auto;padding:20px;background:var(--soft);text-align:center;bor
   <div class="pricing">
     <!-- Free Plan -->
     <div class="plan">
-      <h3>Free Plan <span class="badge">0 INR</span></h3>
+      <h3>Free Plan</h3>
       <div class="price">₹0</div>
       <ul>
         <li>No guarantee of brand deals</li>
@@ -104,10 +119,13 @@ footer{margin-top:auto;padding:20px;background:var(--soft);text-align:center;bor
         <li>Partner badge locked</li>
       </ul>
     </div>
+
     <!-- Pro Plan -->
     <div class="plan pro">
-      <h3>Pro Plan <span class="badge">₹49 (Refunded after 180 days)</span></h3>
+      <div class="ribbon">Most Popular</div>
+      <h3>Pro Plan</h3>
       <div class="price">₹49</div>
+      <p style="margin-top:-8px;font-size:0.85rem;color:var(--muted)">One-time • Refunded after 180 days</p>
       <ul>
         <li>Minimum 1 brand deal guaranteed within 150 days</li>
         <li>0% commission on first brand deal</li>
