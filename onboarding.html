@@ -9,36 +9,70 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
-  :root{ --primary:#0073e6; --accent-grad: linear-gradient(135deg,#0073e6,#6a11cb,#ff4d6d); --muted:#6b7280; --soft:#f6f8fb }
-  *{box-sizing:border-box}
-  body{ margin:0; font-family:"Inter",sans-serif; color:#0f172a; background:var(--soft); min-height:100vh; display:flex; flex-direction:column }
+:root {
+  --primary:#0073e6;
+  --accent-grad: linear-gradient(135deg,#0073e6,#6a11cb,#ff4d6d);
+  --muted:#6b7280;
+  --soft:#f6f8fb;
+}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column}
 
-  .notice-banner{ position:fixed; left:0; right:0; top:0; background:var(--primary); color:#fff; padding:6px; text-align:center; z-index:1200 }
-  .header{ position:fixed; left:20px; right:20px; top:48px; display:flex; align-items:center; justify-content:space-between; z-index:1100 }
-  .logo img{height:52px}
-  .brand{ font-family:"Outfit"; color:var(--primary); font-weight:700 }
-  .hamburger{ cursor:pointer; display:flex; flex-direction:column; gap:6px }
-  .hamburger div{ width:30px; height:3px; background:#0f172a; border-radius:3px }
+/* Notice banner */
+.notice-banner {
+  position:fixed;top:0;left:0;right:0;
+  background:var(--primary);color:#fff;
+  font-size:0.85rem;padding:4px 0;text-align:center;
+  z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
+}
+.notice-banner span {
+  display:inline-block;padding-left:100%;
+  animation:scroll-left 14s linear infinite;
+}
+@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-  .sidebar{ position:fixed; top:0; right:-300px; width:280px; height:100%; background:#fff; padding-top:110px; box-shadow:-8px 0 30px rgba(6,8,20,0.06); transition:right .36s; z-index:1150 }
-  .sidebar.active{ right:0 }
-  .sidebar a{ display:block; padding:14px 22px; text-decoration:none; color:inherit; font-weight:600 }
+/* Header */
+.header{position:fixed;left:20px;right:20px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:1100}
+.logo img{height:52px}
+.hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
 
-  main{ margin-top:140px; padding:20px; max-width:900px; margin-left:auto; margin-right:auto }
-  h1{ text-align:center; font-family:"Outfit"; color:var(--primary) }
-  .guidelines{ background:#fff; border-left:5px solid var(--primary); padding:18px; border-radius:12px; box-shadow:0 8px 22px rgba(6,8,20,0.04) }
-  .link-box{ text-align:center; margin:22px 0 }
-  .btn-pill{ display:inline-block; padding:10px 18px; border-radius:999px; background:var(--accent-grad); color:#fff; text-decoration:none; font-weight:700 }
+/* Sidebar */
+.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,0.1);padding-top:110px;transition:right .3s;z-index:1150}
+.sidebar.active{right:0}
+.sidebar a{display:block;padding:14px 22px;text-decoration:none;color:inherit;font-weight:600}
+.sidebar a:hover{background:var(--soft);border-left:4px solid var(--primary)}
 
-  .onboard-card{ background:linear-gradient(180deg,#fff,#fbfdff); padding:24px; border-radius:12px; box-shadow:0 12px 30px rgba(6,8,20,0.06); text-align:center }
+/* Main */
+main{margin-top:140px;padding:20px;max-width:1000px;margin-left:auto;margin-right:auto;text-align:center}
+h1,h2{font-family:"Outfit";color:var(--primary)}
+p{color:var(--muted)}
 
-  footer{ margin-top:auto; padding:20px; background:#f6f8fb; text-align:center; border-top:1px solid #eee }
-  .footer-content{ display:flex; flex-direction:column; align-items:center; gap:10px }
-  .social-icons{ display:flex; gap:14px }
-  .social-icons a{ font-size:1.2rem; color:#0f172a }
-  .footer-bottom{ font-size:0.85rem; color:var(--muted) }
+/* Pricing */
+.pricing{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;margin-bottom:40px}
+.plan{background:#fff;border-radius:14px;padding:24px;box-shadow:0 8px 24px rgba(0,0,0,0.06);transition:transform .2s}
+.plan:hover{transform:translateY(-6px)}
+.plan h3{font-family:"Outfit";margin-top:0;font-size:1.4rem}
+.price{font-size:1.6rem;font-weight:800;margin:10px 0;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.plan ul{list-style:none;padding:0;margin:0;text-align:left}
+.plan ul li{margin:8px 0;color:var(--muted);font-size:0.95rem}
+.plan.pro{border:2px solid var(--primary)}
+.plan .badge{display:inline-block;background:var(--primary);color:#fff;font-size:0.75rem;padding:3px 8px;border-radius:999px;margin-left:6px}
 
-  @media(max-width:700px){ main{ padding:12px } .header{ top:36px } }
+/* Guidelines */
+.guidelines{background:#fff;border-left:5px solid var(--primary);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);margin-top:20px}
+
+/* Onboard Card */
+.onboard-card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,0.06);margin-top:30px}
+.blink{color:red;font-weight:700;animation:blink 1s step-start infinite}
+@keyframes blink{50%{opacity:0}}
+
+/* Footer */
+footer{margin-top:auto;padding:20px;background:var(--soft);text-align:center;border-top:1px solid #eee}
+.footer-content{display:flex;flex-direction:column;align-items:center;gap:10px}
+.social-icons{display:flex;gap:14px}
+.social-icons a{font-size:1.2rem;color:#0f172a}
+.footer-bottom{font-size:0.85rem;color:var(--muted)}
 </style>
 </head>
 <body>
@@ -46,7 +80,7 @@
 <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
 
 <div class="header">
-  <div style="display:flex;align-items:center;gap:10px"><img src="logo.png" alt="logo" style="height:52px" /><div class="brand">CLOUTCHAIN</div></div>
+  <div class="logo"><img src="logo.png" alt="logo"></div>
   <div class="hamburger" onclick="toggleSidebar()"><div></div><div></div><div></div></div>
 </div>
 
@@ -54,21 +88,43 @@
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="onboarding.html">Onboarding</a>
-  <a href="#">Contact</a>
 </div>
 
 <main>
-  <h1>Onboarding Guidelines</h1>
+  <h1>Pricing</h1>
+  <div class="pricing">
+    <!-- Free Plan -->
+    <div class="plan">
+      <h3>Free Plan <span class="badge">0 INR</span></h3>
+      <div class="price">₹0</div>
+      <ul>
+        <li>No guarantee of brand deals</li>
+        <li>Higher commission cut (up to 35% on first deal)</li>
+        <li>No premium deals</li>
+        <li>Partner badge locked</li>
+      </ul>
+    </div>
+    <!-- Pro Plan -->
+    <div class="plan pro">
+      <h3>Pro Plan <span class="badge">₹49 (Refunded after 180 days)</span></h3>
+      <div class="price">₹49</div>
+      <ul>
+        <li>Minimum 1 brand deal guaranteed within 150 days</li>
+        <li>0% commission on first brand deal</li>
+        <li>Access to premium deals</li>
+        <li>Partner badge unlocked</li>
+      </ul>
+    </div>
+  </div>
 
+  <h2>Onboarding Guidelines</h2>
   <div class="guidelines">
     <p>To maintain professionalism, CloutChain does not allow onboarding of channels with fewer than <strong>3,000 subscribers</strong> unless exceptional quality or engagement metrics exist.</p>
   </div>
 
-  <div class="link-box"><a class="btn-pill" href="#">📄 Terms & Conditions (Coming Soon)</a></div>
-
   <div class="onboard-card">
-    <h2 style="font-family:Outfit;margin:0 0 8px"><i class="fas fa-lock"></i> Onboarding Form</h2>
-    <p style="margin:0;color:var(--muted)">DELAYED – Opening Soon</p>
+    <h2><i class="fas fa-lock"></i> Onboarding Form</h2>
+    <p class="blink">DELAYED – Opening Soon</p>
   </div>
 </main>
 
@@ -85,7 +141,7 @@
 </footer>
 
 <script>
-  function toggleSidebar(){ document.getElementById('sidebar').classList.toggle('active') }
+function toggleSidebar(){document.getElementById('sidebar').classList.toggle('active')}
 </script>
 </body>
 </html>
