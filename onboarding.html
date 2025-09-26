@@ -68,14 +68,27 @@ body {
   animation:fadeInUp 1s ease .3s forwards;
 }
 
-/* Pricing Section */
+/* Platform Section */
+.platform-section {
+  margin-top:60px;
+  padding:40px 20px;
+  max-width:1100px;
+  margin:auto;
+}
+.platform-section h2 {
+  font-family:"Sora";
+  font-size:1.8rem;
+  margin-bottom:30px;
+  text-align:center;
+  color:var(--orange);
+}
+
+/* Pricing Cards */
 .pricing {
   display:flex;
   flex-wrap:wrap;
   gap:30px;
   justify-content:center;
-  margin-top:60px;
-  padding:20px;
 }
 .card {
   flex:1 1 280px;
@@ -87,11 +100,11 @@ body {
   text-align:center;
   animation:bounceIn .8s ease forwards;
 }
-.card h2 {
-  font-family:"Sora";font-size:1.6rem;margin-bottom:10px;color:var(--orange);
+.card h3 {
+  font-family:"Sora";font-size:1.4rem;margin-bottom:10px;color:var(--primary);
 }
 .card .price {
-  font-size:1.3rem;font-weight:700;margin-bottom:14px;color:var(--primary);
+  font-size:1.3rem;font-weight:700;margin-bottom:14px;color:var(--orange);
 }
 .card ul {
   list-style:none;padding:0;margin:0 0 20px 0;text-align:left;font-size:.95rem;color:var(--muted-light);
@@ -109,7 +122,7 @@ body {
   transition:.3s;
 }
 .card button:hover {opacity:.9;transform:translateY(-3px);}
-.card:nth-child(2) {transform:scale(1.05);border-color:var(--orange);} /* highlight Pro */
+.card.pro {transform:scale(1.05);border-color:var(--orange);} /* highlight Pro */
 </style>
 </head>
 <body>
@@ -129,33 +142,64 @@ body {
 <!-- Hero -->
 <div class="hero">
   <h1>Onboarding Creators</h1>
-  <p>Choose your platform and the plan that works best for you.</p>
+  <p>Select your platform and start your journey with CloutChain.</p>
 </div>
 
-<!-- Pricing -->
-<div class="pricing">
-  <div class="card">
-    <h2>Free Plan</h2>
-    <div class="price">₹0</div>
-    <ul>
-      <li>No guarantee of brand deals</li>
-      <li>Higher commission cut up to 35%</li>
-      <li>No premium deals</li>
-      <li>Partner badge locked</li>
-    </ul>
-    <button>Start Free</button>
+<!-- YouTube Section -->
+<div class="platform-section">
+  <h2><i class="fab fa-youtube"></i> YouTube Creators</h2>
+  <div class="pricing">
+    <div class="card">
+      <h3>Free Plan</h3>
+      <div class="price">₹0</div>
+      <ul>
+        <li>No guarantee of brand deals</li>
+        <li>Higher commission cut up to 35%</li>
+        <li>No premium deals</li>
+        <li>Partner badge locked</li>
+      </ul>
+      <button>Start Free</button>
+    </div>
+    <div class="card pro">
+      <h3>Pro Plan</h3>
+      <div class="price">₹49 (refundable after 180 days)</div>
+      <ul>
+        <li>Minimum 1 brand deal guaranteed within 150 days</li>
+        <li>0% commission cut on first deal</li>
+        <li>Premium deals unlocked</li>
+        <li>Partner badge unlocked</li>
+      </ul>
+      <button>Go Pro</button>
+    </div>
   </div>
+</div>
 
-  <div class="card">
-    <h2>Pro Plan</h2>
-    <div class="price">₹49 (refundable after 180 days)</div>
-    <ul>
-      <li>Minimum 1 brand deal guaranteed within 150 days</li>
-      <li>0% commission cut on first deal</li>
-      <li>Premium deals unlocked</li>
-      <li>Partner badge unlocked</li>
-    </ul>
-    <button>Go Pro</button>
+<!-- Instagram Section -->
+<div class="platform-section">
+  <h2><i class="fab fa-instagram"></i> Instagram Creators</h2>
+  <div class="pricing">
+    <div class="card">
+      <h3>Free Plan</h3>
+      <div class="price">₹0</div>
+      <ul>
+        <li>No guarantee of brand deals</li>
+        <li>Higher commission cut up to 35%</li>
+        <li>No premium deals</li>
+        <li>Partner badge locked</li>
+      </ul>
+      <button>Start Free</button>
+    </div>
+    <div class="card pro">
+      <h3>Pro Plan</h3>
+      <div class="price"><s>₹79</s> ₹39 (Launch Special)</div>
+      <ul>
+        <li>Minimum 1 brand deal guaranteed within 150 days</li>
+        <li>0% commission cut on first deal</li>
+        <li>Premium deals unlocked</li>
+        <li>Partner badge unlocked</li>
+      </ul>
+      <button>Go Pro</button>
+    </div>
   </div>
 </div>
 
