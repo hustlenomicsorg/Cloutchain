@@ -3,127 +3,102 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CLOUTCHAIN | Launching Soon</title>
+<title>CLOUTCHAIN | Home</title>
 
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
-:root { --primary:#0073e6; --orange:#f97316; --accent-grad: linear-gradient(135deg,#0073e6,#6a11cb,#ff4d6d); --muted:#6b7280; --soft:#f6f8fb; }
+:root {
+  --primary:#0073e6;
+  --orange:#f97316;
+  --muted:#6b7280;
+  --soft:#f6f8fb;
+}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"DM Sans",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column}
-.notice-banner{position:fixed;top:0;left:0;right:0;background:var(--primary);color:#fff;font-size:0.85rem;padding:4px 0;text-align:center;z-index:1200;overflow:hidden;white-space:nowrap}
-.notice-banner span{display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite}
+
+/* Notice banner */
+.notice-banner {
+  position:fixed;top:0;left:0;right:0;
+  background:var(--primary);color:#fff;
+  font-size:0.85rem;padding:4px 0;text-align:center;
+  z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
+}
+.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
 @keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+/* Header */
 .header{position:fixed;left:20px;right:20px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:1100}
 .logo img{height:52px}
 .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
 .hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,0.1);padding-top:110px;transition:right .3s;z-index:1150}
-.sidebar.active{right:0}
-.sidebar a{display:block;padding:14px 22px;text-decoration:none;color:inherit;font-weight:600}
-.sidebar a:hover{background:var(--soft);border-left:4px solid var(--primary)}
 
-.hero{margin-top:160px;text-align:center;padding:60px 20px;background:linear-gradient(135deg,#eef6ff,#fdf7ff)}
-.hero h1{font-family:"Sora",sans-serif;font-weight:800;font-size:2.8rem;margin-bottom:16px}
-.hero h1 .highlight{color:var(--orange)}
-.hero p{max-width:750px;margin:0 auto 28px;color:var(--muted);font-size:1.05rem}
-.launch-title{font-family:"Sora";font-weight:700;font-size:1.4rem;margin:20px 0;color:var(--primary)}
-.count-row{display:flex;gap:30px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:20px}
-.countdown{display:flex;gap:18px}
-.time-box{background:#fff;border-radius:14px;padding:16px 14px;width:90px;box-shadow:0 6px 18px rgba(0,0,0,0.06);border:2px solid var(--primary);text-align:center}
-.time-value{font-family:"Sora";font-weight:700;font-size:1.6rem;color:var(--primary)}
-.time-label{font-size:0.8rem;color:var(--muted)}
-.platforms{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-.platforms .icons{display:flex;gap:12px}
-.platforms .icons a{font-size:1.4rem}
-.updates{margin:50px auto;max-width:760px;border-left:5px solid var(--orange);background:#fff;padding:20px 24px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
-.updates h3{margin:0 0 8px;color:var(--orange);font-family:"Sora"}
-.btn-pill{display:inline-block;padding:12px 28px;border-radius:999px;font-weight:700;color:#fff;text-decoration:none;background:var(--accent-grad);transition:.25s;font-family:"Sora"}
-.btn-pill:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.15)}
-.divider{height:2px;width:80px;background:var(--accent-grad);margin:50px auto;border-radius:2px}
-footer{margin-top:auto;padding:30px;background:var(--soft);text-align:center;border-top:1px solid #eee}
-.footer-links{display:flex;gap:12px;justify-content:center;align-items:center;margin-bottom:10px}
-.footer-links a{color:var(--primary);text-decoration:none;font-weight:600}
-.footer-bottom{font-size:0.9rem;color:var(--muted)}
+/* Main content */
+main{margin-top:160px;padding:40px 20px;text-align:center}
+h1{font-family:"Sora";font-size:2.6rem;font-weight:800;margin-bottom:12px}
+p{color:var(--muted);font-size:1.05rem;margin-bottom:28px}
 </style>
 </head>
 <body>
 
+<!-- Banner -->
 <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
 
+<!-- Header -->
 <div class="header">
-  <div class="logo"><img src="logo.png" alt="CloutChain"></div>
+  <div class="logo"><img src="logo.png" alt="logo"></div>
   <div class="hamburger" onclick="toggleSidebar()"><div></div><div></div><div></div></div>
 </div>
 
-<div class="sidebar" id="sidebar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="onboarding.html">Onboarding</a>
-  <a href="terms.html">Terms</a>
-  <a href="privacy.html">Privacy</a>
-</div>
+<!-- Sidebar placeholder -->
+<div id="sidebar-placeholder"></div>
 
-<section class="hero">
-  <h1>Creators get paid <span class="highlight">right</span> — finally.</h1>
-  <p>Smart pricing, clean invoices, and tools to help you win brand deals without the guesswork.</p>
+<!-- Main -->
+<main>
+  <h1>Finally, Creators Get Paid Right</h1>
+  <p>CloutChain helps YouTube and Instagram creators unlock fair, transparent brand deals.</p>
+  
+  <h2 style="font-family:Sora;margin:30px 0 10px;">CloutChain Time to Launch</h2>
+  <div id="countdown" style="font-size:2rem;font-weight:700;color:var(--primary);margin-bottom:40px;"></div>
 
-  <div class="launch-title">CLOUTCHAIN — Time to Launch</div>
-
-  <div class="count-row">
-    <div class="countdown">
-      <div class="time-box"><div id="days" class="time-value">00</div><div class="time-label">Days</div></div>
-      <div class="time-box"><div id="hours" class="time-value">00</div><div class="time-label">Hours</div></div>
-      <div class="time-box"><div id="minutes" class="time-value">00</div><div class="time-label">Minutes</div></div>
-      <div class="time-box"><div id="seconds" class="time-value">00</div><div class="time-label">Seconds</div></div>
-    </div>
-
-    <div class="platforms">
-      <div class="icons">
-        <a href="#"><i class="fab fa-youtube"></i></a>
-        <a href="#" class=""><i class="fab fa-instagram"></i></a>
-      </div>
-      <div class="label">Currently supported: <span style="color:var(--orange)">YouTube & Instagram</span></div>
-    </div>
+  <p style="margin-top:30px;font-weight:600">Currently Supported Platforms:</p>
+  <div style="display:flex;justify-content:center;gap:20px;font-size:2rem;color:#111">
+    <i class="fab fa-youtube"></i>
+    <i class="fab fa-instagram"></i>
   </div>
+</main>
 
-  <div style="margin-top:30px">
-    <a class="btn-pill" href="onboarding.html">Get Started</a>
-  </div>
-</section>
-
-<div class="divider"></div>
-
-<div class="updates">
-  <h3>📢 Latest Update</h3>
-  <p><strong>15 September 2025:</strong> Launch scheduled for <strong style="color:var(--orange)">27 September 2025 at 2:00 PM IST</strong>. <a href="Official_Announcement.pdf" target="_blank">Read Official PDF</a></p>
-</div>
-
-<footer>
-  <div class="footer-links">
-    <a href="terms.html">Terms & Conditions</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </div>
-  <div class="footer-bottom">© 2025–2026 CLOUTCHAIN. All rights reserved.</div>
-</footer>
+<!-- Footer placeholder -->
+<div id="footer-placeholder"></div>
 
 <script>
-function toggleSidebar(){document.getElementById('sidebar').classList.toggle('active')}
-var launchDate = new Date("Sep 27, 2025 14:00:00 GMT+0530").getTime();
-function updateCountdown(){
-  var now=new Date().getTime();var d=launchDate-now;
-  if(d<0){document.getElementById('days').innerText='00';document.getElementById('hours').innerText='00';document.getElementById('minutes').innerText='00';document.getElementById('seconds').innerText='00';return}
-  var days=Math.floor(d/(1000*60*60*24));
-  var hours=Math.floor((d%(1000*60*60*24))/(1000*60*60));
-  var minutes=Math.floor((d%(1000*60*60))/(1000*60));
-  var seconds=Math.floor((d%(1000*60))/1000);
-  document.getElementById('days').innerText=String(days).padStart(2,'0');
-  document.getElementById('hours').innerText=String(hours).padStart(2,'0');
-  document.getElementById('minutes').innerText=String(minutes).padStart(2,'0');
-  document.getElementById('seconds').innerText=String(seconds).padStart(2,'0');
-}
-setInterval(updateCountdown,1000);updateCountdown();
+// Countdown
+const countdown = document.getElementById("countdown");
+const launchDate = new Date("Sep 27, 2025 14:00:00").getTime();
+setInterval(() => {
+  const now = new Date().getTime();
+  const diff = launchDate - now;
+  if(diff <= 0){ countdown.innerHTML = "We are live!"; return; }
+  const days = Math.floor(diff/(1000*60*60*24));
+  const hrs = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  const mins = Math.floor((diff%(1000*60*60))/(1000*60));
+  const secs = Math.floor((diff%(1000*60))/1000);
+  countdown.innerHTML = `${days}d ${hrs}h ${mins}m ${secs}s`;
+},1000);
+
+// Sidebar toggle
+function toggleSidebar(){document.getElementById("sidebar").classList.toggle("active")}
+
+// Load shared sidebar & footer
+fetch("sidebar.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("sidebar-placeholder").innerHTML = data);
+
+fetch("footer.html")
+  .then(res => res.text())
+  .then(data => document.getElementById("footer-placeholder").innerHTML = data);
 </script>
 </body>
 </html>
