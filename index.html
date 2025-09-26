@@ -3,137 +3,266 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CLOUTCHAIN | Home</title>
+<title>CLOUTCHAIN — Creators get paid right</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
-:root {
+:root{
+  --bg:#ffffff;
+  --muted:#6b7280;
   --primary:#0073e6;
   --orange:#f97316;
-  --muted:#6b7280;
-  --soft:#f6f8fb;
+  --card:#ffffff;
+  --glass: rgba(255,255,255,0.6);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"DM Sans",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column}
+html,body{height:100%}
+body{font-family:"DM Sans",sans-serif;background:linear-gradient(180deg,#fbfdff,#ffffff);color:#0f172a;display:flex;flex-direction:column;min-height:100vh}
 
-/* Notice banner */
-.notice-banner {
-  position:fixed;top:0;left:0;right:0;
-  background:var(--primary);color:#fff;
-  font-size:0.85rem;padding:4px 0;text-align:center;
-  z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
-}
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
-@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+/* Utility */
+.container{max-width:1100px;margin:0 auto;padding:28px 20px;width:100%}
 
+/* Notice (small ticker) */
+.notice {position:fixed;top:8px;left:50%;transform:translateX(-50%);background:linear-gradient(90deg,var(--primary),#6a11cb);color:#fff;padding:6px 16px;border-radius:999px;font-size:0.85rem;z-index:1500;box-shadow:0 8px 24px rgba(11,18,32,0.08)}
 /* Header */
-.header{position:fixed;left:20px;right:20px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:1100}
-.logo img{height:52px}
-.hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.header{
+  position:fixed;left:0;right:0;top:24px;display:flex;justify-content:space-between;align-items:center;padding:0 20px;z-index:1400;
+}
+.brand {display:flex;align-items:center;gap:12px;font-family:"Sora";font-weight:800;font-size:1.05rem}
+.brand img{height:44px}
+.hamburger{display:inline-flex;flex-direction:column;gap:6px;cursor:pointer}
 .hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
 
-/* Sidebar (basic style, can live in sidebar.html too) */
-.sidebar {
-  position:fixed;top:0;right:-300px;
-  width:280px;height:100%;background:#fff;
-  box-shadow:-8px 0 30px rgba(0,0,0,0.1);
-  padding-top:110px;transition:right .3s;z-index:1150
-}
-.sidebar.active { right:0 }
-.sidebar a {
-  display:block;padding:14px 22px;text-decoration:none;
-  color:inherit;font-weight:600
-}
-.sidebar a:hover {
-  background:var(--soft);border-left:4px solid var(--primary)
-}
+/* overlay backdrop when sidebar active (injected) */
+.sidebar-backdrop{position:fixed;inset:0;background:rgba(8,12,20,0.35);backdrop-filter:blur(3px);opacity:0;pointer-events:none;transition:opacity .2s;z-index:1350}
+.sidebar-backdrop.show{opacity:1;pointer-events:auto}
 
-/* Main */
-main{margin-top:160px;padding:40px 20px;text-align:center;max-width:900px;margin-left:auto;margin-right:auto}
-h1{font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:16px}
-h1 span{color:var(--orange)}
-p{color:var(--muted);font-size:1.05rem;margin-bottom:28px;line-height:1.6}
-h2{font-family:"Sora";font-size:1.5rem;font-weight:700;color:#0f172a;margin:30px 0 14px}
-h2 span{color:var(--orange)}
+/* Hero */
+.hero{
+  padding-top:120px;padding-bottom:48px;display:flex;align-items:center;gap:28px;
+}
+.hero-grid{display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center}
+.hero-title{font-family:"Sora";font-size:2.4rem;line-height:1.02;margin-bottom:14px}
+.hero-title .accent{color:var(--orange)}
+.hero-desc{color:var(--muted);font-size:1.05rem;margin-bottom:18px}
+.hero-cta{display:flex;gap:12px;align-items:center}
+.btn-primary{background:linear-gradient(90deg,var(--primary),#6a11cb);color:#fff;padding:12px 20px;border-radius:12px;border:0;font-weight:700;cursor:pointer;box-shadow:0 8px 28px rgba(11,18,32,0.08);transition:transform .16s}
+.btn-primary:hover{transform:translateY(-4px)}
+.btn-ghost{padding:10px 16px;border-radius:10px;border:1px solid #e6eef9;color:var(--primary);background:transparent;font-weight:700;cursor:pointer}
 
-/* Countdown */
-#countdown{font-size:1.8rem;font-weight:700;color:var(--primary);margin-bottom:40px}
+/* Countdown box */
+.count-wrap{background:var(--card);padding:20px;border-radius:14px;box-shadow:0 12px 30px rgba(11,18,32,0.06);text-align:center}
+.count-grid{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.count-item{min-width:72px;padding:10px 12px;border-radius:10px;background:linear-gradient(180deg,#fff,#fbfcff);border:1px solid #eef5ff}
+.count-value{font-family:"Sora";font-size:1.6rem;color:var(--primary);font-weight:800}
+.count-label{font-size:0.75rem;color:var(--muted)}
 
-/* Platforms */
-.platforms{display:flex;justify-content:center;gap:24px;font-size:2rem;color:#111;margin-bottom:40px}
+/* small features row */
+.features{margin-top:28px;display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
+.feature-pill{background:#fff;padding:10px 14px;border-radius:12px;box-shadow:0 6px 16px rgba(11,18,32,0.04);font-weight:700;color:var(--muted)}
+
+/* How it works */
+.how{margin-top:46px;background:#fff;border-radius:14px;padding:20px;box-shadow:0 10px 28px rgba(11,18,32,0.05)}
+.how-row{display:flex;gap:20px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.how-step{flex:1;min-width:200px;padding:12px}
+.how-step i{font-size:22px;color:var(--orange);margin-bottom:8px}
+.how-step h3{font-family:"Sora";font-size:1.05rem;margin-bottom:6px}
+
+/* subtle floating background blobs */
+.blob{position:absolute;border-radius:50%;filter:blur(40px);opacity:0.14;pointer-events:none;z-index:0}
+.blob.b1{width:360px;height:360px;right:-80px;top:60px;background:linear-gradient(135deg,#0073e6,#6a11cb)}
+.blob.b2{width:240px;height:240px;left:-80px;bottom:-60px;background:linear-gradient(135deg,#ff7a6b,#ffb86b);opacity:0.06}
+
+/* Footer placeholder spacing */
+.footer-placeholder{margin-top:40px}
 
 /* Responsive */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr}
+  .count-wrap{margin-top:18px}
+}
 @media(max-width:600px){
-  h1{font-size:1.8rem}
-  h2{font-size:1.3rem}
-  #countdown{font-size:1.4rem}
-  .platforms{font-size:1.6rem;gap:16px}
-  main{padding:30px 16px}
+  .hero-title{font-size:1.6rem}
+  .hero-desc{font-size:0.95rem}
+  .brand img{height:36px}
+  .hamburger div{width:26px}
+  .hero{padding-top:100px;padding-bottom:36px}
+  .blob.b1{display:none}
 }
 </style>
 </head>
 <body>
 
-<!-- Banner -->
-<div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
+<!-- notice -->
+<div class="notice">Temporary launch site — professional product coming soon</div>
 
-<!-- Header -->
-<div class="header">
-  <div class="logo"><img src="logo.png" alt="logo"></div>
-  <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
-</div>
+<!-- header -->
+<header class="header container">
+  <div class="brand"><img src="logo.png" alt="CloutChain logo">CloutChain</div>
+  <div class="hamburger" id="hamburger" role="button" aria-label="Open menu"><div></div><div></div><div></div></div>
+</header>
 
-<!-- Sidebar placeholder -->
-<div id="sidebar-placeholder"></div>
+<!-- sidebar backdrop (used when sidebar active) -->
+<div id="sidebar-backdrop" class="sidebar-backdrop" aria-hidden="true"></div>
 
-<!-- Main -->
-<main>
-  <h1>Finally, <span>Creators</span> Get Paid Right</h1>
-  <p>CloutChain helps <span>YouTube</span> and <span>Instagram</span> creators unlock fair, transparent brand deals.</p>
-  
-  <h2><span>CloutChain</span> Time to Launch</h2>
-  <div id="countdown"></div>
+<!-- main container -->
+<main class="container" role="main">
+  <!-- floating blobs -->
+  <div class="blob b1" aria-hidden="true"></div>
+  <div class="blob b2" aria-hidden="true"></div>
 
-  <h2>Currently Supported <span>Platforms</span></h2>
-  <div class="platforms">
-    <i class="fab fa-youtube"></i>
-    <i class="fab fa-instagram"></i>
-  </div>
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div style="color:var(--orange);font-weight:700;margin-bottom:6px">Fair deals for creators</div>
+        <h1 class="hero-title">Creators get paid <span class="accent">right</span> — finally.</h1>
+        <p class="hero-desc">Tools to connect creators with brands transparently. Smart pricing, predictable payments, and simple onboarding for YouTube & Instagram creators.</p>
+
+        <div class="hero-cta">
+          <button class="btn-primary" id="cta-join">Join Waitlist</button>
+          <a class="btn-ghost" href="onboarding.html">Onboarding</a>
+        </div>
+
+        <div class="features" aria-hidden="true">
+          <div class="feature-pill">No hidden cuts</div>
+          <div class="feature-pill">Guaranteed deals (Pro)</div>
+          <div class="feature-pill">Fast payouts</div>
+        </div>
+
+        <div class="how" aria-hidden="true">
+          <div style="font-weight:700;margin-bottom:8px">How it works</div>
+          <div class="how-row">
+            <div class="how-step">
+              <i class="fas fa-user-plus"></i>
+              <h3>1. Join</h3>
+              <div class="muted">Sign up and select your platform.</div>
+            </div>
+            <div class="how-step">
+              <i class="fas fa-handshake"></i>
+              <h3>2. Get matched</h3>
+              <div class="muted">We match you to relevant brand campaigns.</div>
+            </div>
+            <div class="how-step">
+              <i class="fas fa-wallet"></i>
+              <h3>3. Get paid</h3>
+              <div class="muted">Clear payments and transparent commission.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- right column: countdown box -->
+      <aside aria-label="Countdown" class="count-wrap">
+        <div style="font-weight:700;color:var(--muted);margin-bottom:8px">Time to launch</div>
+        <div class="count-grid" id="count-grid">
+          <div class="count-item">
+            <div class="count-value" id="days">00</div>
+            <div class="count-label">Days</div>
+          </div>
+          <div class="count-item">
+            <div class="count-value" id="hours">00</div>
+            <div class="count-label">Hours</div>
+          </div>
+          <div class="count-item">
+            <div class="count-value" id="minutes">00</div>
+            <div class="count-label">Minutes</div>
+          </div>
+          <div class="count-item">
+            <div class="count-value" id="seconds">00</div>
+            <div class="count-label">Seconds</div>
+          </div>
+        </div>
+
+        <div style="margin-top:14px">
+          <button class="btn-primary" id="cta-notify">Notify me</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <div class="footer-placeholder" id="footer-placeholder"></div>
 </main>
 
-<!-- Footer placeholder -->
-<div id="footer-placeholder"></div>
-
+<!-- load modular sidebar + footer -->
 <script>
-// Countdown
-const countdown = document.getElementById("countdown");
-const launchDate = new Date("Sep 27, 2025 14:00:00").getTime();
-setInterval(() => {
-  const now = new Date().getTime();
-  const diff = launchDate - now;
-  if(diff <= 0){ countdown.innerHTML = "We are live!"; return; }
-  const days = Math.floor(diff/(1000*60*60*24));
-  const hrs = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const mins = Math.floor((diff%(1000*60*60))/(1000*60));
-  const secs = Math.floor((diff%(1000*60))/1000);
-  countdown.innerHTML = `${days}d ${hrs}h ${mins}m ${secs}s`;
-},1000);
+/* -------------------------
+   Helper: fetch modular files
+   ------------------------- */
+async function loadPart(path, targetId) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error('fetch failed');
+    const text = await res.text();
+    document.getElementById(targetId).insertAdjacentHTML('beforebegin', text);
+    return true;
+  } catch (err) {
+    console.warn('Load part fail:', path, err);
+    return false;
+  }
+}
 
-// Load shared sidebar & footer
-Promise.all([
-  fetch("sidebar.html").then(res => res.text()),
-  fetch("footer.html").then(res => res.text())
-]).then(([sidebarHTML, footerHTML]) => {
-  document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
-  document.getElementById("footer-placeholder").innerHTML = footerHTML;
+/* Load sidebar and footer, then attach controls */
+(async function initParts() {
+  await loadPart('sidebar.html', 'sidebar-placeholder'); // sidebar will be inserted before placeholder (so ensure placeholder exists if used)
+  await loadPart('footer.html', 'footer-placeholder');
 
-  // Attach toggle AFTER sidebar is injected
-  document.getElementById("hamburger").addEventListener("click", () => {
-    document.getElementById("sidebar").classList.toggle("active");
-  });
+  // The sidebar in sidebar.html has id="sidebar". attach toggle handlers:
+  const sidebar = document.getElementById('sidebar');
+  const hamburger = document.getElementById('hamburger');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  // find close button inside loaded sidebar
+  const closeBtn = sidebar ? sidebar.querySelector('#sidebar-close') : null;
+
+  function openSidebar(){
+    if(!sidebar) return;
+    sidebar.classList.add('active');
+    backdrop.classList.add('show');
+    sidebar.setAttribute('aria-hidden','false');
+  }
+  function closeSidebar(){
+    if(!sidebar) return;
+    sidebar.classList.remove('active');
+    backdrop.classList.remove('show');
+    sidebar.setAttribute('aria-hidden','true');
+  }
+
+  if(hamburger){hamburger.addEventListener('click', openSidebar)}
+  if(closeBtn){closeBtn.addEventListener('click', closeSidebar)}
+  if(backdrop){backdrop.addEventListener('click', closeSidebar)}
+})();
+
+/* -------------------------
+   Countdown logic (27 Sep 2025 14:00 IST)
+   ------------------------- */
+(function countdown(){
+  const target = new Date("Sep 27, 2025 14:00:00 GMT+0530").getTime();
+  function tick(){
+    const now = Date.now();
+    let diff = target - now;
+    if(diff < 0) diff = 0;
+    const days = Math.floor(diff / (1000*60*60*24));
+    const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+    const minutes = Math.floor((diff % (1000*60*60)) / (1000*60));
+    const seconds = Math.floor((diff % (1000*60)) / 1000);
+    document.getElementById('days').textContent = String(days).padStart(2,'0');
+    document.getElementById('hours').textContent = String(hours).padStart(2,'0');
+    document.getElementById('minutes').textContent = String(minutes).padStart(2,'0');
+    document.getElementById('seconds').textContent = String(seconds).padStart(2,'0');
+  }
+  tick(); setInterval(tick,1000);
+})();
+
+/* CTA demo handlers (replace with real flows) */
+document.addEventListener('click', function(e){
+  if(e.target.matches('#cta-join') || e.target.closest('#cta-join')){
+    alert('Thanks — we added you to the waitlist (demo).');
+  }
+  if(e.target.matches('#cta-notify') || e.target.closest('#cta-notify')){
+    alert('We will notify you at launch (demo).');
+  }
 });
 </script>
 </body>
