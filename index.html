@@ -3,45 +3,49 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CLOUTCHAIN — Creators get paid right</title>
+<title>CLOUTCHAIN | Home</title>
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&family=Pacifico&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
 :root {
-  --muted:#9ca3af;
-  --muted-light:#cbd5e1;
   --primary:#3b82f6;
   --orange:#f97316;
+  --muted:#9ca3af;
   --dark:#0a0a0a;
-  --dark2:#1a1a1a;
+  --dark-2:#121212;
 }
+
+/* Reset */
 *{margin:0;padding:0;box-sizing:border-box}
 body {
   font-family:"DM Sans",sans-serif;
+  background:linear-gradient(180deg,var(--dark) 0%,var(--dark-2) 100%);
   color:#fff;
-  background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
   overflow-x:hidden;
 }
 
-/* Preloader */
-#preloader {
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  background:var(--dark);
-  display:flex;align-items:center;justify-content:center;
-  z-index:2000;
-  transition:opacity .6s ease;
+/* Background shapes */
+.bg-shape {
+  position:fixed;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.12;
+  z-index:0;
 }
-#preloader img {width:120px;animation:spinPop 1.2s ease-in-out infinite alternate;}
-@keyframes spinPop {from{transform:scale(.8) rotate(0);opacity:.6;}to{transform:scale(1.05) rotate(360deg);opacity:1;}}
+.bg-shape.one {width:420px;height:420px;background:var(--primary);top:-120px;left:-100px;}
+.bg-shape.two {width:300px;height:300px;background:var(--orange);bottom:-100px;right:-80px;}
 
-/* Banner */
+/* Notice banner */
 .notice-banner {
   position:fixed;top:0;left:0;right:0;
   background:var(--primary);color:#fff;
-  font-size:.8rem;padding:6px 0;text-align:center;
+  font-size:0.85rem;padding:6px;text-align:center;
   z-index:1500;overflow:hidden;white-space:nowrap;
 }
 .notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 12s linear infinite;}
@@ -49,104 +53,151 @@ body {
 
 /* Header */
 .header {
-  position:fixed;top:40px;left:20px;right:20px;
-  display:flex;align-items:center;justify-content:space-between;
-  z-index:1400;
+  position:fixed;top:36px;left:20px;right:20px;
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:1600;
 }
-.logo img {height:80px;max-height:12vh;} /* 🔥 bigger logo */
+.logo img {height:72px}
 .hamburger {cursor:pointer;display:flex;flex-direction:column;gap:6px}
-.hamburger div {width:28px;height:3px;background:#fff;border-radius:2px}
+.hamburger div {width:28px;height:3px;background:#fff;border-radius:3px}
 
 /* Hero */
 .hero {
-  margin-top:150px;
-  padding:70px 20px;
+  margin-top:200px; /* breathing room */
   text-align:center;
-  max-width:1000px;
-  margin:auto;
-  color:#fff;
+  max-width:900px;
+  margin-left:auto;
+  margin-right:auto;
+  padding:20px;
 }
-.tagline {color:var(--orange);font-weight:700;margin-bottom:14px;font-size:1rem;}
-.hero h1 {font-family:"Sora";font-size:2.6rem;font-weight:800;margin-bottom:18px;}
-.hero h1 span {color:var(--orange);}
-.hero p {color:var(--muted-light);font-size:1rem;margin-bottom:26px;line-height:1.6;}
-
-/* Fancy Button (Uiverse) */
-.fancy-btn {
-  --glow-color: var(--orange);
-  --glow-spread-color: rgba(249, 115, 22, 0.48);
-  --enhanced-glow-color: #ff8c42;
-  --btn-color: #0a0a0a;
-  border: .25em solid var(--glow-color);
-  padding: 0.75em 2em;
-  color: var(--glow-color);
-  font-size: 1rem;
-  font-weight: 700;
-  background-color: var(--btn-color);
-  border-radius: 12px;
-  outline: none;
-  cursor: pointer;
-  text-shadow: 0 0 .5em var(--glow-color);
-  box-shadow: 0 0 1em .25em var(--glow-color),
-              0 0 4em 1em var(--glow-spread-color),
-              inset 0 0 .75em .25em var(--glow-color);
-  position: relative;
-  transition: all .3s;
+.hero h1 {
+  font-family:"Sora";
+  font-size:2.6rem;
+  font-weight:800;
+  margin-bottom:14px;
+  animation:fadeDown 0.9s ease both;
 }
-.fancy-btn:hover {
-  background-color:var(--glow-color);
-  color:var(--btn-color);
-  text-shadow:none;
+.hero h1 span {
+  font-family:"Pacifico",cursive;
+  font-size:2.8rem;
+  background:linear-gradient(90deg,var(--orange),var(--primary));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.hero p {
+  font-size:1.15rem;
+  color:var(--muted);
+  margin-bottom:24px;
+  animation:fadeUp 1s ease both;
 }
 
 /* Countdown */
-.count-wrap {
-  margin:70px auto 0;
-  background:rgba(255,255,255,0.06);
-  backdrop-filter:blur(10px);
-  padding:30px;border-radius:14px;
-  text-align:center;max-width:650px;
-  color:#fff;
+.countdown {
+  display:flex;
+  justify-content:center;
+  gap:18px;
+  margin:30px auto;
+  flex-wrap:wrap;
+  animation:fadeUp 1.2s ease both;
 }
-.count-grid {display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
-.count-item {
-  min-width:90px;padding:14px 16px;
+.count-box {
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
+  padding:14px 18px;
   border-radius:12px;
-  background:rgba(255,255,255,0.1);
+  min-width:80px;
+  text-align:center;
+  box-shadow:0 6px 18px rgba(0,0,0,0.4);
 }
-.count-value {
-  font-family:"Sora";
-  font-size:2rem;
-  color:var(--primary);
+.count-box span {
+  display:block;
+  font-size:1.6rem;
   font-weight:800;
 }
-.count-label {font-size:.9rem;color:var(--muted-light)}
+.count-box label {
+  font-size:0.75rem;
+  color:var(--muted);
+  margin-top:4px;
+}
 
-/* Platforms */
+/* Button */
+.uiverse-btn {
+  position:relative;display:inline-block;
+  padding:14px 30px;
+  border-radius:14px;
+  border:2px solid var(--orange);
+  color:var(--orange);
+  font-weight:700;
+  background:transparent;
+  text-decoration:none;
+  overflow:hidden;
+  transition:color .35s ease;
+  z-index:1;
+  margin-top:20px;
+}
+.uiverse-btn::before {
+  content:"";
+  position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,var(--orange),var(--primary));
+  transition:left .35s ease;
+  z-index:-1;
+}
+.uiverse-btn:hover {color:#fff}
+.uiverse-btn:hover::before {left:0}
+
+/* Supported platforms */
 .platforms {
-  display:flex;justify-content:center;align-items:center;gap:14px;
-  font-size:1.3rem;margin-top:60px;color:#fff;
+  margin-top:50px;
+  text-align:center;
+  animation:fadeUp 1.3s ease both;
 }
-.platforms span {color:var(--muted-light);font-size:1rem;margin-left:12px}
-.platforms i {font-size:1.8rem;color:var(--primary)}
-
-/* Demo Video */
-.demo-video {margin-top:60px;display:flex;justify-content:center;}
-.demo-video video {
-  width:100%;max-width:420px;border-radius:16px;
-  box-shadow:0 6px 20px rgba(0,0,0,.5);
+.platforms h2 {
+  font-family:"Sora";
+  font-size:1.6rem;
+  margin-bottom:16px;
+}
+.platform-icons {
+  display:flex;
+  justify-content:center;
+  gap:28px;
+}
+.platform-icons i {
+  font-size:2.2rem;
 }
 
-/* Footer placeholder */
-#footer-placeholder {margin-top:80px;}
+/* Video */
+.video-section {
+  margin-top:50px;
+  text-align:center;
+  animation:fadeUp 1.4s ease both;
+}
+.video-section video {
+  max-width:90%;
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* Animations */
+@keyframes fadeUp {from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeDown {from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
+
+/* Responsive */
+@media(max-width:768px){
+  .hero h1{font-size:2rem}
+  .hero h1 span{font-size:2.2rem}
+  .countdown{gap:6px}
+  .count-box{min-width:60px;padding:10px 12px}
+  .count-box span{font-size:1.2rem}
+}
 </style>
 </head>
 <body>
 
-<!-- Preloader -->
-<div id="preloader"><img src="logo.png" alt="Loading..."></div>
+<!-- Background shapes -->
+<div class="bg-shape one"></div>
+<div class="bg-shape two"></div>
 
-<!-- Banner -->
+<!-- Notice banner -->
 <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
 
 <!-- Header -->
@@ -159,75 +210,63 @@ body {
 <div id="sidebar-placeholder"></div>
 
 <!-- Hero -->
-<div class="hero">
-  <div class="tagline">Fair Deals. Real Earnings.</div>
-  <h1>Finally, <span>Creators</span> Get Paid Right</h1>
-  <p>CloutChain helps YouTube and Instagram creators unlock fair, transparent brand deals.</p>
-  <button class="fancy-btn">Join Waitlist</button>
-</div>
-
-<!-- Countdown -->
-<div class="count-wrap" id="count-section">
-  <div style="font-weight:700;color:#fff;margin-bottom:12px">CloutChain Time to Launch</div>
-  <div class="count-grid">
-    <div class="count-item"><div class="count-value" id="days">00</div><div class="count-label">Days</div></div>
-    <div class="count-item"><div class="count-value" id="hours">00</div><div class="count-label">Hours</div></div>
-    <div class="count-item"><div class="count-value" id="minutes">00</div><div class="count-label">Minutes</div></div>
-    <div class="count-item"><div class="count-value" id="seconds">00</div><div class="count-label">Seconds</div></div>
+<section class="hero">
+  <h1><span>Creators</span> Get Paid Right</h1>
+  <p>CloutChain ensures <span style="color:var(--orange);font-weight:600">fair pay</span> and <span style="color:var(--primary);font-weight:600">real opportunities</span> for every creator.</p>
+  
+  <div class="countdown" id="countdown">
+    <div class="count-box"><span id="days">00</span><label>Days</label></div>
+    <div class="count-box"><span id="hours">00</span><label>Hours</label></div>
+    <div class="count-box"><span id="minutes">00</span><label>Minutes</label></div>
+    <div class="count-box"><span id="seconds">00</span><label>Seconds</label></div>
   </div>
-</div>
 
-<!-- Platforms -->
-<div class="platforms">
-  <i class="fab fa-youtube"></i>
-  <i class="fab fa-instagram"></i>
-  <span>Currently Supported Platforms</span>
-</div>
+  <a href="#" class="uiverse-btn">Join Waitlist</a>
+</section>
+
+<!-- Supported Platforms -->
+<section class="platforms">
+  <h2>Currently Supported Platforms</h2>
+  <div class="platform-icons">
+    <i class="fab fa-youtube" style="color:#ff0000"></i>
+    <i class="fab fa-instagram" style="color:#e1306c"></i>
+  </div>
+</section>
 
 <!-- Demo Video -->
-<div class="demo-video">
-  <video autoplay muted loop playsinline controls>
-    <source src="videoasset1.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
-</div>
+<section class="video-section">
+  <video src="videoasset1.mp4" autoplay muted loop playsinline></video>
+</section>
 
 <!-- Footer placeholder -->
 <div id="footer-placeholder"></div>
 
 <script>
-// Preloader
-window.addEventListener("load",()=>{
-  const pre=document.getElementById("preloader");
-  pre.style.opacity="0";setTimeout(()=>pre.style.display="none",600);
-});
-
-// Sidebar + Footer loader
+// Sidebar & footer load
 Promise.all([
-  fetch("sidebar.html").then(res => res.text()),
-  fetch("footer.html").then(res => res.text())
-]).then(([sidebarHTML, footerHTML])=>{
-  document.getElementById("sidebar-placeholder").innerHTML=sidebarHTML;
-  document.getElementById("footer-placeholder").innerHTML=footerHTML;
-  const hamburger=document.getElementById("hamburger");
-  const sidebar=document.getElementById("sidebar");
-  if(hamburger&&sidebar){
-    hamburger.addEventListener("click",()=>sidebar.classList.toggle("active"));
-  }
+  fetch("sidebar.html").then(r=>r.text()),
+  fetch("footer.html").then(r=>r.text())
+]).then(([sb,ft])=>{
+  document.getElementById("sidebar-placeholder").innerHTML=sb;
+  document.getElementById("footer-placeholder").innerHTML=ft;
+  document.getElementById("hamburger").addEventListener("click",()=>{
+    document.getElementById("sidebar").classList.toggle("active");
+  });
 });
 
 // Countdown
-const target=new Date("Sep 27, 2025 14:00:00 GMT+0530").getTime();
+const targetDate=new Date("Sep 27, 2025 14:00:00").getTime();
 setInterval(()=>{
-  const now=Date.now();let diff=target-now;if(diff<0) diff=0;
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const m=Math.floor((diff%(1000*60*60))/(1000*60));
-  const s=Math.floor((diff%(1000*60))/1000);
-  document.getElementById("days").textContent=String(d).padStart(2,"0");
-  document.getElementById("hours").textContent=String(h).padStart(2,"0");
-  document.getElementById("minutes").textContent=String(m).padStart(2,"0");
-  document.getElementById("seconds").textContent=String(s).padStart(2,"0");
+  const now=new Date().getTime();
+  const distance=targetDate-now;
+  const days=Math.floor(distance/(1000*60*60*24));
+  const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+  const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+  const seconds=Math.floor((distance%(1000*60))/1000);
+  document.getElementById("days").innerText=days;
+  document.getElementById("hours").innerText=hours;
+  document.getElementById("minutes").innerText=minutes;
+  document.getElementById("seconds").innerText=seconds;
 },1000);
 </script>
 </body>
