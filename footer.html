@@ -1,16 +1,81 @@
 <!-- footer.html -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+<style>
+footer {
+  margin-top:auto;
+  padding:40px 20px;
+  background:var(--soft,#f6f8fb);
+  border-top:1px solid #e5e7eb;
+  text-align:center;
+}
+
+.footer-content {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:20px;
+}
+
+.social-icons {
+  display:flex;
+  gap:18px;
+}
+
+/* Uiverse-inspired buttons */
+.social-icons a {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  background:#fff;
+  color:#0f172a;
+  font-size:1.3rem;
+  box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  transition:all 0.3s ease;
+}
+
+.social-icons a:hover {
+  transform:translateY(-4px) scale(1.05);
+  box-shadow:0 6px 16px rgba(0,0,0,0.15);
+}
+
+.social-icons a.youtube:hover { color:#ff0000; }
+.social-icons a.instagram:hover { color:#c13584; }
+.social-icons a.discord:hover { color:#5865f2; }
+.social-icons a.twitter:hover { color:#000; }
+
+.footer-bottom {
+  font-size:0.9rem;
+  color:#6b7280;
+}
+
+.footer-bottom a {
+  color:var(--primary,#0073e6);
+  font-weight:600;
+  text-decoration:none;
+  margin:0 6px;
+}
+
+.footer-bottom a:hover {
+  text-decoration:underline;
+}
+</style>
+
 <footer>
   <div class="footer-content">
     <div class="social-icons">
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-discord"></i></a>
-      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#" class="youtube"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="discord"><i class="fab fa-discord"></i></a>
+      <a href="#" class="twitter"><i class="fab fa-x-twitter"></i></a>
     </div>
     <div class="footer-bottom">
       © 2025–2026 CLOUTCHAIN. All rights reserved. | 
-      <a href="terms.html" style="color:var(--primary);text-decoration:none;font-weight:600">Terms & Conditions</a> | 
-      <a href="privacy.html" style="color:var(--primary);text-decoration:none;font-weight:600">Privacy Policy</a>
+      <a href="terms.html">Terms & Conditions</a> | 
+      <a href="privacy.html">Privacy Policy</a>
     </div>
   </div>
 </footer>
