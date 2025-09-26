@@ -68,27 +68,14 @@ body {
   animation:fadeInUp 1s ease .3s forwards;
 }
 
-/* Platform Section */
-.platform-section {
-  margin-top:60px;
-  padding:40px 20px;
-  max-width:1100px;
-  margin:auto;
-}
-.platform-section h2 {
-  font-family:"Sora";
-  font-size:1.8rem;
-  margin-bottom:30px;
-  text-align:center;
-  color:var(--orange);
-}
-
-/* Pricing Cards */
-.pricing {
+/* Cards */
+.cards {
   display:flex;
   flex-wrap:wrap;
-  gap:30px;
   justify-content:center;
+  gap:30px;
+  margin-top:60px;
+  padding:20px;
 }
 .card {
   flex:1 1 280px;
@@ -96,33 +83,28 @@ body {
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.1);
   border-radius:16px;
-  padding:30px 20px;
+  padding:40px 20px;
   text-align:center;
   animation:bounceIn .8s ease forwards;
-}
-.card h3 {
-  font-family:"Sora";font-size:1.4rem;margin-bottom:10px;color:var(--primary);
-}
-.card .price {
-  font-size:1.3rem;font-weight:700;margin-bottom:14px;color:var(--orange);
-}
-.card ul {
-  list-style:none;padding:0;margin:0 0 20px 0;text-align:left;font-size:.95rem;color:var(--muted-light);
-}
-.card ul li {margin:8px 0;}
-.card ul li::before {content:"✔";color:var(--primary);margin-right:8px;}
-.card button {
-  padding:12px 20px;
-  background:linear-gradient(90deg,var(--primary),var(--orange));
-  border:none;
-  border-radius:10px;
-  color:#fff;
-  font-weight:700;
-  cursor:pointer;
   transition:.3s;
+  cursor:pointer;
 }
-.card button:hover {opacity:.9;transform:translateY(-3px);}
-.card.pro {transform:scale(1.05);border-color:var(--orange);} /* highlight Pro */
+.card:hover {
+  transform:translateY(-6px) scale(1.03);
+  border-color:var(--orange);
+}
+.card i {
+  font-size:2.5rem;
+  margin-bottom:15px;
+}
+.card h2 {
+  font-family:"Sora";font-size:1.5rem;margin-bottom:12px;
+}
+.card p {
+  color:var(--muted-light);
+  font-size:.95rem;
+  line-height:1.5;
+}
 </style>
 </head>
 <body>
@@ -142,65 +124,22 @@ body {
 <!-- Hero -->
 <div class="hero">
   <h1>Onboarding Creators</h1>
-  <p>Select your platform and start your journey with CloutChain.</p>
+  <p>Select your platform to begin onboarding.</p>
 </div>
 
-<!-- YouTube Section -->
-<div class="platform-section">
-  <h2><i class="fab fa-youtube"></i> YouTube Creators</h2>
-  <div class="pricing">
-    <div class="card">
-      <h3>Free Plan</h3>
-      <div class="price">₹0</div>
-      <ul>
-        <li>No guarantee of brand deals</li>
-        <li>Higher commission cut up to 35%</li>
-        <li>No premium deals</li>
-        <li>Partner badge locked</li>
-      </ul>
-      <button>Start Free</button>
-    </div>
-    <div class="card pro">
-      <h3>Pro Plan</h3>
-      <div class="price">₹49 (refundable after 180 days)</div>
-      <ul>
-        <li>Minimum 1 brand deal guaranteed within 150 days</li>
-        <li>0% commission cut on first deal</li>
-        <li>Premium deals unlocked</li>
-        <li>Partner badge unlocked</li>
-      </ul>
-      <button>Go Pro</button>
-    </div>
-  </div>
-</div>
+<!-- Cards -->
+<div class="cards">
+  <a href="youtube-onboarding.html" class="card">
+    <i class="fab fa-youtube" style="color:#ff0000"></i>
+    <h2>YouTube Creators</h2>
+    <p>Start your journey as a YouTube creator. Explore plans and opportunities tailored for video creators.</p>
+  </a>
 
-<!-- Instagram Section -->
-<div class="platform-section">
-  <h2><i class="fab fa-instagram"></i> Instagram Creators</h2>
-  <div class="pricing">
-    <div class="card">
-      <h3>Free Plan</h3>
-      <div class="price">₹0</div>
-      <ul>
-        <li>No guarantee of brand deals</li>
-        <li>Higher commission cut up to 35%</li>
-        <li>No premium deals</li>
-        <li>Partner badge locked</li>
-      </ul>
-      <button>Start Free</button>
-    </div>
-    <div class="card pro">
-      <h3>Pro Plan</h3>
-      <div class="price"><s>₹79</s> ₹39 (Launch Special)</div>
-      <ul>
-        <li>Minimum 1 brand deal guaranteed within 150 days</li>
-        <li>0% commission cut on first deal</li>
-        <li>Premium deals unlocked</li>
-        <li>Partner badge unlocked</li>
-      </ul>
-      <button>Go Pro</button>
-    </div>
-  </div>
+  <a href="instagram-onboarding.html" class="card">
+    <i class="fab fa-instagram" style="color:#e1306c"></i>
+    <h2>Instagram Creators</h2>
+    <p>Join as an Instagram creator. Unlock premium deals, community perks, and fair commissions.</p>
+  </a>
 </div>
 
 <!-- Footer placeholder -->
