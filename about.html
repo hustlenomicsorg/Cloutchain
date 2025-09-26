@@ -5,120 +5,86 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>CLOUTCHAIN | About</title>
 
-<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
-:root {
-  --primary:#0073e6;
-  --orange:#f97316;
-  --accent-grad: linear-gradient(135deg,#0073e6,#6a11cb,#ff4d6d);
-  --muted:#6b7280;
-  --soft:#f6f8fb;
-}
+:root{--primary:#0073e6;--orange:#f97316;--muted:#6b7280;--soft:#f6f8fb}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"DM Sans",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column}
-
-/* Notice banner */
-.notice-banner {
-  position:fixed;top:0;left:0;right:0;
-  background:var(--primary);color:#fff;
-  font-size:0.85rem;padding:4px 0;text-align:center;
-  z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
-}
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
+.notice-banner{position:fixed;top:0;left:0;right:0;background:var(--primary);color:#fff;font-size:0.85rem;padding:4px 0;text-align:center;z-index:1200;overflow:hidden;white-space:nowrap}
+.notice-banner span{display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite}
 @keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
-
-/* Header */
 .header{position:fixed;left:20px;right:20px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:1100}
 .logo img{height:52px}
 .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
 .hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
-
-/* Sidebar */
 .sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,0.1);padding-top:110px;transition:right .3s;z-index:1150}
 .sidebar.active{right:0}
 .sidebar a{display:block;padding:14px 22px;text-decoration:none;color:inherit;font-weight:600}
 .sidebar a:hover{background:var(--soft);border-left:4px solid var(--primary)}
-
-/* Main Section */
 main{margin-top:160px;padding:40px 20px;max-width:900px;margin-left:auto;margin-right:auto;text-align:center}
-h1,h2{font-family:"Sora",sans-serif;margin-bottom:14px;color:#0f172a}
-h1{font-size:2.6rem;font-weight:800}
-h2{font-size:1.8rem;font-weight:700;color:var(--primary)}
+h1{font-family:"Sora";font-size:2.6rem;font-weight:800;margin-bottom:12px}
+h2{font-family:"Sora";font-size:1.8rem;font-weight:700;color:var(--primary);margin-bottom:10px}
 p{color:var(--muted);line-height:1.6;font-size:1.05rem;margin-bottom:18px}
-
-/* Features */
 .features-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px;margin-top:40px;text-align:left}
 .feature-card{background:#fff;padding:24px;border-radius:16px;box-shadow:0 8px 24px rgba(0,0,0,0.06);transition:.25s}
 .feature-card:hover{transform:translateY(-6px);box-shadow:0 10px 28px rgba(0,0,0,0.12)}
 .feature-card i{font-size:1.6rem;color:var(--orange);margin-bottom:14px}
 .feature-card h3{font-family:"Sora";margin-bottom:10px;font-size:1.3rem}
 .feature-card p{margin:0;font-size:0.95rem}
-
-/* Divider */
-.divider{height:2px;width:80px;background:var(--accent-grad);margin:50px auto;border-radius:2px}
-
-/* Footer */
-footer{margin-top:auto;padding:30px;background:var(--soft);text-align:center;border-top:1px solid #eee}
-.footer-content{display:flex;flex-direction:column;align-items:center;gap:12px}
-.social-icons{display:flex;gap:16px}
-.social-icons a{font-size:1.3rem;color:#0f172a}
-.footer-bottom{font-size:0.85rem;color:var(--muted)}
+.divider{height:2px;width:80px;background:linear-gradient(135deg,#0073e6,#6a11cb,#ff4d6d);margin:30px auto;border-radius:2px}
+footer{margin-top:auto;padding:28px;background:var(--soft);text-align:center;border-top:1px solid #eee}
+.footer-links{display:flex;gap:12px;justify-content:center;align-items:center;margin-bottom:10px}
+.footer-links a{color:var(--primary);text-decoration:none;font-weight:600}
+.footer-bottom{font-size:0.9rem;color:var(--muted)}
 </style>
 </head>
 <body>
-
 <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
-
 <div class="header">
-  <div class="logo"><img src="logo.png" alt="logo"></div>
+  <div class="logo"><img src="logo.png" alt="CloutChain"></div>
   <div class="hamburger" onclick="toggleSidebar()"><div></div><div></div><div></div></div>
 </div>
-
 <div class="sidebar" id="sidebar">
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="onboarding.html">Onboarding</a>
+  <a href="terms.html">Terms</a>
+  <a href="privacy.html">Privacy</a>
 </div>
 
 <main>
   <h1>About <span style="color:var(--orange)">CLOUTCHAIN</span></h1>
-  <p>We’re building the <strong>first platform where creators get paid fairly</strong>, without confusing contracts or hidden cuts. CLOUTCHAIN connects influencers directly with brands using transparent tools.</p>
-  
+  <p>We build tools that help creators price themselves fairly and connect with brands transparently. Our mission is to make influencer marketing simple and trustworthy.</p>
   <div class="divider"></div>
-  
+
   <h2>What We Do</h2>
   <div class="features-grid">
     <div class="feature-card">
       <i class="fas fa-handshake"></i>
       <h3>Brand Deals</h3>
-      <p>Direct access to campaigns from leading brands, tailored to your niche.</p>
+      <p>Direct access to campaigns from leading brands, matched to your niche and audience.</p>
     </div>
     <div class="feature-card">
       <i class="fas fa-chart-line"></i>
       <h3>Smart Analytics</h3>
-      <p>Track engagement, reach, and ROI with pro-level insights built for creators.</p>
+      <p>Actionable metrics to help you price and pitch with confidence.</p>
     </div>
     <div class="feature-card">
       <i class="fas fa-shield-alt"></i>
       <h3>Fair Payments</h3>
-      <p>Clear, fast, and commission-friendly payments that put you first.</p>
+      <p>Transparent fees, predictable payouts, and clear contract terms for every deal.</p>
     </div>
   </div>
 </main>
 
 <footer>
-  <div class="footer-content">
-    <div class="social-icons">
-      <a href="#"><i class="fab fa-youtube"></i></a>
-      <a href="#"><i class="fab fa-instagram"></i></a>
-      <a href="#"><i class="fab fa-discord"></i></a>
-      <a href="#"><i class="fab fa-x-twitter"></i></a>
-    </div>
-    <div class="footer-bottom">© 2025–2026 CLOUTCHAIN. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="terms.html">Terms & Conditions</a>
+    <a href="privacy.html">Privacy Policy</a>
   </div>
+  <div class="footer-bottom">© 2025–2026 CLOUTCHAIN. All rights reserved.</div>
 </footer>
 
 <script>
