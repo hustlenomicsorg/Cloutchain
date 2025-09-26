@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
 <title>CLOUTCHAIN | Home</title>
 
 <!-- Fonts -->
@@ -20,6 +20,7 @@
 
 /* Reset */
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden}
 body {
   font-family:"DM Sans",sans-serif;
   background:linear-gradient(180deg,var(--dark) 0%,var(--dark-2) 100%);
@@ -27,19 +28,21 @@ body {
   display:flex;
   flex-direction:column;
   min-height:100vh;
-  overflow-x:hidden;
 }
 
 /* Background shapes */
 .bg-shape {
-  position:fixed;
+  position:absolute;
   border-radius:50%;
   filter:blur(80px);
   opacity:0.12;
   z-index:0;
 }
-.bg-shape.one {width:420px;height:420px;background:var(--primary);top:-120px;left:-100px;}
-.bg-shape.two {width:300px;height:300px;background:var(--orange);bottom:-100px;right:-80px;}
+.bg-shape.one {width:380px;height:380px;background:var(--primary);top:-100px;left:-120px;}
+.bg-shape.two {width:280px;height:280px;background:var(--orange);bottom:-80px;right:-60px;}
+@media(max-width:600px){
+  .bg-shape.one,.bg-shape.two{display:none} /* hide on small devices */
+}
 
 /* Notice banner */
 .notice-banner {
@@ -57,13 +60,13 @@ body {
   display:flex;justify-content:space-between;align-items:center;
   z-index:1600;
 }
-.logo img {height:72px}
+.logo img {height:68px}
 .hamburger {cursor:pointer;display:flex;flex-direction:column;gap:6px}
 .hamburger div {width:28px;height:3px;background:#fff;border-radius:3px}
 
 /* Hero */
 .hero {
-  margin-top:200px; /* breathing room */
+  margin-top:200px;
   text-align:center;
   max-width:900px;
   margin-left:auto;
@@ -95,23 +98,23 @@ body {
 .countdown {
   display:flex;
   justify-content:center;
-  gap:18px;
+  gap:12px;
   margin:30px auto;
   flex-wrap:wrap;
-  animation:fadeUp 1.2s ease both;
+  max-width:100%;
 }
 .count-box {
-  background:rgba(255,255,255,0.04);
+  background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.08);
-  padding:14px 18px;
+  padding:14px 12px;
   border-radius:12px;
-  min-width:80px;
+  min-width:70px;
   text-align:center;
   box-shadow:0 6px 18px rgba(0,0,0,0.4);
 }
 .count-box span {
   display:block;
-  font-size:1.6rem;
+  font-size:1.4rem;
   font-weight:800;
 }
 .count-box label {
@@ -149,7 +152,6 @@ body {
 .platforms {
   margin-top:50px;
   text-align:center;
-  animation:fadeUp 1.3s ease both;
 }
 .platforms h2 {
   font-family:"Sora";
@@ -160,6 +162,7 @@ body {
   display:flex;
   justify-content:center;
   gap:28px;
+  flex-wrap:wrap;
 }
 .platform-icons i {
   font-size:2.2rem;
@@ -169,10 +172,9 @@ body {
 .video-section {
   margin-top:50px;
   text-align:center;
-  animation:fadeUp 1.4s ease both;
 }
 .video-section video {
-  max-width:90%;
+  max-width:95%;
   border-radius:16px;
   box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
@@ -186,8 +188,8 @@ body {
   .hero h1{font-size:2rem}
   .hero h1 span{font-size:2.2rem}
   .countdown{gap:6px}
-  .count-box{min-width:60px;padding:10px 12px}
-  .count-box span{font-size:1.2rem}
+  .count-box{min-width:60px;padding:10px 10px}
+  .count-box span{font-size:1.1rem}
 }
 </style>
 </head>
