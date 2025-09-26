@@ -1,32 +1,27 @@
 <!-- sidebar.html -->
-<div id="sidebar" class="sidebar" aria-hidden="true">
-  <div class="sidebar-inner">
-    <button id="sidebar-close" class="sidebar-close" aria-label="Close menu">&times;</button>
-    <nav class="sidebar-nav" role="navigation" aria-label="Main menu">
-      <a href="index.html" class="nav-link">Home</a>
-      <a href="about.html" class="nav-link">About</a>
-      <a href="onboarding.html" class="nav-link">Onboarding</a>
-    </nav>
-  </div>
+<div class="sidebar" id="sidebar">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="onboarding.html">Onboarding</a>
 </div>
 
 <style>
-/* Sidebar styles (kept minimal; main layout lives in page) */
 .sidebar {
-  position:fixed;inset:0;right:0;display:flex;justify-content:flex-end;pointer-events:none;z-index:1400;
+  position:fixed;top:0;right:-280px;
+  width:260px;height:100%;background:#fff;
+  box-shadow:-8px 0 30px rgba(0,0,0,0.15);
+  padding:100px 20px;
+  transition:right .3s ease;
+  z-index:1600;
 }
-.sidebar-inner{
-  width:320px;max-width:85vw;height:100vh;background:#fff;padding:28px 20px;box-shadow:-18px 30px 60px rgba(12,18,31,0.14);
-  transform:translateX(110%);transition:transform .34s cubic-bezier(.22,.9,.26,1);pointer-events:auto;border-radius:0 0 0 0;
+.sidebar.active { right:0 }
+.sidebar a {
+  display:block;
+  padding:14px 0;
+  text-decoration:none;
+  color:#0f172a;
+  font-weight:600;
+  font-size:1rem;
 }
-.sidebar.active .sidebar-inner{transform:translateX(0)}
-.sidebar-close{
-  position:absolute;right:14px;top:12px;border:0;background:transparent;font-size:28px;line-height:1;color:#0f172a;cursor:pointer
-}
-.sidebar-nav{margin-top:42px;display:flex;flex-direction:column;gap:12px}
-.nav-link{padding:12px 10px;border-radius:10px;text-decoration:none;color:#0f172a;font-weight:700}
-.nav-link:hover{background:#f6f8fb}
-@media(min-width:900px){
-  .sidebar-inner{width:280px}
-}
+.sidebar a:hover { color:var(--primary) }
 </style>
