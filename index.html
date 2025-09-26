@@ -173,16 +173,26 @@ p {
 .platforms i {font-size:1.8rem}
 .platforms span {color:var(--muted);font-size:0.95rem;margin-left:10px}
 
+/* Demo Video */
+.demo-video {
+  margin-top:40px;
+  display:flex;
+  justify-content:center;
+  opacity:0;
+  transform:translateY(30px);
+  transition:all .6s ease .5s;
+}
+.demo-video video {
+  width:100%;
+  max-width:400px;
+  border-radius:20px;
+  box-shadow:0 12px 28px rgba(0,0,0,0.15);
+}
+
 /* Animations */
-@keyframes fadeSlide {
-  to {opacity:1;transform:translateY(0);}
-}
-@keyframes fadeIn {
-  to {opacity:1;}
-}
-@keyframes popIn {
-  to {opacity:1;transform:scale(1);}
-}
+@keyframes fadeSlide {to {opacity:1;transform:translateY(0);}}
+@keyframes fadeIn {to {opacity:1;}}
+@keyframes popIn {to {opacity:1;transform:scale(1);}}
 
 /* Footer placeholder */
 #footer-placeholder {margin-top:auto}
@@ -194,6 +204,7 @@ p {
   .logo img{height:52px}
   .btn-primary{width:100%}
   .platforms{flex-wrap:wrap;text-align:center}
+  .demo-video video{max-width:100%}
 }
 </style>
 </head>
@@ -238,6 +249,14 @@ p {
     <i class="fab fa-youtube"></i>
     <i class="fab fa-instagram"></i>
     <span>Currently Supported Platforms</span>
+  </div>
+
+  <!-- Demo Video -->
+  <div class="demo-video" id="demo-video">
+    <video autoplay muted loop playsinline controls>
+      <source src="videoasset1.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
   </div>
 </main>
 
@@ -287,9 +306,14 @@ setInterval(()=>{
 window.addEventListener("scroll",()=>{
   const count=document.getElementById("count-section");
   const platforms=document.getElementById("platforms");
+  const demo=document.getElementById("demo-video");
   const trigger=window.innerHeight*0.8;
-  if(count.getBoundingClientRect().top<trigger) count.style.opacity="1",count.style.transform="translateY(0)";
-  if(platforms.getBoundingClientRect().top<trigger) platforms.style.opacity="1",platforms.style.transform="translateY(0)";
+  [count, platforms, demo].forEach(el=>{
+    if(el.getBoundingClientRect().top<trigger){
+      el.style.opacity="1";
+      el.style.transform="translateY(0)";
+    }
+  });
 });
 </script>
 </body>
