@@ -15,125 +15,127 @@
   --orange:#f97316;
   --muted:#9ca3af;
   --dark:#0a0a0a;
-  --dark2:#1a1a1a;
+  --dark-2:#121212;
 }
+
 *{box-sizing:border-box;margin:0;padding:0}
 body {
   font-family:"DM Sans",sans-serif;
+  background:linear-gradient(180deg,var(--dark) 0%,var(--dark-2) 100%);
   color:#fff;
-  background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);
-  min-height:100vh;
   display:flex;
   flex-direction:column;
-  line-height:1.6;
+  min-height:100vh;
   overflow-x:hidden;
 }
 
-/* Notice banner */
+/* Banner */
 .notice-banner {
   position:fixed;top:0;left:0;right:0;
   background:var(--primary);color:#fff;
-  font-size:0.85rem;padding:4px 0;text-align:center;
-  z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
+  font-size:0.85rem;padding:6px;text-align:center;
+  z-index:1500;overflow:hidden;white-space:nowrap;
 }
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
-@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 12s linear infinite;}
+@keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
 /* Header */
 .header {
-  position:fixed;left:20px;right:20px;top:40px;
-  display:flex;align-items:center;justify-content:space-between;
-  z-index:1100;
+  position:fixed;top:36px;left:20px;right:20px;
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:1600;
 }
-.logo img{height:64px}
-.hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
-.hamburger div{width:30px;height:3px;background:#fff;border-radius:3px}
+.logo img {height:68px}
+.hamburger {cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.hamburger div {width:28px;height:3px;background:#fff;border-radius:3px}
 
 /* Main */
 main {
-  margin-top:160px;
-  padding:40px 20px;
-  max-width:1000px;
-  margin-left:auto;
-  margin-right:auto;
+  margin:160px auto 40px;
+  padding:20px;
+  max-width:600px;
+  width:100%;
   text-align:center;
 }
 h1 {
   font-family:"Sora";
   font-size:2.2rem;
-  font-weight:800;
-  margin-bottom:16px;
+  margin-bottom:12px;
 }
-h1 span{color:var(--orange)}
-p{color:var(--muted);margin-bottom:30px;font-size:1.05rem}
+h1 span {
+  background:linear-gradient(90deg,var(--orange),var(--primary));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+p {
+  color:var(--muted);
+  margin-bottom:24px;
+  font-size:1.05rem;
+}
 
-/* Onboarding Cards */
+/* Cards */
 .cards {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-  margin-top:20px;
+  display:flex;
+  flex-direction:column;
+  gap:22px;
 }
 .card {
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.1);
+  background:rgba(255,255,255,0.04);
+  border:1px solid rgba(255,255,255,0.08);
   border-radius:14px;
-  padding:30px;
-  transition:transform .25s, box-shadow .25s;
+  padding:26px;
   text-align:center;
+  box-shadow:0 8px 22px rgba(0,0,0,0.5);
+  transition:transform .25s,box-shadow .25s;
 }
 .card:hover {
   transform:translateY(-6px);
-  box-shadow:0 12px 24px rgba(0,0,0,0.4);
-  border-color:var(--orange);
+  box-shadow:0 12px 28px rgba(0,0,0,0.6);
 }
 .card i {
-  font-size:2.5rem;
+  font-size:2.4rem;
   margin-bottom:14px;
 }
 .card h2 {
   font-family:"Sora";
   font-size:1.4rem;
   font-weight:700;
-  margin-bottom:10px;
+  margin-bottom:8px;
 }
 .card p {
   font-size:0.95rem;
-  color:var(--muted);
-  margin-bottom:20px;
+  color:#ccc;
+  margin-bottom:16px;
 }
 
-/* Real Uiverse "silent-lizard-44" button */
+/* Button (Uiverse style) */
 .uiverse-btn {
-  position: relative;
-  display: inline-block;
-  padding: 12px 24px;
-  border-radius: 12px;
-  border: 2px solid var(--orange);
-  color: var(--orange);
-  font-weight: 600;
-  font-size: 0.95rem;
-  background: transparent;
-  cursor: pointer;
-  overflow: hidden;
-  transition: color 0.4s ease;
-  z-index: 1;
-  text-decoration: none;
+  position:relative;display:inline-block;
+  padding:12px 26px;
+  border-radius:12px;
+  border:2px solid var(--orange);
+  color:var(--orange);
+  font-weight:700;
+  background:transparent;
+  text-decoration:none;
+  overflow:hidden;
+  transition:color .35s ease;
+  z-index:1;
 }
 .uiverse-btn::before {
-  content: "";
-  position: absolute;
-  top: 0; left: -100%;
-  width: 100%; height: 100%;
-  background: linear-gradient(90deg, var(--orange), var(--primary));
-  transition: all 0.4s ease;
-  z-index: -1;
+  content:"";
+  position:absolute;top:0;left:-100%;width:100%;height:100%;
+  background:linear-gradient(90deg,var(--orange),var(--primary));
+  transition:left .35s ease;
+  z-index:-1;
 }
-.uiverse-btn:hover {
-  color: #fff;
-}
-.uiverse-btn:hover::before {
-  left: 0;
+.uiverse-btn:hover {color:#fff}
+.uiverse-btn:hover::before {left:0}
+
+/* Responsive */
+@media(max-width:768px){
+  h1{font-size:1.8rem}
+  .logo img{height:56px}
 }
 </style>
 </head>
@@ -154,23 +156,23 @@ p{color:var(--muted);margin-bottom:30px;font-size:1.05rem}
 <!-- Main -->
 <main>
   <h1><span>Creator</span> Onboarding</h1>
-  <p>Select your platform below to continue onboarding with the right pricing plan and benefits.</p>
+  <p>Select your platform below to continue onboarding with the right benefits and pricing.</p>
 
   <div class="cards">
     <!-- YouTube -->
     <div class="card">
       <i class="fab fa-youtube" style="color:#ff0000"></i>
       <h2>YouTube Onboarding</h2>
-      <p>Get started with our onboarding process designed for YouTube creators.</p>
-      <a href="onboarding-youtube.html" class="uiverse-btn">Start Onboarding</a>
+      <p>Onboarding flow for <strong>YouTube creators</strong>. Learn about plans and requirements.</p>
+      <a href="onboarding-youtube.html" class="uiverse-btn">Start YouTube</a>
     </div>
 
     <!-- Instagram -->
     <div class="card">
       <i class="fab fa-instagram" style="color:#e1306c"></i>
       <h2>Instagram Onboarding</h2>
-      <p>Onboarding tailored for Instagram influencers and content creators.</p>
-      <a href="onboarding-instagram.html" class="uiverse-btn">Start Onboarding</a>
+      <p>Onboarding flow for <strong>Instagram creators</strong>. Explore available plans and perks.</p>
+      <a href="onboarding-instagram.html" class="uiverse-btn">Start Instagram</a>
     </div>
   </div>
 </main>
@@ -179,16 +181,14 @@ p{color:var(--muted);margin-bottom:30px;font-size:1.05rem}
 <div id="footer-placeholder"></div>
 
 <script>
-// Load shared sidebar & footer
+// Load sidebar & footer
 Promise.all([
-  fetch("sidebar.html").then(res => res.text()),
-  fetch("footer.html").then(res => res.text())
-]).then(([sidebarHTML, footerHTML]) => {
-  document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
-  document.getElementById("footer-placeholder").innerHTML = footerHTML;
-
-  // Attach toggle AFTER sidebar exists
-  document.getElementById("hamburger").addEventListener("click", () => {
+  fetch("sidebar.html").then(r=>r.text()),
+  fetch("footer.html").then(r=>r.text())
+]).then(([sb,ft])=>{
+  document.getElementById("sidebar-placeholder").innerHTML=sb;
+  document.getElementById("footer-placeholder").innerHTML=ft;
+  document.getElementById("hamburger").addEventListener("click",()=>{
     document.getElementById("sidebar").classList.toggle("active");
   });
 });
