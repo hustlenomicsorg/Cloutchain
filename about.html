@@ -3,68 +3,102 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CLOUTCHAIN | About</title>
+<title>CLOUTCHAIN | About Us</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
-:root {
+:root{
+  --muted:#6b7280;
   --primary:#0073e6;
   --orange:#f97316;
-  --muted:#6b7280;
-  --soft:#f6f8fb;
+  --soft:#f9fafc;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"DM Sans",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+body{
+  font-family:"DM Sans",sans-serif;
+  color:#0f172a;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+  background:#fff;
+  overflow-x:hidden;
+}
 
-/* Notice banner */
-.notice-banner {
+/* Banner */
+.notice-banner{
   position:fixed;top:0;left:0;right:0;
   background:var(--primary);color:#fff;
-  font-size:0.85rem;padding:4px 0;text-align:center;
-  z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
+  font-size:0.85rem;padding:6px 0;text-align:center;
+  z-index:1500;overflow:hidden;white-space:nowrap;
 }
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
+.notice-banner span{display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
 @keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
 /* Header */
-.header{position:fixed;left:20px;right:20px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:1100}
-.logo img{height:52px}
+.header{
+  position:fixed;top:40px;left:20px;right:20px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:1400;
+}
+.logo img{height:64px}
 .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
 .hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
 
-/* Sidebar (same as home) */
-.sidebar {
-  position:fixed;top:0;right:-300px;
-  width:280px;height:100%;background:#fff;
-  box-shadow:-8px 0 30px rgba(0,0,0,0.1);
-  padding-top:110px;transition:right .3s;z-index:1150
+/* Hero */
+.hero{
+  margin-top:160px;
+  padding:80px 20px;
+  text-align:center;
+  max-width:900px;
+  margin-left:auto;margin-right:auto;
+  background:linear-gradient(180deg,#ffffff 0%,#f9fbff 100%);
+  border-radius:16px;
+  box-shadow:0 8px 24px rgba(0,0,0,0.04);
+  position:relative;
+  overflow:hidden;
 }
-.sidebar.active { right:0 }
-.sidebar a {
-  display:block;padding:14px 22px;text-decoration:none;
-  color:inherit;font-weight:600
-}
-.sidebar a:hover {
-  background:var(--soft);border-left:4px solid var(--primary)
-}
+.hero h1{font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:16px}
+.hero h1 span{color:var(--orange)}
+.hero p{color:var(--muted);font-size:1.05rem;line-height:1.6;}
 
-/* Main */
-main{margin-top:160px;padding:40px 20px;max-width:900px;margin-left:auto;margin-right:auto;text-align:center}
-h1{font-family:"Sora";font-size:2.2rem;font-weight:800;margin-bottom:16px}
-h1 span{color:var(--orange)}
-h2{font-family:"Sora";font-size:1.5rem;font-weight:700;margin-top:30px;margin-bottom:12px;color:#0f172a}
-h2 span{color:var(--orange)}
-p{color:var(--muted);margin-bottom:20px;font-size:1.05rem}
+/* Sections */
+section{
+  max-width:800px;
+  margin:80px auto;
+  padding:0 20px;
+  text-align:center;
+  opacity:0;
+  transform:translateY(40px);
+  transition:all .6s ease;
+}
+section.visible{opacity:1;transform:translateY(0);}
+section h2{font-family:"Sora";font-size:1.8rem;font-weight:700;margin-bottom:16px;position:relative;display:inline-block}
+section h2 span{color:var(--orange)}
+section h2::after{
+  content:"";
+  position:absolute;bottom:-6px;left:0;right:0;margin:auto;
+  width:60%;height:3px;background:var(--orange);border-radius:2px;
+}
+section p{color:var(--muted);font-size:1.05rem;line-height:1.7}
+
+/* Rocket */
+.rocket-container{
+  position:fixed;bottom:-150px;right:20px;
+  width:80px;height:80px;z-index:100;
+  pointer-events:none;
+}
+.rocket{
+  width:100%;
+  transition:transform .2s linear;
+}
 
 /* Responsive */
 @media(max-width:600px){
-  h1{font-size:1.8rem}
-  h2{font-size:1.3rem}
-  p{font-size:0.95rem}
-  main{padding:30px 16px}
+  .hero h1{font-size:1.8rem}
+  section h2{font-size:1.5rem}
 }
 </style>
 </head>
@@ -82,33 +116,38 @@ p{color:var(--muted);margin-bottom:20px;font-size:1.05rem}
 <!-- Sidebar placeholder -->
 <div id="sidebar-placeholder"></div>
 
-<!-- Main Content -->
-<main>
+<!-- Hero -->
+<div class="hero">
   <h1>About <span>CloutChain</span></h1>
-  <p>CloutChain is a platform built to give power back to creators.  
-  Our mission is simple: <span>make brand deals fair, transparent, and accessible</span> for creators of all sizes.</p>
+  <p>Our mission is to revolutionize creator-brand collaborations by making deals fair, transparent, and accessible for everyone.</p>
+</div>
 
+<!-- Sections -->
+<section>
   <h2>Our <span>Mission</span></h2>
-  <p>We believe creators should be rewarded fairly for their influence.  
-  Too often, creators are underpaid or overlooked. CloutChain bridges the gap between brands and creators with trust and simplicity.</p>
+  <p>We believe creators deserve to be paid fairly for their influence. CloutChain bridges the gap between brands and creators through trust, transparency, and simplicity.</p>
+</section>
 
+<section>
   <h2>Our <span>Vision</span></h2>
-  <p>We see a future where creators of every scale — from micro-influencers to big names — can unlock sustainable income streams without middlemen exploiting them.</p>
+  <p>We envision a future where micro-influencers and top creators alike have equal access to opportunities, without exploitation by middlemen or unfair contracts.</p>
+</section>
 
+<section>
   <h2>What <span>We Do</span></h2>
-  <p>At CloutChain, we provide creators with:</p>
-  <ul style="text-align:left;max-width:600px;margin:0 auto 40px;list-style:none;padding:0;font-size:1.05rem;color:var(--muted)">
-    <li>✔️ Transparent brand collaborations</li>
-    <li>✔️ Fair payment models</li>
-    <li>✔️ Equal opportunities for micro-creators</li>
-  </ul>
-</main>
+  <p>We provide creators with tools to connect directly with brands, negotiate fairly, and unlock premium opportunities. Our platform ensures payments are secure and collaborations are smooth.</p>
+</section>
+
+<!-- Rocket -->
+<div class="rocket-container">
+  <img src="https://cdn-icons-png.flaticon.com/512/3213/3213445.png" alt="Rocket" class="rocket">
+</div>
 
 <!-- Footer placeholder -->
 <div id="footer-placeholder"></div>
 
 <script>
-// Load shared sidebar & footer
+// Load sidebar + footer
 Promise.all([
   fetch("sidebar.html").then(res => res.text()),
   fetch("footer.html").then(res => res.text())
@@ -116,10 +155,29 @@ Promise.all([
   document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
   document.getElementById("footer-placeholder").innerHTML = footerHTML;
 
-  // Attach toggle AFTER sidebar exists
-  document.getElementById("hamburger").addEventListener("click", () => {
-    document.getElementById("sidebar").classList.toggle("active");
+  // Sidebar toggle
+  const hamburger=document.getElementById("hamburger");
+  const sidebar=document.getElementById("sidebar");
+  if(hamburger && sidebar){
+    hamburger.addEventListener("click",()=>sidebar.classList.toggle("active"));
+  }
+});
+
+// Section scroll animation
+const sections=document.querySelectorAll("section");
+window.addEventListener("scroll",()=>{
+  const trigger=window.innerHeight*0.8;
+  sections.forEach(sec=>{
+    const top=sec.getBoundingClientRect().top;
+    if(top<trigger) sec.classList.add("visible");
   });
+});
+
+// Rocket scroll animation
+const rocket=document.querySelector(".rocket-container");
+window.addEventListener("scroll",()=>{
+  const scrollY=window.scrollY;
+  rocket.style.transform=`translateY(${-scrollY*0.3}px)`;
 });
 </script>
 </body>
