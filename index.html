@@ -10,75 +10,157 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
-:root{
+:root {
   --muted:#6b7280;
   --primary:#0073e6;
   --orange:#f97316;
   --soft:#f9fafc;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{
+*{margin:0;padding:0;box-sizing:border-box}
+body {
   font-family:"DM Sans",sans-serif;
   color:#0f172a;
   display:flex;
   flex-direction:column;
   min-height:100vh;
-  background:#fff;
+  background:linear-gradient(180deg,#ffffff 0%,#f9fbff 100%);
+  overflow-x:hidden;
 }
 
-/* Scrolling banner */
+/* Preloader */
+#preloader {
+  position:fixed;
+  top:0;left:0;width:100%;height:100%;
+  background:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:2000;
+}
+#preloader img {
+  width:100px;
+  animation:popIn 1.6s ease-in-out infinite alternate;
+}
+@keyframes popIn {
+  from {transform:scale(0.8);opacity:0.6;}
+  to {transform:scale(1.1);opacity:1;}
+}
+
+/* Banner */
 .notice-banner {
   position:fixed;top:0;left:0;right:0;
   background:var(--primary);color:#fff;
   font-size:0.85rem;padding:6px 0;text-align:center;
   z-index:1500;overflow:hidden;white-space:nowrap;
 }
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
-@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.notice-banner span {
+  display:inline-block;padding-left:100%;
+  animation:scroll-left 14s linear infinite;
+}
+@keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
 /* Header */
-.header{
+.header {
   position:fixed;top:40px;left:20px;right:20px;
   display:flex;align-items:center;justify-content:space-between;
   z-index:1400;
 }
-.logo img{height:64px}
-.hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
-.hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
+.logo img {height:64px}
+.hamburger {cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.hamburger div {width:30px;height:3px;background:#0f172a;border-radius:3px}
 
-/* Main */
-main{
+/* Hero */
+main {
   margin-top:160px;
   padding:60px 20px;
   text-align:center;
   max-width:900px;
-  margin-left:auto;
-  margin-right:auto;
-  background:linear-gradient(180deg,#ffffff 0%,#f9fbff 100%);
-  border-radius:16px;
-  box-shadow:0 8px 24px rgba(0,0,0,0.04);
+  margin-left:auto;margin-right:auto;
+  position:relative;
+  z-index:1;
 }
-.tagline{color:var(--orange);font-weight:700;margin-bottom:10px;font-size:1rem}
-h1{font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:16px}
-h1 span{color:var(--orange)}
-p{color:var(--muted);font-size:1.05rem;margin-bottom:20px;line-height:1.6}
-.btn-primary{background:linear-gradient(90deg,var(--primary),#6a11cb);color:#fff;padding:14px 26px;border-radius:12px;border:0;font-weight:700;cursor:pointer;box-shadow:0 8px 28px rgba(11,18,32,0.08);transition:transform .16s;margin:20px auto 0;display:inline-block}
-.btn-primary:hover{transform:translateY(-3px)}
+.tagline {
+  color:var(--orange);
+  font-weight:700;
+  margin-bottom:10px;
+  font-size:1rem;
+  animation:fadeUp .8s ease forwards;
+}
+h1 {
+  font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:16px;
+  animation:fadeUp 1s ease forwards;
+}
+h1 span {color:var(--orange)}
+p {
+  color:var(--muted);
+  font-size:1.05rem;
+  margin-bottom:20px;
+  line-height:1.6;
+  animation:fadeUp 1.2s ease forwards;
+}
+.btn-primary {
+  background:linear-gradient(90deg,var(--primary),#6a11cb);
+  color:#fff;
+  padding:14px 26px;
+  border-radius:12px;
+  border:0;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow:0 8px 28px rgba(11,18,32,0.08);
+  transition:transform .2s, box-shadow .2s;
+  animation:fadeUp 1.4s ease forwards;
+}
+.btn-primary:hover {
+  transform:translateY(-3px);
+  box-shadow:0 12px 32px rgba(11,18,32,0.12);
+}
 
 /* Countdown */
-.count-wrap{margin-top:30px;background:#fff;padding:20px;border-radius:14px;box-shadow:0 12px 30px rgba(11,18,32,0.08);text-align:center}
-.count-grid{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.count-item{min-width:72px;padding:10px 12px;border-radius:10px;background:#fff;border:1px solid #eef5ff}
-.count-value{font-family:"Sora";font-size:1.6rem;color:var(--primary);font-weight:800}
-.count-label{font-size:0.75rem;color:var(--muted)}
+.count-wrap {
+  margin-top:40px;
+  background:#fff;
+  padding:20px;
+  border-radius:14px;
+  box-shadow:0 12px 30px rgba(11,18,32,0.08);
+  text-align:center;
+  animation:fadeUp 1.6s ease forwards;
+}
+.count-grid {
+  display:flex;gap:12px;justify-content:center;flex-wrap:wrap;
+}
+.count-item {
+  min-width:72px;
+  padding:10px 12px;
+  border-radius:10px;
+  background:#fff;
+  border:1px solid #eef5ff;
+  transition:transform .2s, box-shadow .2s;
+}
+.count-item:hover {
+  transform:translateY(-4px);
+  box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+.count-value {
+  font-family:"Sora";font-size:1.6rem;color:var(--primary);font-weight:800;
+}
+.count-label {font-size:0.75rem;color:var(--muted)}
 
 /* Platforms */
-.platforms{display:flex;justify-content:center;align-items:center;gap:12px;font-size:1.4rem;margin-top:30px;color:#111}
-.platforms i{font-size:1.8rem}
-.platforms span{color:var(--muted);font-size:0.95rem;margin-left:10px}
+.platforms {
+  display:flex;justify-content:center;align-items:center;gap:12px;
+  font-size:1.4rem;margin-top:30px;color:#111;
+}
+.platforms i {font-size:1.8rem}
+.platforms span {color:var(--muted);font-size:0.95rem;margin-left:10px}
+
+/* Animations */
+@keyframes fadeUp {
+  from {opacity:0;transform:translateY(20px);}
+  to {opacity:1;transform:translateY(0);}
+}
 
 /* Footer placeholder */
-#footer-placeholder{margin-top:auto}
+#footer-placeholder {margin-top:auto}
 
 /* Responsive */
 @media(max-width:600px){
@@ -91,6 +173,11 @@ p{color:var(--muted);font-size:1.05rem;margin-bottom:20px;line-height:1.6}
 </style>
 </head>
 <body>
+
+<!-- Preloader -->
+<div id="preloader">
+  <img src="logo.png" alt="Loading...">
+</div>
 
 <!-- Banner -->
 <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
@@ -133,6 +220,13 @@ p{color:var(--muted);font-size:1.05rem;margin-bottom:20px;line-height:1.6}
 <div id="footer-placeholder"></div>
 
 <script>
+// Preloader
+window.addEventListener("load",()=>{
+  const pre=document.getElementById("preloader");
+  pre.style.opacity="0";
+  setTimeout(()=>pre.style.display="none",500);
+});
+
 // Load sidebar + footer
 Promise.all([
   fetch("sidebar.html").then(res => res.text()),
@@ -141,13 +235,11 @@ Promise.all([
   document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
   document.getElementById("footer-placeholder").innerHTML = footerHTML;
 
-  // Attach sidebar toggle AFTER sidebar loads
-  const hamburger = document.getElementById("hamburger");
-  const sidebar = document.getElementById("sidebar");
-  if (hamburger && sidebar) {
-    hamburger.addEventListener("click", () => {
-      sidebar.classList.toggle("active");
-    });
+  // Sidebar toggle
+  const hamburger=document.getElementById("hamburger");
+  const sidebar=document.getElementById("sidebar");
+  if(hamburger && sidebar){
+    hamburger.addEventListener("click",()=>sidebar.classList.toggle("active"));
   }
 });
 
