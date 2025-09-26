@@ -22,21 +22,11 @@
 body {
   font-family:"DM Sans",sans-serif;
   color:#fff;
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
   background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);
   overflow-x:hidden;
 }
 
-/* Animations */
-.fade-up {opacity:0;transform:translateY(20px);animation:fadeUp .8s ease forwards;}
-.fade-up.delay-1 {animation-delay:.3s}
-.fade-up.delay-2 {animation-delay:.6s}
-.fade-up.delay-3 {animation-delay:.9s}
-@keyframes fadeUp {to{opacity:1;transform:translateY(0)}}
-
-/* Preloader */
+/* --- Preloader --- */
 #preloader {
   position:fixed;top:0;left:0;width:100%;height:100%;
   background:var(--dark);
@@ -47,7 +37,7 @@ body {
 #preloader img {width:110px;animation:spinPop 1.2s ease-in-out infinite alternate;}
 @keyframes spinPop {from{transform:scale(.8) rotate(0);opacity:.6;}to{transform:scale(1.05) rotate(360deg);opacity:1;}}
 
-/* Banner */
+/* --- Banner --- */
 .notice-banner {
   position:fixed;top:0;left:0;right:0;
   background:var(--primary);color:#fff;
@@ -57,7 +47,7 @@ body {
 .notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 12s linear infinite;}
 @keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-/* Header */
+/* --- Header --- */
 .header {
   position:fixed;top:40px;left:20px;right:20px;
   display:flex;align-items:center;justify-content:space-between;
@@ -67,64 +57,120 @@ body {
 .hamburger {cursor:pointer;display:flex;flex-direction:column;gap:5px}
 .hamburger div {width:26px;height:3px;background:#fff;border-radius:2px}
 
-/* Hero */
+/* --- Hero --- */
 .hero {
   margin-top:140px;
   padding:70px 20px;
   text-align:center;
-  border-radius:16px;
-  background:linear-gradient(180deg,#0a0a0a 0%,#1a1a1a 100%);
-  max-width:1000px;margin:auto;color:#fff;
+  max-width:1000px;
+  margin:auto;
+  color:#fff;
 }
-.tagline {color:var(--orange);font-weight:700;margin-bottom:14px;font-size:.95rem;}
-.hero h1 {font-family:"Sora";font-size:2.3rem;font-weight:800;margin-bottom:18px;}
+.tagline {color:var(--orange);font-weight:700;margin-bottom:14px;font-size:.95rem;animation:fadeIn .8s ease forwards;}
+.hero h1 {
+  font-family:"Sora";
+  font-size:2.5rem;
+  font-weight:800;
+  margin-bottom:18px;
+  animation:zoomSlide 1s ease forwards;
+}
 .hero h1 span {color:var(--orange);}
-.hero p {color:var(--muted-light);font-size:1rem;margin-bottom:26px;line-height:1.6;}
-.btn-primary {
-  background:linear-gradient(90deg,var(--primary),#6a11cb);
-  color:#fff;padding:14px 26px;border-radius:10px;border:0;
-  font-weight:700;cursor:pointer;
-  box-shadow:0 4px 18px rgba(0,0,0,.5);
-  transition:all .3s;
+.hero p {
+  color:var(--muted-light);
+  font-size:1rem;
+  margin-bottom:26px;
+  line-height:1.6;
+  animation:fadeInUp 1s ease .5s forwards;
 }
-.btn-primary:hover {box-shadow:0 6px 24px rgba(0,0,0,.6);}
 
-/* Countdown */
+/* --- Fancy Button (Uiverse) --- */
+.fancy-btn {
+  --glow-color: var(--orange);
+  --glow-spread-color: rgba(249, 115, 22, 0.48);
+  --enhanced-glow-color: #ff8c42;
+  --btn-color: #0a0a0a;
+  border: .25em solid var(--glow-color);
+  padding: 0.75em 2em;
+  color: var(--glow-color);
+  font-size: 1rem;
+  font-weight: 700;
+  background-color: var(--btn-color);
+  border-radius: 12px;
+  outline: none;
+  cursor: pointer;
+  text-shadow: 0 0 .5em var(--glow-color);
+  box-shadow: 0 0 1em .25em var(--glow-color),
+              0 0 4em 1em var(--glow-spread-color),
+              inset 0 0 .75em .25em var(--glow-color);
+  position: relative;
+  transition: all .3s;
+}
+.fancy-btn::after {
+  content:"";
+  position:absolute;
+  top:120%;left:0;width:100%;height:100%;
+  background-color:var(--glow-spread-color);
+  filter:blur(2em);
+  opacity:.7;
+  pointer-events:none;
+  transform:perspective(1.5em) rotateX(35deg) scale(1,.6);
+}
+.fancy-btn:hover {
+  background-color:var(--glow-color);
+  color:var(--btn-color);
+  text-shadow:none;
+}
+
+/* --- Countdown --- */
 .count-wrap {
   margin:60px auto 0;
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(8px);
   padding:26px;border-radius:12px;
   text-align:center;max-width:600px;
+  animation:fadeInUp 1s ease .6s forwards;
 }
 .count-grid {display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 .count-item {
   min-width:80px;padding:12px;
   border-radius:10px;
   background:rgba(255,255,255,0.07);
-  transition:transform .2s;
+  transform:scale(0.8);
+  opacity:0;
+  animation:bounceIn .6s ease forwards;
 }
-.count-item:hover {transform:translateY(-3px);}
+.count-item:nth-child(1){animation-delay:.3s}
+.count-item:nth-child(2){animation-delay:.5s}
+.count-item:nth-child(3){animation-delay:.7s}
+.count-item:nth-child(4){animation-delay:.9s}
 .count-value {font-family:"Sora";font-size:1.6rem;color:var(--primary);font-weight:800;}
 .count-label {font-size:.75rem;color:var(--muted)}
 
-/* Platforms */
+/* --- Platforms --- */
 .platforms {
   display:flex;justify-content:center;align-items:center;gap:12px;
   font-size:1.2rem;margin-top:50px;color:#fff;
+  animation:fadeInUp 1s ease 1s forwards;
 }
 .platforms span {color:var(--muted-light);font-size:.9rem;margin-left:10px}
 .platforms i {font-size:1.6rem;color:var(--primary)}
 
-/* Demo Video */
-.demo-video {margin-top:50px;display:flex;justify-content:center;}
+/* --- Demo Video --- */
+.demo-video {margin-top:50px;display:flex;justify-content:center;animation:zoomIn 1s ease 1.2s forwards;}
 .demo-video video {
   width:100%;max-width:400px;border-radius:16px;
   box-shadow:0 6px 20px rgba(0,0,0,.5);
 }
 
-/* Footer placeholder */
-#footer-placeholder {margin-top:80px}
+/* --- Footer placeholder --- */
+#footer-placeholder {margin-top:80px;}
+
+/* --- Animations --- */
+@keyframes fadeIn {from{opacity:0}to{opacity:1}}
+@keyframes fadeInUp {from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes zoomSlide {from{opacity:0;transform:scale(.8) translateY(20px);}to{opacity:1;transform:scale(1) translateY(0);}}
+@keyframes bounceIn {0%{opacity:0;transform:scale(.3)}50%{opacity:1;transform:scale(1.05)}70%{transform:scale(.9)}100%{transform:scale(1)}}
+@keyframes zoomIn {from{opacity:0;transform:scale(.8);}to{opacity:1;transform:scale(1);}}
 </style>
 </head>
 <body>
@@ -145,15 +191,15 @@ body {
 <div id="sidebar-placeholder"></div>
 
 <!-- Hero -->
-<div class="hero fade-up">
+<div class="hero">
   <div class="tagline">Fair Deals. Real Earnings.</div>
   <h1>Finally, <span>Creators</span> Get Paid Right</h1>
   <p>CloutChain helps YouTube and Instagram creators unlock fair, transparent brand deals.</p>
-  <button class="btn-primary">Join Waitlist</button>
+  <button class="fancy-btn">Join Waitlist</button>
 </div>
 
 <!-- Countdown -->
-<div class="count-wrap fade-up delay-1" id="count-section">
+<div class="count-wrap" id="count-section">
   <div style="font-weight:700;color:var(--muted);margin-bottom:12px">CloutChain Time to Launch</div>
   <div class="count-grid">
     <div class="count-item"><div class="count-value" id="days">00</div><div class="count-label">Days</div></div>
@@ -164,14 +210,14 @@ body {
 </div>
 
 <!-- Platforms -->
-<div class="platforms fade-up delay-2">
+<div class="platforms">
   <i class="fab fa-youtube"></i>
   <i class="fab fa-instagram"></i>
   <span>Currently Supported Platforms</span>
 </div>
 
 <!-- Demo Video -->
-<div class="demo-video fade-up delay-3">
+<div class="demo-video">
   <video autoplay muted loop playsinline controls>
     <source src="videoasset1.mp4" type="video/mp4">
     Your browser does not support the video tag.
@@ -196,7 +242,6 @@ Promise.all([
   document.getElementById("sidebar-placeholder").innerHTML=sidebarHTML;
   document.getElementById("footer-placeholder").innerHTML=footerHTML;
 
-  // Sidebar toggle
   const hamburger=document.getElementById("hamburger");
   const sidebar=document.getElementById("sidebar");
   if(hamburger&&sidebar){
