@@ -5,18 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>CLOUTCHAIN | Launching Soon</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@600;700;800&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
 :root {
   --primary:#0073e6;
+  --orange:#f97316;
   --accent-grad: linear-gradient(135deg,#0073e6,#6a11cb,#ff4d6d);
   --muted:#6b7280;
   --soft:#f6f8fb;
 }
-*{box-sizing:border-box}
-body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"Inter",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column}
 
 /* Notice banner */
 .notice-banner {
@@ -25,10 +27,7 @@ body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:#fff;min-h
   font-size:0.85rem;padding:4px 0;text-align:center;
   z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
 }
-.notice-banner span {
-  display:inline-block;padding-left:100%;
-  animation:scroll-left 14s linear infinite;
-}
+.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
 @keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
 /* Header */
@@ -44,36 +43,41 @@ body{margin:0;font-family:"Inter",sans-serif;color:#0f172a;background:#fff;min-h
 .sidebar a:hover{background:var(--soft);border-left:4px solid var(--primary)}
 
 /* Hero */
-.hero{margin-top:140px;text-align:center;padding:40px 20px}
-.hero h1{font-family:"Outfit";font-weight:800;font-size:2.5rem;margin:0;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.hero p{max-width:700px;margin:12px auto;color:var(--muted)}
-.launch-title{font-family:"Outfit";font-weight:700;font-size:1.3rem;margin:18px 0;color:var(--primary)}
+.hero{margin-top:160px;text-align:center;padding:60px 20px;background:linear-gradient(135deg,#eef6ff,#fdf7ff)}
+.hero h1{font-family:"Clash Display",sans-serif;font-weight:800;font-size:2.8rem;margin-bottom:16px}
+.hero h1 .highlight{color:var(--orange)}
+.hero p{max-width:750px;margin:0 auto 28px;color:var(--muted);font-size:1.05rem}
+.launch-title{font-family:"Clash Display";font-weight:700;font-size:1.4rem;margin:20px 0;color:var(--primary)}
 
 /* Countdown + platforms */
-.count-row{display:flex;gap:22px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:10px}
-.countdown{display:flex;gap:14px}
-.time-box{background:#fff;border-radius:12px;padding:14px 12px;width:80px;box-shadow:0 6px 18px rgba(0,0,0,0.06);text-align:center}
-.time-value{font-family:"Outfit";font-weight:700;color:var(--primary)}
-.time-label{font-size:0.75rem;color:var(--muted)}
+.count-row{display:flex;gap:30px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:20px}
+.countdown{display:flex;gap:18px}
+.time-box{background:#fff;border-radius:14px;padding:16px 14px;width:90px;box-shadow:0 6px 18px rgba(0,0,0,0.06);border:2px solid var(--primary);text-align:center}
+.time-value{font-family:"Clash Display";font-weight:700;font-size:1.6rem;color:var(--primary)}
+.time-label{font-size:0.8rem;color:var(--muted)}
 
-.platforms{display:flex;align-items:center;gap:10px;background:#fff;border-radius:12px;padding:10px 14px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
-.platforms .icons{display:flex;gap:10px}
+.platforms{display:flex;align-items:center;gap:12px;background:#fff;border-radius:14px;padding:12px 16px;box-shadow:0 6px 18px rgba(0,0,0,0.06)}
+.platforms .icons{display:flex;gap:12px}
 .platforms .icons a{font-size:1.4rem;color:#e11d48}
 .platforms .icons a.instagram{color:#833ab4}
-.platforms .label{font-size:0.85rem;color:var(--muted)}
+.platforms .label{font-size:0.9rem;color:#111;font-weight:600}
 
 /* Updates */
-.updates{margin:30px auto;max-width:760px;border-left:5px solid var(--primary);background:#fff;padding:16px 20px;border-radius:10px;box-shadow:0 6px 18px rgba(0,0,0,0.04)}
-.updates h3{margin:0 0 6px;color:var(--primary);font-family:"Outfit"}
+.updates{margin:50px auto;max-width:760px;border-left:5px solid var(--orange);background:#fff;padding:20px 24px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.05)}
+.updates h3{margin:0 0 8px;color:var(--orange);font-family:"Clash Display"}
 
 /* CTA */
-.btn-pill{display:inline-block;padding:10px 20px;border-radius:999px;font-weight:700;color:#fff;text-decoration:none;background:var(--accent-grad)}
+.btn-pill{display:inline-block;padding:12px 28px;border-radius:999px;font-weight:700;color:#fff;text-decoration:none;background:var(--accent-grad);transition:.25s}
+.btn-pill:hover{transform:translateY(-3px);box-shadow:0 6px 16px rgba(0,0,0,0.15)}
+
+/* Divider */
+.divider{height:2px;width:80px;background:var(--accent-grad);margin:50px auto;border-radius:2px}
 
 /* Footer */
-footer{margin-top:auto;padding:20px;background:var(--soft);text-align:center;border-top:1px solid #eee}
-.footer-content{display:flex;flex-direction:column;align-items:center;gap:10px}
-.social-icons{display:flex;gap:14px}
-.social-icons a{font-size:1.2rem;color:#0f172a}
+footer{margin-top:auto;padding:30px;background:var(--soft);text-align:center;border-top:1px solid #eee}
+.footer-content{display:flex;flex-direction:column;align-items:center;gap:12px}
+.social-icons{display:flex;gap:16px}
+.social-icons a{font-size:1.3rem;color:#0f172a}
 .footer-bottom{font-size:0.85rem;color:var(--muted)}
 </style>
 </head>
@@ -93,7 +97,7 @@ footer{margin-top:auto;padding:20px;background:var(--soft);text-align:center;bor
 </div>
 
 <section class="hero">
-  <h1>Creators get paid right — finally.</h1>
+  <h1>Creators get paid <span class="highlight">right</span> — finally.</h1>
   <p>Smart pricing, clean invoices, and tools to help you win brand deals without the guesswork.</p>
 
   <div class="launch-title">CLOUTCHAIN — Time to Launch</div>
@@ -111,16 +115,21 @@ footer{margin-top:auto;padding:20px;background:var(--soft);text-align:center;bor
         <a href="#"><i class="fab fa-youtube"></i></a>
         <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
       </div>
-      <div class="label"><strong>Currently supported:</strong> YouTube & Instagram</div>
+      <div class="label">Currently supported: <span style="color:var(--orange)">YouTube & Instagram</span></div>
     </div>
   </div>
 
-  <a class="btn-pill" href="about.html" style="margin-top:20px;display:inline-block">Learn More</a>
+  <div style="margin-top:30px">
+    <a class="btn-pill" href="about.html">Learn More</a>
+  </div>
 </section>
+
+<div class="divider"></div>
 
 <div class="updates">
   <h3>📢 Latest Update</h3>
-  <p><strong>15 September 2025:</strong> Launch adjusted to 26 September at 12:00 PM IST. <a href="Official_Announcement.pdf" target="_blank">Read Official PDF</a></p>
+  <p><strong>15 September 2025:</strong> Launch adjusted to <span style="color:var(--orange);font-weight:600">27 September 2025 at 2:00 PM IST</span>. 
+  <a href="Official_Announcement.pdf" target="_blank">Read Official PDF</a></p>
 </div>
 
 <footer>
@@ -139,7 +148,7 @@ footer{margin-top:auto;padding:20px;background:var(--soft);text-align:center;bor
 function toggleSidebar(){document.getElementById('sidebar').classList.toggle('active')}
 
 /* Countdown */
-var launchDate = new Date("Sep 26, 2025 12:00:00 GMT+0530").getTime();
+var launchDate = new Date("Sep 27, 2025 14:00:00 GMT+0530").getTime();
 function updateCountdown(){
   var now=new Date().getTime();
   var d=launchDate-now;
