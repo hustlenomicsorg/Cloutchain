@@ -12,6 +12,7 @@
 <style>
 :root {
   --muted:#9ca3af;
+  --muted-light:#cbd5e1;
   --primary:#3b82f6;
   --orange:#f97316;
   --dark:#0a0a0a;
@@ -25,8 +26,33 @@ body {
   display:flex;
   flex-direction:column;
   min-height:100vh;
-  background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 60%,var(--light) 100%);
+  background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 70%,var(--light) 100%);
   overflow-x:hidden;
+  position:relative;
+}
+
+/* Animated background blobs */
+.blob {
+  position:absolute;
+  border-radius:50%;
+  filter:blur(80px);
+  opacity:0.25;
+  animation:float 20s infinite alternate ease-in-out;
+}
+.blob1 {
+  width:350px;height:350px;
+  background:var(--primary);
+  top:-100px;left:-120px;
+}
+.blob2 {
+  width:300px;height:300px;
+  background:var(--orange);
+  bottom:-120px;right:-80px;
+  animation-delay:5s;
+}
+@keyframes float {
+  from {transform:translateY(0) translateX(0);}
+  to {transform:translateY(40px) translateX(30px);}
 }
 
 /* Preloader */
@@ -65,22 +91,24 @@ body {
 
 /* Hero */
 .hero {
-  margin-top:140px;
-  padding:80px 20px;
+  margin-top:160px;
+  padding:100px 20px;
   text-align:center;
   border-radius:20px;
   background:linear-gradient(180deg,#0a0a0a 0%,#1a1a1a 100%);
   color:#fff;
   max-width:1100px;
   margin:auto;
+  position:relative;
+  z-index:1;
 }
-.tagline {color:var(--orange);font-weight:700;margin-bottom:10px;font-size:1rem;}
-.hero h1 {font-family:"Sora";font-size:2.6rem;font-weight:800;margin-bottom:16px;}
+.tagline {color:var(--orange);font-weight:700;margin-bottom:16px;font-size:1rem;}
+.hero h1 {font-family:"Sora";font-size:2.8rem;font-weight:800;margin-bottom:20px;}
 .hero h1 span {color:var(--orange);}
-.hero p {color:var(--muted);font-size:1.1rem;margin-bottom:20px;line-height:1.6;}
+.hero p {color:var(--muted-light);font-size:1.15rem;margin-bottom:28px;line-height:1.7;}
 .btn-primary {
   background:linear-gradient(90deg,var(--primary),#6a11cb);
-  color:#fff;padding:14px 26px;border-radius:12px;border:0;
+  color:#fff;padding:16px 30px;border-radius:12px;border:0;
   font-weight:700;cursor:pointer;
   box-shadow:0 8px 28px rgba(0,0,0,0.6);
   transition:all .3s;
@@ -89,43 +117,56 @@ body {
 
 /* Countdown */
 .count-wrap {
-  margin:40px auto 0;
+  margin:80px auto 0;
   background:rgba(255,255,255,0.05);
   backdrop-filter:blur(10px);
-  padding:20px;border-radius:14px;
-  text-align:center;max-width:600px;
+  padding:30px;border-radius:14px;
+  text-align:center;max-width:650px;
 }
-.count-grid {display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.count-grid {display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
 .count-item {
-  min-width:72px;padding:10px 12px;
-  border-radius:10px;
+  min-width:90px;padding:14px 16px;
+  border-radius:12px;
   background:rgba(255,255,255,0.08);
   transition:transform .2s, box-shadow .2s;
 }
 .count-item:hover {transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.4);}
-.count-value {font-family:"Sora";font-size:1.6rem;color:var(--primary);font-weight:800;}
-.count-label {font-size:0.75rem;color:var(--muted)}
+.count-value {font-family:"Sora";font-size:1.8rem;color:var(--primary);font-weight:800;}
+.count-label {font-size:0.8rem;color:var(--muted)}
 
 /* Platforms */
 .platforms {
-  display:flex;justify-content:center;align-items:center;gap:12px;
-  font-size:1.4rem;margin-top:30px;color:#fff;
+  display:flex;justify-content:center;align-items:center;gap:14px;
+  font-size:1.4rem;margin-top:60px;color:#fff;
 }
-.platforms span {color:var(--muted);font-size:0.95rem;margin-left:10px}
-.platforms i {font-size:1.8rem;color:var(--primary)}
+.platforms span {color:var(--muted-light);font-size:1rem;margin-left:12px}
+.platforms i {font-size:1.9rem;color:var(--primary)}
 
 /* Demo Video */
-.demo-video {margin-top:40px;display:flex;justify-content:center;}
+.demo-video {margin-top:60px;display:flex;justify-content:center;}
 .demo-video video {
-  width:100%;max-width:400px;border-radius:20px;
+  width:100%;max-width:420px;border-radius:20px;
   box-shadow:0 12px 28px rgba(0,0,0,0.6);
 }
 
-/* Footer placeholder */
-#footer-placeholder {margin-top:auto;padding-top:40px;}
+/* Footer */
+#footer-placeholder {
+  margin-top:100px;
+  background:#000;
+  color:#9ca3af;
+  text-align:center;
+  padding:30px 20px;
+  border-top:1px solid rgba(255,255,255,0.08);
+}
+#footer-placeholder a {color:#fff;text-decoration:none;margin:0 10px;font-size:0.9rem;}
+#footer-placeholder a:hover {color:var(--orange);}
 </style>
 </head>
 <body>
+
+<!-- Background blobs -->
+<div class="blob blob1"></div>
+<div class="blob blob2"></div>
 
 <!-- Preloader -->
 <div id="preloader"><img src="logo.png" alt="Loading..."></div>
@@ -152,7 +193,7 @@ body {
 
 <!-- Countdown -->
 <div class="count-wrap" id="count-section">
-  <div style="font-weight:700;color:var(--muted);margin-bottom:8px">CloutChain Time to Launch</div>
+  <div style="font-weight:700;color:var(--muted);margin-bottom:12px">CloutChain Time to Launch</div>
   <div class="count-grid">
     <div class="count-item"><div class="count-value" id="days">00</div><div class="count-label">Days</div></div>
     <div class="count-item"><div class="count-value" id="hours">00</div><div class="count-label">Hours</div></div>
@@ -176,8 +217,11 @@ body {
   </video>
 </div>
 
-<!-- Footer placeholder -->
-<div id="footer-placeholder"></div>
+<!-- Footer -->
+<div id="footer-placeholder">
+  <p>&copy; 2025 CloutChain. All rights reserved.</p>
+  <div><a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a></div>
+</div>
 
 <script>
 // Preloader
@@ -186,13 +230,11 @@ window.addEventListener("load",()=>{
   pre.style.opacity="0";setTimeout(()=>pre.style.display="none",600);
 });
 
-// Sidebar + footer loader
+// Sidebar loader
 Promise.all([
-  fetch("sidebar.html").then(res => res.text()),
-  fetch("footer.html").then(res => res.text())
-]).then(([sidebarHTML, footerHTML])=>{
+  fetch("sidebar.html").then(res => res.text())
+]).then(([sidebarHTML])=>{
   document.getElementById("sidebar-placeholder").innerHTML=sidebarHTML;
-  document.getElementById("footer-placeholder").innerHTML=footerHTML;
   const hamburger=document.getElementById("hamburger");
   const sidebar=document.getElementById("sidebar");
   if(hamburger&&sidebar){
