@@ -47,6 +47,29 @@ body{
 .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
 .hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
 
+/* Decorative shapes */
+.bg-shape{
+  position:absolute;
+  border-radius:50%;
+  opacity:0.15;
+  z-index:0;
+}
+.shape1{
+  width:200px;height:200px;
+  background:linear-gradient(135deg,var(--primary),var(--orange));
+  top:-60px;left:-60px;
+}
+.shape2{
+  width:150px;height:150px;
+  background:linear-gradient(135deg,var(--orange),#ffaf7b);
+  bottom:100px;right:-50px;
+}
+.shape3{
+  width:120px;height:120px;border-radius:20px;
+  background:linear-gradient(135deg,var(--primary),#60a5fa);
+  top:300px;right:20%;
+}
+
 /* Hero */
 .hero{
   margin-top:160px;
@@ -60,9 +83,9 @@ body{
   position:relative;
   overflow:hidden;
 }
-.hero h1{font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:16px}
+.hero h1{font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:16px;position:relative;z-index:1}
 .hero h1 span{color:var(--orange)}
-.hero p{color:var(--muted);font-size:1.05rem;line-height:1.6;}
+.hero p{color:var(--muted);font-size:1.05rem;line-height:1.6;position:relative;z-index:1}
 
 /* Sections */
 section{
@@ -73,6 +96,8 @@ section{
   opacity:0;
   transform:translateY(40px);
   transition:all .6s ease;
+  position:relative;
+  z-index:1;
 }
 section.visible{opacity:1;transform:translateY(0);}
 section h2{font-family:"Sora";font-size:1.8rem;font-weight:700;margin-bottom:16px;position:relative;display:inline-block}
@@ -83,17 +108,6 @@ section h2::after{
   width:60%;height:3px;background:var(--orange);border-radius:2px;
 }
 section p{color:var(--muted);font-size:1.05rem;line-height:1.7}
-
-/* Rocket */
-.rocket-container{
-  position:fixed;bottom:-150px;right:20px;
-  width:80px;height:80px;z-index:100;
-  pointer-events:none;
-}
-.rocket{
-  width:100%;
-  transition:transform .2s linear;
-}
 
 /* Responsive */
 @media(max-width:600px){
@@ -118,6 +132,9 @@ section p{color:var(--muted);font-size:1.05rem;line-height:1.7}
 
 <!-- Hero -->
 <div class="hero">
+  <div class="bg-shape shape1"></div>
+  <div class="bg-shape shape2"></div>
+  <div class="bg-shape shape3"></div>
   <h1>About <span>CloutChain</span></h1>
   <p>Our mission is to revolutionize creator-brand collaborations by making deals fair, transparent, and accessible for everyone.</p>
 </div>
@@ -137,11 +154,6 @@ section p{color:var(--muted);font-size:1.05rem;line-height:1.7}
   <h2>What <span>We Do</span></h2>
   <p>We provide creators with tools to connect directly with brands, negotiate fairly, and unlock premium opportunities. Our platform ensures payments are secure and collaborations are smooth.</p>
 </section>
-
-<!-- Rocket -->
-<div class="rocket-container">
-  <img src="https://cdn-icons-png.flaticon.com/512/3213/3213445.png" alt="Rocket" class="rocket">
-</div>
 
 <!-- Footer placeholder -->
 <div id="footer-placeholder"></div>
@@ -171,13 +183,6 @@ window.addEventListener("scroll",()=>{
     const top=sec.getBoundingClientRect().top;
     if(top<trigger) sec.classList.add("visible");
   });
-});
-
-// Rocket scroll animation
-const rocket=document.querySelector(".rocket-container");
-window.addEventListener("scroll",()=>{
-  const scrollY=window.scrollY;
-  rocket.style.transform=`translateY(${-scrollY*0.3}px)`;
 });
 </script>
 </body>
