@@ -13,9 +13,10 @@
 :root {
   --primary:#0073e6;
   --orange:#f97316;
-  --accent-grad: linear-gradient(135deg,#0073e6,#6a11cb,#ff4d6d);
   --muted:#6b7280;
   --soft:#f6f8fb;
+  --yt:#ff0000;
+  --ig:#c13584;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:"DM Sans",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column}
@@ -43,52 +44,29 @@ body{font-family:"DM Sans",sans-serif;color:#0f172a;background:#fff;min-height:1
 .sidebar a:hover{background:var(--soft);border-left:4px solid var(--primary)}
 
 /* Main */
-main{margin-top:160px;padding:40px 20px;max-width:900px;margin-left:auto;margin-right:auto;text-align:center}
-h1,h2{font-family:"Sora",sans-serif;margin-bottom:14px;color:#0f172a}
-h1{font-size:2.6rem;font-weight:800}
-h2{font-size:1.8rem;font-weight:700;color:var(--primary)}
-p{color:var(--muted);line-height:1.6;font-size:1.05rem;margin-bottom:18px}
+main{margin-top:160px;padding:40px 20px;max-width:1000px;margin-left:auto;margin-right:auto;text-align:center}
+h1{font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:14px}
+p{color:var(--muted);font-size:1.05rem;line-height:1.6;margin-bottom:28px}
 
-/* Pricing Section */
-.pricing-section{background:linear-gradient(135deg,#f9fbff,#eef3ff);padding:40px 20px;border-radius:20px;box-shadow:0 8px 22px rgba(0,0,0,0.05);margin-bottom:40px}
-.pricing{display:flex;flex-direction:column;gap:28px;margin-top:30px}
-.plan {
-  position:relative;background:#fff;border-radius:18px;padding:28px;
-  box-shadow:0 8px 28px rgba(0,0,0,0.08);
-  transition:.25s;opacity:0;transform:translateY(40px);
-  animation:fadeUp .8s forwards;
-}
-.plan:nth-child(2){animation-delay:.2s}
-@keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
-.plan:hover{transform:translateY(-6px);box-shadow:0 12px 32px rgba(0,0,0,0.12)}
-.plan h3{font-family:"Sora";margin-top:0;font-size:1.4rem}
-.price{font-size:2rem;font-weight:800;margin:14px 0;background:var(--accent-grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.plan ul{list-style:none;padding:0;margin:0;text-align:left}
-.plan ul li{margin:12px 0;font-size:1rem;font-weight:600;display:flex;align-items:center;gap:10px}
-.plan ul li .icon{font-size:1.1rem;color:#111}
+/* Cards */
+.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
+.card{background:#fff;padding:30px;border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,0.08);transition:.25s;position:relative;text-align:left}
+.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
+.card i{font-size:2rem;margin-bottom:14px}
+.card h2{font-family:"Sora";font-size:1.5rem;margin-bottom:10px}
+.card ul{list-style:none;padding:0;margin:0}
+.card ul li{margin:10px 0;font-size:0.95rem;color:#333;display:flex;align-items:center;gap:8px}
+.card ul li i{font-size:0.9rem}
+.btn{display:inline-block;margin-top:18px;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;color:#fff;font-family:"Sora";transition:.25s}
+.btn:hover{opacity:.9}
 
-/* Pro highlight */
-.plan.pro{border:2px solid transparent;background-clip:padding-box,border-box;background-origin:border-box;background-image:linear-gradient(#fff,#fff),var(--accent-grad)}
-.ribbon{
-  position:absolute;top:14px;right:-34px;transform:rotate(45deg);
-  background:var(--accent-grad);color:#fff;font-size:0.75rem;
-  padding:4px 40px;font-weight:700;box-shadow:0 3px 8px rgba(0,0,0,0.2)
-}
+/* YouTube styling */
+.card.yt i{color:var(--yt)}
+.card.yt .btn{background:var(--yt)}
 
-/* Guidelines */
-.guidelines{background:#fff;border-left:5px solid var(--primary);padding:18px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,0.06);margin-top:20px;text-align:left}
-
-/* Onboard Card */
-.onboard-card{background:#fff;padding:24px;border-radius:12px;box-shadow:0 8px 22px rgba(0,0,0,0.06);margin-top:30px}
-.blink{color:red;font-weight:700;animation:blink 1s step-start infinite}
-@keyframes blink{50%{opacity:0}}
-
-/* Footer */
-footer{margin-top:auto;padding:30px;background:var(--soft);text-align:center;border-top:1px solid #eee}
-.footer-content{display:flex;flex-direction:column;align-items:center;gap:12px}
-.social-icons{display:flex;gap:16px}
-.social-icons a{font-size:1.3rem;color:#0f172a}
-.footer-bottom{font-size:0.85rem;color:var(--muted)}
+/* Instagram styling */
+.card.ig i{color:var(--ig)}
+.card.ig .btn{background:var(--ig)}
 </style>
 </head>
 <body>
@@ -107,57 +85,46 @@ footer{margin-top:auto;padding:30px;background:var(--soft);text-align:center;bor
 </div>
 
 <main>
-  <section class="pricing-section">
-    <h1>Pricing</h1>
-    <div class="pricing">
-      <!-- Free Plan -->
-      <div class="plan">
-        <h3>Free Plan</h3>
-        <div class="price">₹0</div>
-        <ul>
-          <li><i class="fas fa-times-circle icon"></i>No guarantee of brand deals</li>
-          <li><i class="fas fa-times-circle icon"></i>High commission cut (up to 35%)</li>
-          <li><i class="fas fa-times-circle icon"></i>No premium deals</li>
-          <li><i class="fas fa-times-circle icon"></i>Partner badge locked</li>
-        </ul>
-      </div>
+  <h1>Creator Onboarding</h1>
+  <p>Select your platform to begin onboarding with CloutChain.  
+  Each platform has tailored requirements, payments, and opportunities.</p>
 
-      <!-- Pro Plan -->
-      <div class="plan pro">
-        <div class="ribbon">Most Popular</div>
-        <h3>Pro Plan</h3>
-        <div class="price">₹49</div>
-        <p style="margin-top:-8px;font-size:0.85rem;color:var(--muted)">One-time • Refunded after 180 days</p>
-        <ul>
-          <li><i class="fas fa-check-circle icon"></i>1+ brand deal guaranteed in 150 days</li>
-          <li><i class="fas fa-check-circle icon"></i>0% commission on first brand deal</li>
-          <li><i class="fas fa-check-circle icon"></i>Access to premium deals</li>
-          <li><i class="fas fa-check-circle icon"></i>Partner badge unlocked</li>
-        </ul>
-      </div>
+  <div class="card-grid">
+    <!-- YouTube -->
+    <div class="card yt">
+      <i class="fab fa-youtube"></i>
+      <h2>YouTube Creators</h2>
+      <ul>
+        <li><i class="fas fa-check"></i> Minimum 3,000 subscribers</li>
+        <li><i class="fas fa-check"></i> Campaigns tailored to your niche</li>
+        <li><i class="fas fa-check"></i> Transparent revenue sharing</li>
+      </ul>
+      <a href="onboarding-youtube.html" class="btn">Onboard as YouTube Creator</a>
     </div>
-  </section>
 
-  <h2>Onboarding Guidelines</h2>
-  <div class="guidelines">
-    <p>To maintain professionalism, CloutChain does not allow onboarding of channels with fewer than <strong>3,000 subscribers</strong> unless exceptional quality or engagement metrics exist.</p>
-  </div>
-
-  <div class="onboard-card">
-    <h2><i class="fas fa-lock"></i> Onboarding Form</h2>
-    <p class="blink">DELAYED – Opening Soon</p>
+    <!-- Instagram -->
+    <div class="card ig">
+      <i class="fab fa-instagram"></i>
+      <h2>Instagram Creators</h2>
+      <ul>
+        <li><i class="fas fa-check"></i> Minimum 5,000 followers</li>
+        <li><i class="fas fa-check"></i> Premium deals for reels & stories</li>
+        <li><i class="fas fa-check"></i> Secure payment system</li>
+      </ul>
+      <a href="onboarding-instagram.html" class="btn">Onboard as Instagram Creator</a>
+    </div>
   </div>
 </main>
 
-<footer>
-  <div class="footer-content">
-    <div class="social-icons">
+<footer style="margin-top:auto;padding:30px;background:var(--soft);text-align:center;border-top:1px solid #eee">
+  <div class="footer-content" style="display:flex;flex-direction:column;align-items:center;gap:12px">
+    <div class="social-icons" style="display:flex;gap:16px">
       <a href="#"><i class="fab fa-youtube"></i></a>
       <a href="#"><i class="fab fa-instagram"></i></a>
       <a href="#"><i class="fab fa-discord"></i></a>
       <a href="#"><i class="fab fa-x-twitter"></i></a>
     </div>
-    <div class="footer-bottom">© 2025–2026 CLOUTCHAIN. All rights reserved.</div>
+    <div class="footer-bottom" style="font-size:0.85rem;color:var(--muted)">© 2025–2026 CLOUTCHAIN. All rights reserved.</div>
   </div>
 </footer>
 
