@@ -17,7 +17,6 @@
   --orange:#f97316;
   --dark:#0a0a0a;
   --dark2:#1a1a1a;
-  --light:#e5e5e5;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 body {
@@ -26,22 +25,16 @@ body {
   display:flex;
   flex-direction:column;
   min-height:100vh;
-  background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 70%,var(--light) 100%);
+  background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);
   overflow-x:hidden;
-  position:relative;
 }
 
-/* Animated background blobs */
-.blob {
-  position:absolute;
-  border-radius:50%;
-  filter:blur(80px);
-  opacity:0.25;
-  animation:float 20s infinite alternate ease-in-out;
-}
-.blob1 {width:350px;height:350px;background:var(--primary);top:-100px;left:-120px;}
-.blob2 {width:300px;height:300px;background:var(--orange);bottom:-120px;right:-80px;animation-delay:5s;}
-@keyframes float {from{transform:translateY(0) translateX(0);}to{transform:translateY(40px) translateX(30px);}}
+/* Animations */
+.fade-up {opacity:0;transform:translateY(20px);animation:fadeUp .8s ease forwards;}
+.fade-up.delay-1 {animation-delay:.3s}
+.fade-up.delay-2 {animation-delay:.6s}
+.fade-up.delay-3 {animation-delay:.9s}
+@keyframes fadeUp {to{opacity:1;transform:translateY(0)}}
 
 /* Preloader */
 #preloader {
@@ -51,17 +44,17 @@ body {
   z-index:2000;
   transition:opacity .6s ease;
 }
-#preloader img {width:120px;animation:spinPop 1.4s ease-in-out infinite alternate;}
-@keyframes spinPop {from{transform:scale(0.8) rotate(0deg);opacity:0.6;}to{transform:scale(1.1) rotate(360deg);opacity:1;}}
+#preloader img {width:110px;animation:spinPop 1.2s ease-in-out infinite alternate;}
+@keyframes spinPop {from{transform:scale(.8) rotate(0);opacity:.6;}to{transform:scale(1.05) rotate(360deg);opacity:1;}}
 
 /* Banner */
 .notice-banner {
   position:fixed;top:0;left:0;right:0;
   background:var(--primary);color:#fff;
-  font-size:0.85rem;padding:6px 0;text-align:center;
+  font-size:.8rem;padding:6px 0;text-align:center;
   z-index:1500;overflow:hidden;white-space:nowrap;
 }
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
+.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 12s linear infinite;}
 @keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
 /* Header */
@@ -70,79 +63,71 @@ body {
   display:flex;align-items:center;justify-content:space-between;
   z-index:1400;
 }
-.logo img {height:64px}
-.hamburger {cursor:pointer;display:flex;flex-direction:column;gap:6px}
-.hamburger div {width:30px;height:3px;background:#fff;border-radius:3px}
+.logo img {height:54px}
+.hamburger {cursor:pointer;display:flex;flex-direction:column;gap:5px}
+.hamburger div {width:26px;height:3px;background:#fff;border-radius:2px}
 
 /* Hero */
 .hero {
-  margin-top:160px;
-  padding:100px 20px;
+  margin-top:140px;
+  padding:70px 20px;
   text-align:center;
-  border-radius:20px;
+  border-radius:16px;
   background:linear-gradient(180deg,#0a0a0a 0%,#1a1a1a 100%);
-  color:#fff;
-  max-width:1100px;
-  margin:auto;
-  position:relative;
-  z-index:1;
+  max-width:1000px;margin:auto;color:#fff;
 }
-.tagline {color:var(--orange);font-weight:700;margin-bottom:16px;font-size:1rem;}
-.hero h1 {font-family:"Sora";font-size:2.8rem;font-weight:800;margin-bottom:20px;}
+.tagline {color:var(--orange);font-weight:700;margin-bottom:14px;font-size:.95rem;}
+.hero h1 {font-family:"Sora";font-size:2.3rem;font-weight:800;margin-bottom:18px;}
 .hero h1 span {color:var(--orange);}
-.hero p {color:var(--muted-light);font-size:1.15rem;margin-bottom:28px;line-height:1.7;}
+.hero p {color:var(--muted-light);font-size:1rem;margin-bottom:26px;line-height:1.6;}
 .btn-primary {
   background:linear-gradient(90deg,var(--primary),#6a11cb);
-  color:#fff;padding:16px 30px;border-radius:12px;border:0;
+  color:#fff;padding:14px 26px;border-radius:10px;border:0;
   font-weight:700;cursor:pointer;
-  box-shadow:0 8px 28px rgba(0,0,0,0.6);
+  box-shadow:0 4px 18px rgba(0,0,0,.5);
   transition:all .3s;
 }
-.btn-primary:hover {box-shadow:0 12px 40px rgba(0,0,0,0.8);}
+.btn-primary:hover {box-shadow:0 6px 24px rgba(0,0,0,.6);}
 
 /* Countdown */
 .count-wrap {
-  margin:80px auto 0;
+  margin:60px auto 0;
   background:rgba(255,255,255,0.05);
-  backdrop-filter:blur(10px);
-  padding:30px;border-radius:14px;
-  text-align:center;max-width:650px;
+  backdrop-filter:blur(8px);
+  padding:26px;border-radius:12px;
+  text-align:center;max-width:600px;
 }
-.count-grid {display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+.count-grid {display:flex;gap:14px;justify-content:center;flex-wrap:wrap;}
 .count-item {
-  min-width:90px;padding:14px 16px;
-  border-radius:12px;
-  background:rgba(255,255,255,0.08);
-  transition:transform .2s, box-shadow .2s;
+  min-width:80px;padding:12px;
+  border-radius:10px;
+  background:rgba(255,255,255,0.07);
+  transition:transform .2s;
 }
-.count-item:hover {transform:translateY(-4px);box-shadow:0 8px 20px rgba(0,0,0,0.4);}
-.count-value {font-family:"Sora";font-size:1.8rem;color:var(--primary);font-weight:800;}
-.count-label {font-size:0.8rem;color:var(--muted)}
+.count-item:hover {transform:translateY(-3px);}
+.count-value {font-family:"Sora";font-size:1.6rem;color:var(--primary);font-weight:800;}
+.count-label {font-size:.75rem;color:var(--muted)}
 
 /* Platforms */
 .platforms {
-  display:flex;justify-content:center;align-items:center;gap:14px;
-  font-size:1.4rem;margin-top:60px;color:#fff;
+  display:flex;justify-content:center;align-items:center;gap:12px;
+  font-size:1.2rem;margin-top:50px;color:#fff;
 }
-.platforms span {color:var(--muted-light);font-size:1rem;margin-left:12px}
-.platforms i {font-size:1.9rem;color:var(--primary)}
+.platforms span {color:var(--muted-light);font-size:.9rem;margin-left:10px}
+.platforms i {font-size:1.6rem;color:var(--primary)}
 
 /* Demo Video */
-.demo-video {margin-top:60px;display:flex;justify-content:center;}
+.demo-video {margin-top:50px;display:flex;justify-content:center;}
 .demo-video video {
-  width:100%;max-width:420px;border-radius:20px;
-  box-shadow:0 12px 28px rgba(0,0,0,0.6);
+  width:100%;max-width:400px;border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);
 }
 
 /* Footer placeholder */
-#footer-placeholder {margin-top:100px}
+#footer-placeholder {margin-top:80px}
 </style>
 </head>
 <body>
-
-<!-- Background blobs -->
-<div class="blob blob1"></div>
-<div class="blob blob2"></div>
 
 <!-- Preloader -->
 <div id="preloader"><img src="logo.png" alt="Loading..."></div>
@@ -160,7 +145,7 @@ body {
 <div id="sidebar-placeholder"></div>
 
 <!-- Hero -->
-<div class="hero">
+<div class="hero fade-up">
   <div class="tagline">Fair Deals. Real Earnings.</div>
   <h1>Finally, <span>Creators</span> Get Paid Right</h1>
   <p>CloutChain helps YouTube and Instagram creators unlock fair, transparent brand deals.</p>
@@ -168,7 +153,7 @@ body {
 </div>
 
 <!-- Countdown -->
-<div class="count-wrap" id="count-section">
+<div class="count-wrap fade-up delay-1" id="count-section">
   <div style="font-weight:700;color:var(--muted);margin-bottom:12px">CloutChain Time to Launch</div>
   <div class="count-grid">
     <div class="count-item"><div class="count-value" id="days">00</div><div class="count-label">Days</div></div>
@@ -179,14 +164,14 @@ body {
 </div>
 
 <!-- Platforms -->
-<div class="platforms">
+<div class="platforms fade-up delay-2">
   <i class="fab fa-youtube"></i>
   <i class="fab fa-instagram"></i>
   <span>Currently Supported Platforms</span>
 </div>
 
 <!-- Demo Video -->
-<div class="demo-video">
+<div class="demo-video fade-up delay-3">
   <video autoplay muted loop playsinline controls>
     <source src="videoasset1.mp4" type="video/mp4">
     Your browser does not support the video tag.
