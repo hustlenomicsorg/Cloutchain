@@ -13,6 +13,7 @@
 :root {
   --primary:#3b82f6;
   --orange:#f97316;
+  --pink:#ec4899;
   --muted:#9ca3af;
   --dark:#0a0a0a;
   --dark-2:#121212;
@@ -20,6 +21,7 @@
 
 /* Reset */
 *{margin:0;padding:0;box-sizing:border-box}
+html,body{overflow-x:hidden}
 body {
   font-family:"DM Sans",sans-serif;
   background:linear-gradient(180deg,var(--dark) 0%,var(--dark-2) 100%);
@@ -27,20 +29,21 @@ body {
   display:flex;
   flex-direction:column;
   min-height:100vh;
-  overflow-x:hidden;
   text-align:center;
+  line-height:1.6;
 }
 
-/* Background glow shapes */
+/* Background glow */
 .bg-shape {
   position:absolute;
   border-radius:50%;
-  filter:blur(120px);
+  filter:blur(140px);
   opacity:0.15;
   z-index:0;
 }
-.bg-shape.one {width:420px;height:420px;background:var(--primary);top:-120px;left:-100px;}
-.bg-shape.two {width:320px;height:320px;background:var(--orange);bottom:-120px;right:-80px;}
+.bg-shape.one {width:440px;height:440px;background:var(--primary);top:-120px;left:-100px;}
+.bg-shape.two {width:360px;height:360px;background:var(--orange);bottom:-120px;right:-80px;}
+.bg-shape.three {width:280px;height:280px;background:var(--pink);top:40%;left:50%;transform:translateX(-50%);}
 
 /* Notice banner */
 .notice-banner {
@@ -62,9 +65,9 @@ body {
 .hamburger {cursor:pointer;display:flex;flex-direction:column;gap:6px}
 .hamburger div {width:28px;height:3px;background:#fff;border-radius:3px}
 
-/* Main */
+/* Sections */
 main {
-  margin-top:200px;
+  margin-top:180px;
   padding:20px;
   max-width:900px;
   margin-left:auto;
@@ -72,15 +75,20 @@ main {
   position:relative;
   z-index:10;
 }
+section {margin-bottom:70px}
+
+/* Title */
 h1 {
   font-family:"Sora";
-  font-size:3rem;
+  font-size:3.2rem;
   font-weight:900;
   margin-bottom:20px;
-  color:#fff;
   text-transform:uppercase;
-  filter:blur(1.5px) brightness(1.1);
   letter-spacing:3px;
+  filter:blur(1.6px) brightness(1.1);
+  background:linear-gradient(90deg,var(--orange),var(--primary),var(--pink));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
   animation:fadeIn 1.4s ease forwards;
 }
 .coming-soon {
@@ -94,30 +102,65 @@ h1 {
   font-weight:700;
   animation:pulse 2s infinite;
 }
-p {
-  font-size:1.2rem;
-  color:var(--muted);
-  line-height:1.6;
-  animation:fadeUp 1.6s ease both;
+
+/* Features */
+.features {
+  display:grid;
+  gap:28px;
 }
-p strong {
-  color:var(--orange);
-  font-weight:700;
+.feature {
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  padding:24px;
+  border-radius:16px;
+  box-shadow:0 6px 20px rgba(0,0,0,0.4);
+  animation:fadeUp 1s ease both;
 }
+.feature i {
+  font-size:2rem;
+  margin-bottom:12px;
+  background:linear-gradient(90deg,var(--primary),var(--orange));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+}
+.feature h3 {
+  font-size:1.3rem;
+  margin-bottom:10px;
+  font-family:"Sora";
+}
+.feature p {
+  font-size:1rem;
+  color:#ccc;
+}
+
+/* Call-to-action */
+.cta {
+  margin-top:40px;
+}
+.cta h2 {
+  font-family:"Sora";
+  font-size:2rem;
+  background:linear-gradient(90deg,var(--primary),var(--orange));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  margin-bottom:16px;
+}
+.cta p {color:var(--muted)}
+.cta span {color:var(--orange);font-weight:700}
 
 /* Animations */
 @keyframes fadeIn {from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
 @keyframes fadeUp {from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
 @keyframes pulse {
   0%{transform:scale(1);box-shadow:0 0 0 0 rgba(249,115,22,0.6)}
-  70%{transform:scale(1.05);box-shadow:0 0 0 12px rgba(249,115,22,0)}
+  70%{transform:scale(1.05);box-shadow:0 0 0 16px rgba(249,115,22,0)}
   100%{transform:scale(1);box-shadow:0 0 0 0 rgba(249,115,22,0)}
 }
 
 /* Responsive */
 @media(max-width:768px){
-  h1{font-size:2.2rem}
-  p{font-size:1rem}
+  h1{font-size:2.3rem;letter-spacing:1px}
+  .feature{padding:18px}
   .logo img{height:56px}
 }
 </style>
@@ -127,6 +170,7 @@ p strong {
 <!-- Background shapes -->
 <div class="bg-shape one"></div>
 <div class="bg-shape two"></div>
+<div class="bg-shape three"></div>
 
 <!-- Notice banner -->
 <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
@@ -140,18 +184,48 @@ p strong {
 <!-- Sidebar placeholder -->
 <div id="sidebar-placeholder"></div>
 
-<!-- Main Content -->
+<!-- Main -->
 <main>
-  <div class="coming-soon">COMING SOON</div>
-  <h1>CC ADVANCED AI</h1>
-  <p>
-    We’re building a <strong>next-generation AI</strong> tool that will 
-    <strong>automate your growth</strong> — generating tags, descriptions, 
-    analytics, and smart suggestions for your channel.  
-    <br><br>
-    Powered by <strong>CloutChain Advanced AI</strong>, this upcoming project will help creators 
-    scale faster — <strong>100% free of cost</strong>.
-  </p>
+  <!-- Title -->
+  <section>
+    <div class="coming-soon">COMING SOON</div>
+    <h1>CC ADVANCED AI</h1>
+    <p style="color:#bbb;font-size:1.1rem;">
+      The future of <span style="color:var(--orange);font-weight:700">creator growth</span> is almost here.  
+      Our advanced AI will transform the way you <span style="color:var(--primary);font-weight:700">grow</span>,  
+      <span style="color:var(--pink);font-weight:700">analyze</span>, and <span style="color:var(--orange);font-weight:700">monetize</span> your content.  
+    </p>
+  </section>
+
+  <!-- Features -->
+  <section class="features">
+    <div class="feature">
+      <i class="fas fa-tags"></i>
+      <h3>Auto Tag Generator</h3>
+      <p>Generate smart & trending tags instantly tailored for your videos.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-file-alt"></i>
+      <h3>AI Descriptions</h3>
+      <p>Create optimized descriptions that boost SEO & discoverability.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-chart-line"></i>
+      <h3>Analytics Tracker</h3>
+      <p>Track growth with powerful analytics and visual insights in one place.</p>
+    </div>
+    <div class="feature">
+      <i class="fas fa-rocket"></i>
+      <h3>Growth Companion</h3>
+      <p>Your personal AI growth partner—helping you scale your channel for free.</p>
+    </div>
+  </section>
+
+  <!-- Call-to-action -->
+  <section class="cta">
+    <h2>STAY READY</h2>
+    <p>CC Advanced AI will launch <span>soon</span>. Be part of the <span>next generation</span> of creators 🚀</p>
+  </section>
 </main>
 
 <!-- Footer placeholder -->
