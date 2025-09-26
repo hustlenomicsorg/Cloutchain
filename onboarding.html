@@ -5,100 +5,167 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>CLOUTCHAIN | Onboarding</title>
 
+<!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
 <style>
-:root{--primary:#0073e6;--orange:#f97316;--muted:#6b7280;--soft:#f6f8fb;--yt:#ff0000;--ig:#c13584}
+:root {
+  --primary:#0073e6;
+  --orange:#f97316;
+  --muted:#6b7280;
+  --soft:#f6f8fb;
+}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"DM Sans",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column}
-.notice-banner{position:fixed;top:0;left:0;right:0;background:var(--primary);color:#fff;font-size:0.85rem;padding:4px 0;text-align:center;z-index:1200;overflow:hidden;white-space:nowrap}
-.notice-banner span{display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite}
+body{font-family:"DM Sans",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+
+/* Notice banner */
+.notice-banner {
+  position:fixed;top:0;left:0;right:0;
+  background:var(--primary);color:#fff;
+  font-size:0.85rem;padding:4px 0;text-align:center;
+  z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
+}
+.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
 @keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+
+/* Header */
 .header{position:fixed;left:20px;right:20px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:1100}
 .logo img{height:52px}
 .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
 .hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
-.sidebar{position:fixed;top:0;right:-300px;width:280px;height:100%;background:#fff;box-shadow:-8px 0 30px rgba(0,0,0,0.1);padding-top:110px;transition:right .3s;z-index:1150}
-.sidebar.active{right:0}
-.sidebar a{display:block;padding:14px 22px;text-decoration:none;color:inherit;font-weight:600}
-.sidebar a:hover{background:var(--soft);border-left:4px solid var(--primary)}
 
+/* Sidebar */
+.sidebar {
+  position:fixed;top:0;right:-300px;
+  width:280px;height:100%;background:#fff;
+  box-shadow:-8px 0 30px rgba(0,0,0,0.1);
+  padding-top:110px;transition:right .3s;z-index:1150
+}
+.sidebar.active { right:0 }
+.sidebar a {
+  display:block;padding:14px 22px;text-decoration:none;
+  color:inherit;font-weight:600
+}
+.sidebar a:hover {
+  background:var(--soft);border-left:4px solid var(--primary)
+}
+
+/* Main */
 main{margin-top:160px;padding:40px 20px;max-width:1000px;margin-left:auto;margin-right:auto;text-align:center}
-h1{font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:14px}
-p{color:var(--muted);font-size:1.05rem;line-height:1.6;margin-bottom:28px}
-.card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;margin-top:40px}
-.card{background:#fff;padding:30px;border-radius:18px;box-shadow:0 8px 24px rgba(0,0,0,0.08);transition:.25s;position:relative;text-align:left}
-.card:hover{transform:translateY(-6px);box-shadow:0 12px 30px rgba(0,0,0,0.12)}
-.card i{font-size:2rem;margin-bottom:14px}
-.card h2{font-family:"Sora";font-size:1.5rem;margin-bottom:10px}
-.card ul{list-style:none;padding:0;margin:0}
-.card ul li{margin:10px 0;font-size:0.95rem;color:#333;display:flex;align-items:center;gap:8px}
-.card ul li i{font-size:0.9rem}
-.btn{display:inline-block;margin-top:18px;padding:12px 22px;border-radius:999px;font-weight:700;text-decoration:none;color:#fff;font-family:"Sora";transition:.25s}
-.card.yt i{color:var(--yt)}
-.card.yt .btn{background:var(--yt)}
-.card.ig i{color:var(--ig)}
-.card.ig .btn{background:var(--ig)}
-footer{margin-top:auto;padding:28px;background:var(--soft);text-align:center;border-top:1px solid #eee}
-.footer-links{display:flex;gap:12px;justify-content:center;align-items:center;margin-bottom:10px}
-.footer-links a{color:var(--primary);text-decoration:none;font-weight:600}
-.footer-bottom{font-size:0.9rem;color:var(--muted)}
+h1{font-family:"Sora";font-size:2.2rem;font-weight:800;margin-bottom:16px}
+h1 span{color:var(--orange)}
+p{color:var(--muted);margin-bottom:30px;font-size:1.05rem}
+
+/* Onboarding Cards */
+.cards {
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:20px;
+}
+.card {
+  background:#fff;
+  border-radius:14px;
+  padding:30px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.08);
+  transition:transform .25s, box-shadow .25s;
+  text-align:center;
+}
+.card:hover {
+  transform:translateY(-6px);
+  box-shadow:0 10px 22px rgba(0,0,0,0.12);
+}
+.card i {
+  font-size:2.5rem;
+  margin-bottom:14px;
+}
+.card h2 {
+  font-family:"Sora";
+  font-size:1.4rem;
+  font-weight:700;
+  margin-bottom:10px;
+}
+.card p {
+  font-size:0.95rem;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.card a {
+  display:inline-block;
+  background:var(--primary);
+  color:#fff;
+  padding:10px 20px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  transition:background .25s;
+}
+.card a:hover {
+  background:var(--orange);
+}
+
+/* Responsive */
+@media(max-width:800px){
+  .cards{grid-template-columns:1fr}
+}
 </style>
 </head>
 <body>
+
+<!-- Banner -->
 <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
+
+<!-- Header -->
 <div class="header">
-  <div class="logo"><img src="logo.png" alt="CloutChain"></div>
-  <div class="hamburger" onclick="toggleSidebar()"><div></div><div></div><div></div></div>
-</div>
-<div class="sidebar" id="sidebar">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="onboarding.html">Onboarding</a>
-  <a href="terms.html">Terms</a>
-  <a href="privacy.html">Privacy</a>
+  <div class="logo"><img src="logo.png" alt="logo"></div>
+  <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
 </div>
 
+<!-- Sidebar placeholder -->
+<div id="sidebar-placeholder"></div>
+
+<!-- Main -->
 <main>
-  <h1>Creator Onboarding</h1>
-  <p>Select your platform to begin onboarding. Each platform has tailored requirements, payments, and opportunities.</p>
+  <h1><span>Creator</span> Onboarding</h1>
+  <p>Select your platform below to continue onboarding with the right pricing plan and benefits.</p>
 
-  <div class="card-grid">
-    <div class="card yt">
-      <i class="fab fa-youtube"></i>
-      <h2>YouTube Creators</h2>
-      <ul>
-        <li><i class="fas fa-check"></i> Minimum 3,000 subscribers</li>
-        <li><i class="fas fa-check"></i> Campaigns tailored to your niche</li>
-        <li><i class="fas fa-check"></i> Transparent revenue sharing</li>
-      </ul>
-      <a href="onboarding-youtube.html" class="btn">Onboard as YouTube Creator</a>
+  <div class="cards">
+    <!-- YouTube -->
+    <div class="card">
+      <i class="fab fa-youtube" style="color:#ff0000"></i>
+      <h2>YouTube Onboarding</h2>
+      <p>Get started with our onboarding process designed for YouTube creators.</p>
+      <a href="onboarding-youtube.html">Start Onboarding</a>
     </div>
 
-    <div class="card ig">
-      <i class="fab fa-instagram"></i>
-      <h2>Instagram Creators</h2>
-      <ul>
-        <li><i class="fas fa-check"></i> Minimum 5,000 followers</li>
-        <li><i class="fas fa-check"></i> Premium deals for reels & stories</li>
-        <li><i class="fas fa-check"></i> Secure payments</li>
-      </ul>
-      <a href="onboarding-instagram.html" class="btn">Onboard as Instagram Creator</a>
+    <!-- Instagram -->
+    <div class="card">
+      <i class="fab fa-instagram" style="color:#c13584"></i>
+      <h2>Instagram Onboarding</h2>
+      <p>Onboarding tailored for Instagram influencers and content creators.</p>
+      <a href="onboarding-instagram.html">Start Onboarding</a>
     </div>
   </div>
 </main>
 
-<footer>
-  <div class="footer-links">
-    <a href="terms.html">Terms & Conditions</a>
-    <a href="privacy.html">Privacy Policy</a>
-  </div>
-  <div class="footer-bottom">© 2025–2026 CLOUTCHAIN. All rights reserved.</div>
-</footer>
+<!-- Footer placeholder -->
+<div id="footer-placeholder"></div>
 
 <script>
-function toggleSidebar(){document.getElementById('sidebar').classList.toggle('active')}
+// Load shared sidebar & footer
+Promise.all([
+  fetch("sidebar.html").then(res => res.text()),
+  fetch("footer.html").then(res => res.text())
+]).then(([sidebarHTML, footerHTML]) => {
+  document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
+  document.getElementById("footer-placeholder").innerHTML = footerHTML;
+
+  // Attach toggle AFTER sidebar exists
+  document.getElementById("hamburger").addEventListener("click", () => {
+    document.getElementById("sidebar").classList.toggle("active");
+  });
+});
 </script>
 </body>
 </html>
