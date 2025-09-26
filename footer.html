@@ -1,139 +1,41 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CLOUTCHAIN — Creators get paid right</title>
-
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<!-- footer.html -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-<style>
-:root{
-  --bg:#ffffff;
-  --muted:#6b7280;
-  --primary:#0073e6;
-  --orange:#f97316;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"DM Sans",sans-serif;background:#fff;color:#0f172a;display:flex;flex-direction:column;min-height:100vh;}
+<footer class="site-footer" role="contentinfo">
+  <div class="footer-wrap">
+    <div class="brand">CloutChain</div>
 
-/* Scrolling banner */
-.notice-banner {
-  position:fixed;top:0;left:0;right:0;
-  background:var(--primary);color:#fff;
-  font-size:0.85rem;padding:6px 0;text-align:center;
-  z-index:1500;overflow:hidden;white-space:nowrap;
-}
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
-@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+    <div class="social">
+      <a href="#" class="social-btn youtube"><i class="fab fa-youtube"></i></a>
+      <a href="#" class="social-btn instagram"><i class="fab fa-instagram"></i></a>
+      <a href="#" class="social-btn discord"><i class="fab fa-discord"></i></a>
+      <a href="#" class="social-btn twitter"><i class="fab fa-x-twitter"></i></a>
+    </div>
 
-/* Header */
-.header{
-  position:fixed;top:40px;left:20px;right:20px;
-  display:flex;align-items:center;justify-content:space-between;
-  z-index:1400;
-}
-.logo img{height:64px} /* bigger logo */
-.hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
-.hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
+    <form class="newsletter" onsubmit="event.preventDefault(); alert('Subscribed! (demo)')">
+      <input type="email" placeholder="Your email for launch updates" required>
+      <button type="submit">Notify me</button>
+    </form>
 
-/* Main */
-main{margin-top:160px;padding:40px 20px;text-align:center;max-width:900px;margin-left:auto;margin-right:auto}
-h1{font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:16px}
-h1 span{color:var(--orange)}
-p{color:var(--muted);font-size:1.05rem;margin-bottom:28px;line-height:1.6}
-.btn-primary{background:linear-gradient(90deg,var(--primary),#6a11cb);color:#fff;padding:14px 26px;border-radius:12px;border:0;font-weight:700;cursor:pointer;box-shadow:0 8px 28px rgba(11,18,32,0.08);transition:transform .16s;margin-top:20px}
-.btn-primary:hover{transform:translateY(-3px)}
-
-/* Countdown */
-.count-wrap{margin-top:40px;background:#fff;padding:20px;border-radius:14px;box-shadow:0 12px 30px rgba(11,18,32,0.08);text-align:center}
-.count-grid{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.count-item{min-width:72px;padding:10px 12px;border-radius:10px;background:#fff;border:1px solid #eef5ff}
-.count-value{font-family:"Sora";font-size:1.6rem;color:var(--primary);font-weight:800}
-.count-label{font-size:0.75rem;color:var(--muted)}
-
-/* Platforms */
-.platforms{display:flex;justify-content:center;gap:24px;font-size:2rem;color:#111;margin-top:30px}
-
-/* Responsive */
-@media(max-width:600px){
-  h1{font-size:1.8rem}
-  .count-value{font-size:1.3rem}
-  .logo img{height:52px}
-}
-</style>
-</head>
-<body>
-
-<!-- Scrolling banner -->
-<div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
-
-<!-- Header -->
-<div class="header">
-  <div class="logo"><img src="logo.png" alt="logo"></div>
-  <div class="hamburger" id="hamburger"><div></div><div></div><div></div></div>
-</div>
-
-<!-- Sidebar placeholder -->
-<div id="sidebar-placeholder"></div>
-
-<!-- Main -->
-<main>
-  <h1>Finally, <span>Creators</span> Get Paid Right</h1>
-  <p>CloutChain helps <span>YouTube</span> and <span>Instagram</span> creators unlock fair, transparent brand deals.</p>
-  
-  <button class="btn-primary">Join Waitlist</button>
-
-  <div class="count-wrap">
-    <div style="font-weight:700;color:var(--muted);margin-bottom:8px">CloutChain Time to Launch</div>
-    <div class="count-grid">
-      <div class="count-item"><div class="count-value" id="days">00</div><div class="count-label">Days</div></div>
-      <div class="count-item"><div class="count-value" id="hours">00</div><div class="count-label">Hours</div></div>
-      <div class="count-item"><div class="count-value" id="minutes">00</div><div class="count-label">Minutes</div></div>
-      <div class="count-item"><div class="count-value" id="seconds">00</div><div class="count-label">Seconds</div></div>
+    <div class="footer-bottom">
+      © 2025–2026 CLOUTCHAIN. All rights reserved. | 
+      <a href="terms.html">Terms & Conditions</a> • 
+      <a href="privacy.html">Privacy Policy</a>
     </div>
   </div>
+</footer>
 
-  <div class="platforms">
-    <i class="fab fa-youtube"></i>
-    <i class="fab fa-instagram"></i>
-  </div>
-</main>
-
-<!-- Footer placeholder -->
-<div id="footer-placeholder"></div>
-
-<script>
-// Load sidebar + footer
-Promise.all([
-  fetch("sidebar.html").then(res => res.text()),
-  fetch("footer.html").then(res => res.text())
-]).then(([sidebarHTML, footerHTML]) => {
-  document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
-  document.getElementById("footer-placeholder").innerHTML = footerHTML;
-
-  // Attach sidebar toggle
-  document.getElementById("hamburger").addEventListener("click", () => {
-    document.getElementById("sidebar").classList.toggle("active");
-  });
-});
-
-// Countdown
-const target=new Date("Sep 27, 2025 14:00:00 GMT+0530").getTime();
-setInterval(()=>{
-  const now=Date.now();
-  let diff=target-now;if(diff<0) diff=0;
-  const d=Math.floor(diff/(1000*60*60*24));
-  const h=Math.floor((diff%(1000*60*60*24))/(1000*60*60));
-  const m=Math.floor((diff%(1000*60*60))/(1000*60));
-  const s=Math.floor((diff%(1000*60))/1000);
-  document.getElementById("days").textContent=String(d).padStart(2,"0");
-  document.getElementById("hours").textContent=String(h).padStart(2,"0");
-  document.getElementById("minutes").textContent=String(m).padStart(2,"0");
-  document.getElementById("seconds").textContent=String(s).padStart(2,"0");
-},1000);
-</script>
-</body>
-</html>
+<style>
+.site-footer{background:#f9fafc;padding:36px 20px;border-top:1px solid #eaeef6;font-family:"DM Sans",sans-serif;text-align:center}
+.footer-wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:20px;align-items:center}
+.brand{font-family:"Sora",sans-serif;font-weight:800;font-size:1.2rem}
+.social{display:flex;gap:12px}
+.social-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.08);font-size:1.1rem;line-height:0;transition:all 0.2s}
+.social-btn:hover{transform:translateY(-3px)}
+.newsletter{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.newsletter input{padding:10px 12px;border-radius:10px;border:1px solid #e6e9f0;font-size:0.95rem}
+.newsletter button{padding:10px 14px;border-radius:10px;border:0;background:linear-gradient(90deg,#0073e6,#6a11cb);color:#fff;font-weight:700;cursor:pointer}
+.footer-bottom{font-size:0.85rem;color:#6b7280}
+.footer-bottom a{color:#0073e6;font-weight:600;text-decoration:none;margin:0 4px}
+.footer-bottom a:hover{text-decoration:underline}
+</style>
