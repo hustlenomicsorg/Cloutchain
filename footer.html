@@ -17,25 +17,102 @@
       <button type="submit">Notify me</button>
     </form>
 
+    <!-- Footer bottom -->
     <div class="footer-bottom">
-      © 2025–2026 CLOUTCHAIN. All rights reserved. | 
-      <a href="terms.html">Terms & Conditions</a> • 
-      <a href="privacy.html">Privacy Policy</a>
+      <div class="links">
+        <a href="terms.html">Terms & Conditions</a>
+        <span>•</span>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+      <div class="copy">© 2025–2026 CLOUTCHAIN. All rights reserved.</div>
     </div>
   </div>
 </footer>
 
 <style>
-.site-footer{background:#f9fafc;padding:36px 20px;border-top:1px solid #eaeef6;font-family:"DM Sans",sans-serif;text-align:center}
-.footer-wrap{max-width:900px;margin:0 auto;display:flex;flex-direction:column;gap:20px;align-items:center}
-.brand{font-family:"Sora",sans-serif;font-weight:800;font-size:1.2rem}
-.social{display:flex;gap:12px}
-.social-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:#fff;box-shadow:0 4px 12px rgba(0,0,0,0.08);font-size:1.1rem;line-height:0;transition:all 0.2s}
-.social-btn:hover{transform:translateY(-3px)}
-.newsletter{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
-.newsletter input{padding:10px 12px;border-radius:10px;border:1px solid #e6e9f0;font-size:0.95rem}
-.newsletter button{padding:10px 14px;border-radius:10px;border:0;background:linear-gradient(90deg,#0073e6,#6a11cb);color:#fff;font-weight:700;cursor:pointer}
-.footer-bottom{font-size:0.85rem;color:#6b7280}
-.footer-bottom a{color:#0073e6;font-weight:600;text-decoration:none;margin:0 4px}
-.footer-bottom a:hover{text-decoration:underline}
+.site-footer{
+  background:#f9fafc;
+  padding:36px 20px;
+  border-top:1px solid #eaeef6;
+  font-family:"DM Sans",sans-serif;
+  text-align:center;
+}
+.footer-wrap{
+  max-width:900px;
+  margin:0 auto;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+  align-items:center;
+}
+.brand{
+  font-family:"Sora",sans-serif;
+  font-weight:800;
+  font-size:1.2rem;
+}
+.social{
+  display:flex;
+  gap:12px;
+}
+.social-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  background:#fff;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  font-size:1.1rem;
+  line-height:0;
+  transition:all 0.2s;
+  text-decoration:none; /* removes underline */
+}
+.social-btn:hover{
+  transform:translateY(-3px);
+}
+.newsletter{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+.newsletter input{
+  padding:10px 12px;
+  border-radius:10px;
+  border:1px solid #e6e9f0;
+  font-size:0.95rem;
+}
+.newsletter button{
+  padding:10px 14px;
+  border-radius:10px;
+  border:0;
+  background:linear-gradient(90deg,#0073e6,#6a11cb);
+  color:#fff;
+  font-weight:700;
+  cursor:pointer;
+}
+.footer-bottom{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  text-align:center;
+}
+.footer-bottom .links{
+  font-size:0.9rem;
+  color:#6b7280;
+}
+.footer-bottom .links a{
+  color:#0073e6;
+  font-weight:600;
+  text-decoration:none;
+  margin:0 4px;
+}
+.footer-bottom .links a:hover{
+  text-decoration:underline;
+}
+.footer-bottom .copy{
+  font-size:0.85rem;
+  color:#6b7280;
+}
 </style>
