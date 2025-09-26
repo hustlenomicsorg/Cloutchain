@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>Onboarding — CloutChain</title>
+<title>CLOUTCHAIN | Onboarding</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -11,99 +11,118 @@
 
 <style>
 :root {
-  --muted:#9ca3af;
-  --muted-light:#cbd5e1;
   --primary:#3b82f6;
   --orange:#f97316;
+  --muted:#9ca3af;
   --dark:#0a0a0a;
   --dark2:#1a1a1a;
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 body {
   font-family:"DM Sans",sans-serif;
   color:#fff;
   background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  line-height:1.6;
   overflow-x:hidden;
 }
 
-/* Animations */
-@keyframes fadeInUp {from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-@keyframes bounceIn {0%{opacity:0;transform:scale(.7);}60%{opacity:1;transform:scale(1.05);}80%{transform:scale(.95);}100%{transform:scale(1);}}
-
-/* Banner */
+/* Notice banner */
 .notice-banner {
   position:fixed;top:0;left:0;right:0;
   background:var(--primary);color:#fff;
-  font-size:.8rem;padding:6px 0;text-align:center;
-  z-index:1500;overflow:hidden;white-space:nowrap;
+  font-size:0.85rem;padding:4px 0;text-align:center;
+  z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
 }
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 12s linear infinite;}
-@keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
+@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
 /* Header */
 .header {
-  position:fixed;top:40px;left:20px;right:20px;
+  position:fixed;left:20px;right:20px;top:40px;
   display:flex;align-items:center;justify-content:space-between;
-  z-index:1400;
+  z-index:1100;
 }
-.logo img {height:70px}
-.hamburger {cursor:pointer;display:flex;flex-direction:column;gap:6px}
-.hamburger div {width:28px;height:3px;background:#fff;border-radius:2px}
+.logo img{height:64px}
+.hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.hamburger div{width:30px;height:3px;background:#fff;border-radius:3px}
 
-/* Hero */
-.hero {
-  margin-top:150px;
-  padding:80px 20px;
+/* Sidebar (loaded via fetch) */
+.sidebar {background:#111;color:#fff;}
+
+/* Main */
+main {
+  margin-top:160px;
+  padding:40px 20px;
+  max-width:1000px;
+  margin-left:auto;
+  margin-right:auto;
   text-align:center;
-  max-width:900px;
-  margin:auto;
 }
-.hero h1 {
-  font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:16px;
-  animation:fadeInUp 1s ease forwards;
+h1 {
+  font-family:"Sora";
+  font-size:2.2rem;
+  font-weight:800;
+  margin-bottom:16px;
 }
-.hero p {
-  color:var(--muted-light);
-  font-size:1.05rem;
-  animation:fadeInUp 1s ease .3s forwards;
-}
+h1 span{color:var(--orange)}
+p{color:var(--muted);margin-bottom:30px;font-size:1.05rem}
 
-/* Cards */
+/* Onboarding Cards */
 .cards {
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:30px;
-  margin-top:60px;
-  padding:20px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:20px;
 }
 .card {
-  flex:1 1 280px;
-  max-width:320px;
   background:rgba(255,255,255,0.05);
   border:1px solid rgba(255,255,255,0.1);
-  border-radius:16px;
-  padding:40px 20px;
+  border-radius:14px;
+  padding:30px;
+  transition:transform .25s, box-shadow .25s;
   text-align:center;
-  animation:bounceIn .8s ease forwards;
-  transition:.3s;
-  cursor:pointer;
 }
 .card:hover {
-  transform:translateY(-6px) scale(1.03);
+  transform:translateY(-6px);
+  box-shadow:0 12px 24px rgba(0,0,0,0.4);
   border-color:var(--orange);
 }
 .card i {
   font-size:2.5rem;
-  margin-bottom:15px;
+  margin-bottom:14px;
 }
 .card h2 {
-  font-family:"Sora";font-size:1.5rem;margin-bottom:12px;
+  font-family:"Sora";
+  font-size:1.4rem;
+  font-weight:700;
+  margin-bottom:10px;
 }
 .card p {
-  color:var(--muted-light);
-  font-size:.95rem;
-  line-height:1.5;
+  font-size:0.95rem;
+  color:var(--muted);
+  margin-bottom:20px;
+}
+.card a {
+  display:inline-block;
+  background:linear-gradient(90deg,var(--primary),var(--orange));
+  color:#fff;
+  padding:10px 20px;
+  border-radius:8px;
+  text-decoration:none;
+  font-weight:600;
+  transition:opacity .25s, transform .25s;
+}
+.card a:hover {
+  opacity:.9;
+  transform:translateY(-2px);
+}
+
+/* Responsive */
+@media(max-width:800px){
+  .cards{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -121,43 +140,46 @@ body {
 <!-- Sidebar placeholder -->
 <div id="sidebar-placeholder"></div>
 
-<!-- Hero -->
-<div class="hero">
-  <h1>Onboarding Creators</h1>
-  <p>Select your platform to begin onboarding.</p>
-</div>
+<!-- Main -->
+<main>
+  <h1><span>Creator</span> Onboarding</h1>
+  <p>Select your platform below to continue onboarding with the right pricing plan and benefits.</p>
 
-<!-- Cards -->
-<div class="cards">
-  <a href="youtube-onboarding.html" class="card">
-    <i class="fab fa-youtube" style="color:#ff0000"></i>
-    <h2>YouTube Creators</h2>
-    <p>Start your journey as a YouTube creator. Explore plans and opportunities tailored for video creators.</p>
-  </a>
+  <div class="cards">
+    <!-- YouTube -->
+    <div class="card">
+      <i class="fab fa-youtube" style="color:#ff0000"></i>
+      <h2>YouTube Onboarding</h2>
+      <p>Get started with our onboarding process designed for YouTube creators.</p>
+      <a href="onboarding-youtube.html">Start Onboarding</a>
+    </div>
 
-  <a href="instagram-onboarding.html" class="card">
-    <i class="fab fa-instagram" style="color:#e1306c"></i>
-    <h2>Instagram Creators</h2>
-    <p>Join as an Instagram creator. Unlock premium deals, community perks, and fair commissions.</p>
-  </a>
-</div>
+    <!-- Instagram -->
+    <div class="card">
+      <i class="fab fa-instagram" style="color:#e1306c"></i>
+      <h2>Instagram Onboarding</h2>
+      <p>Onboarding tailored for Instagram influencers and content creators.</p>
+      <a href="onboarding-instagram.html">Start Onboarding</a>
+    </div>
+  </div>
+</main>
 
 <!-- Footer placeholder -->
 <div id="footer-placeholder"></div>
 
 <script>
-// Sidebar + Footer loader
+// Load shared sidebar & footer
 Promise.all([
   fetch("sidebar.html").then(res => res.text()),
   fetch("footer.html").then(res => res.text())
-]).then(([sidebarHTML, footerHTML])=>{
-  document.getElementById("sidebar-placeholder").innerHTML=sidebarHTML;
-  document.getElementById("footer-placeholder").innerHTML=footerHTML;
-  const hamburger=document.getElementById("hamburger");
-  const sidebar=document.getElementById("sidebar");
-  if(hamburger&&sidebar){
-    hamburger.addEventListener("click",()=>sidebar.classList.toggle("active"));
-  }
+]).then(([sidebarHTML, footerHTML]) => {
+  document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
+  document.getElementById("footer-placeholder").innerHTML = footerHTML;
+
+  // Attach toggle AFTER sidebar exists
+  document.getElementById("hamburger").addEventListener("click", () => {
+    document.getElementById("sidebar").classList.toggle("active");
+  });
 });
 </script>
 </body>
