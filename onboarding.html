@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>CLOUTCHAIN | Onboarding</title>
+<title>Onboarding — CloutChain</title>
 
 <!-- Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -11,104 +11,105 @@
 
 <style>
 :root {
-  --primary:#0073e6;
+  --muted:#9ca3af;
+  --muted-light:#cbd5e1;
+  --primary:#3b82f6;
   --orange:#f97316;
-  --muted:#6b7280;
-  --soft:#f6f8fb;
+  --dark:#0a0a0a;
+  --dark2:#1a1a1a;
 }
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"DM Sans",sans-serif;color:#0f172a;background:#fff;min-height:100vh;display:flex;flex-direction:column;line-height:1.6}
+*{margin:0;padding:0;box-sizing:border-box}
+body {
+  font-family:"DM Sans",sans-serif;
+  color:#fff;
+  background:linear-gradient(180deg,var(--dark) 0%,var(--dark2) 100%);
+  overflow-x:hidden;
+}
 
-/* Notice banner */
+/* Animations */
+@keyframes fadeInUp {from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+@keyframes bounceIn {0%{opacity:0;transform:scale(.7);}60%{opacity:1;transform:scale(1.05);}80%{transform:scale(.95);}100%{transform:scale(1);}}
+
+/* Banner */
 .notice-banner {
   position:fixed;top:0;left:0;right:0;
   background:var(--primary);color:#fff;
-  font-size:0.85rem;padding:4px 0;text-align:center;
-  z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
+  font-size:.8rem;padding:6px 0;text-align:center;
+  z-index:1500;overflow:hidden;white-space:nowrap;
 }
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
-@keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 12s linear infinite;}
+@keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
 /* Header */
-.header{position:fixed;left:20px;right:20px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:1100}
-.logo img{height:52px}
-.hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
-.hamburger div{width:30px;height:3px;background:#0f172a;border-radius:3px}
-
-/* Sidebar */
-.sidebar {
-  position:fixed;top:0;right:-300px;
-  width:280px;height:100%;background:#fff;
-  box-shadow:-8px 0 30px rgba(0,0,0,0.1);
-  padding-top:110px;transition:right .3s;z-index:1150
+.header {
+  position:fixed;top:40px;left:20px;right:20px;
+  display:flex;align-items:center;justify-content:space-between;
+  z-index:1400;
 }
-.sidebar.active { right:0 }
-.sidebar a {
-  display:block;padding:14px 22px;text-decoration:none;
-  color:inherit;font-weight:600
+.logo img {height:70px}
+.hamburger {cursor:pointer;display:flex;flex-direction:column;gap:6px}
+.hamburger div {width:28px;height:3px;background:#fff;border-radius:2px}
+
+/* Hero */
+.hero {
+  margin-top:150px;
+  padding:80px 20px;
+  text-align:center;
+  max-width:900px;
+  margin:auto;
 }
-.sidebar a:hover {
-  background:var(--soft);border-left:4px solid var(--primary)
+.hero h1 {
+  font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:16px;
+  animation:fadeInUp 1s ease forwards;
+}
+.hero p {
+  color:var(--muted-light);
+  font-size:1.05rem;
+  animation:fadeInUp 1s ease .3s forwards;
 }
 
-/* Main */
-main{margin-top:160px;padding:40px 20px;max-width:1000px;margin-left:auto;margin-right:auto;text-align:center}
-h1{font-family:"Sora";font-size:2.2rem;font-weight:800;margin-bottom:16px}
-h1 span{color:var(--orange)}
-p{color:var(--muted);margin-bottom:30px;font-size:1.05rem}
-
-/* Onboarding Cards */
-.cards {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-  margin-top:20px;
+/* Pricing Section */
+.pricing {
+  display:flex;
+  flex-wrap:wrap;
+  gap:30px;
+  justify-content:center;
+  margin-top:60px;
+  padding:20px;
 }
 .card {
-  background:#fff;
-  border-radius:14px;
-  padding:30px;
-  box-shadow:0 6px 18px rgba(0,0,0,0.08);
-  transition:transform .25s, box-shadow .25s;
+  flex:1 1 280px;
+  max-width:320px;
+  background:rgba(255,255,255,0.05);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:16px;
+  padding:30px 20px;
   text-align:center;
-}
-.card:hover {
-  transform:translateY(-6px);
-  box-shadow:0 10px 22px rgba(0,0,0,0.12);
-}
-.card i {
-  font-size:2.5rem;
-  margin-bottom:14px;
+  animation:bounceIn .8s ease forwards;
 }
 .card h2 {
-  font-family:"Sora";
-  font-size:1.4rem;
-  font-weight:700;
-  margin-bottom:10px;
+  font-family:"Sora";font-size:1.6rem;margin-bottom:10px;color:var(--orange);
 }
-.card p {
-  font-size:0.95rem;
-  color:var(--muted);
-  margin-bottom:20px;
+.card .price {
+  font-size:1.3rem;font-weight:700;margin-bottom:14px;color:var(--primary);
 }
-.card a {
-  display:inline-block;
-  background:var(--primary);
+.card ul {
+  list-style:none;padding:0;margin:0 0 20px 0;text-align:left;font-size:.95rem;color:var(--muted-light);
+}
+.card ul li {margin:8px 0;}
+.card ul li::before {content:"✔";color:var(--primary);margin-right:8px;}
+.card button {
+  padding:12px 20px;
+  background:linear-gradient(90deg,var(--primary),var(--orange));
+  border:none;
+  border-radius:10px;
   color:#fff;
-  padding:10px 20px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:600;
-  transition:background .25s;
+  font-weight:700;
+  cursor:pointer;
+  transition:.3s;
 }
-.card a:hover {
-  background:var(--orange);
-}
-
-/* Responsive */
-@media(max-width:800px){
-  .cards{grid-template-columns:1fr}
-}
+.card button:hover {opacity:.9;transform:translateY(-3px);}
+.card:nth-child(2) {transform:scale(1.05);border-color:var(--orange);} /* highlight Pro */
 </style>
 </head>
 <body>
@@ -125,46 +126,55 @@ p{color:var(--muted);margin-bottom:30px;font-size:1.05rem}
 <!-- Sidebar placeholder -->
 <div id="sidebar-placeholder"></div>
 
-<!-- Main -->
-<main>
-  <h1><span>Creator</span> Onboarding</h1>
-  <p>Select your platform below to continue onboarding with the right pricing plan and benefits.</p>
+<!-- Hero -->
+<div class="hero">
+  <h1>Onboarding Creators</h1>
+  <p>Choose your platform and the plan that works best for you.</p>
+</div>
 
-  <div class="cards">
-    <!-- YouTube -->
-    <div class="card">
-      <i class="fab fa-youtube" style="color:#ff0000"></i>
-      <h2>YouTube Onboarding</h2>
-      <p>Get started with our onboarding process designed for YouTube creators.</p>
-      <a href="onboarding-youtube.html">Start Onboarding</a>
-    </div>
-
-    <!-- Instagram -->
-    <div class="card">
-      <i class="fab fa-instagram" style="color:#c13584"></i>
-      <h2>Instagram Onboarding</h2>
-      <p>Onboarding tailored for Instagram influencers and content creators.</p>
-      <a href="onboarding-instagram.html">Start Onboarding</a>
-    </div>
+<!-- Pricing -->
+<div class="pricing">
+  <div class="card">
+    <h2>Free Plan</h2>
+    <div class="price">₹0</div>
+    <ul>
+      <li>No guarantee of brand deals</li>
+      <li>Higher commission cut up to 35%</li>
+      <li>No premium deals</li>
+      <li>Partner badge locked</li>
+    </ul>
+    <button>Start Free</button>
   </div>
-</main>
+
+  <div class="card">
+    <h2>Pro Plan</h2>
+    <div class="price">₹49 (refundable after 180 days)</div>
+    <ul>
+      <li>Minimum 1 brand deal guaranteed within 150 days</li>
+      <li>0% commission cut on first deal</li>
+      <li>Premium deals unlocked</li>
+      <li>Partner badge unlocked</li>
+    </ul>
+    <button>Go Pro</button>
+  </div>
+</div>
 
 <!-- Footer placeholder -->
 <div id="footer-placeholder"></div>
 
 <script>
-// Load shared sidebar & footer
+// Sidebar + Footer loader
 Promise.all([
   fetch("sidebar.html").then(res => res.text()),
   fetch("footer.html").then(res => res.text())
-]).then(([sidebarHTML, footerHTML]) => {
-  document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
-  document.getElementById("footer-placeholder").innerHTML = footerHTML;
-
-  // Attach toggle AFTER sidebar exists
-  document.getElementById("hamburger").addEventListener("click", () => {
-    document.getElementById("sidebar").classList.toggle("active");
-  });
+]).then(([sidebarHTML, footerHTML])=>{
+  document.getElementById("sidebar-placeholder").innerHTML=sidebarHTML;
+  document.getElementById("footer-placeholder").innerHTML=footerHTML;
+  const hamburger=document.getElementById("hamburger");
+  const sidebar=document.getElementById("sidebar");
+  if(hamburger&&sidebar){
+    hamburger.addEventListener("click",()=>sidebar.classList.toggle("active"));
+  }
 });
 </script>
 </body>
