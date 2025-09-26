@@ -2,12 +2,12 @@
 <style>
 .sidebar {
   position:fixed;
-  top:0; right:-280px;
-  width:260px; height:100%;
-  background:rgba(15,15,15,0.98);
-  backdrop-filter: blur(10px);
+  top:0; right:-240px;
+  width:220px; height:100%;
+  background:rgba(15,15,15,0.96);
+  backdrop-filter: blur(12px);
   border-left:1px solid rgba(255,255,255,0.08);
-  box-shadow:-8px 0 30px rgba(0,0,0,0.6);
+  box-shadow:-6px 0 24px rgba(0,0,0,0.6);
   padding-top:100px;
   transition:right .3s ease;
   z-index:1800;
@@ -16,14 +16,18 @@
 
 .sidebar a {
   display:block;
-  padding:14px 24px;
-  margin:6px 14px;
+  padding:12px 20px;
+  margin:6px 12px;
   color:#fff;
   font-weight:600;
+  font-size:0.95rem;
   text-decoration:none;
-  border-radius:10px;
+  border-radius:8px;
   transition:all 0.3s ease;
   position:relative;
+}
+.sidebar a i {
+  margin-right:8px;
 }
 .sidebar a:hover {
   background:linear-gradient(90deg,rgba(249,115,22,0.15),rgba(59,130,246,0.15));
@@ -33,9 +37,9 @@
   content:"";
   position:absolute;
   left:0; top:0;
-  width:4px; height:100%;
+  width:3px; height:100%;
   background:var(--orange);
-  border-radius:0 4px 4px 0;
+  border-radius:0 3px 3px 0;
   transform:scaleY(0);
   transition:transform 0.3s ease;
 }
@@ -48,4 +52,5 @@
   <a href="index.html"><i class="fas fa-home"></i> Home</a>
   <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
   <a href="onboarding.html"><i class="fas fa-user-plus"></i> Onboarding</a>
+  <a href="upcoming-projects.html"><i class="fas fa-rocket"></i> Upcoming</a>
 </div>
