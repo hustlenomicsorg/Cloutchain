@@ -18,7 +18,14 @@
   --soft:#f9fafc;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"DM Sans",sans-serif;background:var(--bg);color:#0f172a;display:flex;flex-direction:column;min-height:100vh;}
+body{
+  font-family:"DM Sans",sans-serif;
+  background:var(--bg);
+  color:#0f172a;
+  display:flex;
+  flex-direction:column;
+  min-height:100vh;
+}
 
 /* Scrolling banner */
 .notice-banner {
@@ -78,6 +85,9 @@ p{color:var(--muted);font-size:1.05rem;margin-bottom:28px;line-height:1.6}
 }
 .platforms i{font-size:1.8rem}
 .platforms span{color:var(--muted);font-size:0.95rem;margin-left:10px}
+
+/* Footer placeholder spacing */
+#footer-placeholder{margin-top:auto}
 
 /* Responsive */
 @media(max-width:600px){
@@ -140,9 +150,10 @@ Promise.all([
   document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
   document.getElementById("footer-placeholder").innerHTML = footerHTML;
 
-  // Attach sidebar toggle
+  // Fix: attach sidebar toggle AFTER sidebar loads
   document.getElementById("hamburger").addEventListener("click", () => {
-    document.getElementById("sidebar").classList.toggle("active");
+    const sb = document.getElementById("sidebar");
+    if (sb) sb.classList.toggle("active");
   });
 });
 
