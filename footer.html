@@ -2,6 +2,8 @@
   <div class="social-links">
     <a href="https://youtube.com" target="_blank" class="social"><i class="fab fa-youtube"></i></a>
     <a href="https://instagram.com" target="_blank" class="social"><i class="fab fa-instagram"></i></a>
+    <a href="https://discord.com" target="_blank" class="social"><i class="fab fa-discord"></i></a>
+    <a href="https://x.com" target="_blank" class="social"><i class="fab fa-x-twitter"></i></a>
   </div>
 
   <div class="legal-links">
@@ -26,13 +28,13 @@
   animation-delay:.4s;
 }
 
-/* Social links */
+/* Social icons */
 .footer .social-links {
-  margin-bottom:18px;
+  margin-bottom:20px;
 }
 .footer .social {
   margin:0 12px;
-  font-size:1.6rem;
+  font-size:1.4rem;
   display:inline-flex;
   align-items:center;
   justify-content:center;
@@ -41,7 +43,8 @@
   border-radius:50%;
   background:rgba(255,255,255,0.05);
   color:#fff;
-  transition:all .4s ease;
+  transition:all .35s ease;
+  text-decoration:none; /* ✅ removes underline glitch */
 }
 .footer .social:hover {
   background:linear-gradient(135deg,var(--primary),var(--orange));
@@ -51,12 +54,12 @@
 
 /* Legal links */
 .footer .legal-links {
-  margin-bottom:12px;
+  margin-bottom:14px;
 }
 .footer .legal-links a {
   color:#fff;
   margin:0 10px;
-  text-decoration:none;
+  text-decoration:none; /* ✅ removes underline glitch */
   font-size:0.9rem;
   transition:color .3s;
 }
@@ -64,7 +67,7 @@
   color:var(--orange);
 }
 
-/* Text */
+/* Copyright */
 .footer p {
   margin:0;
   color:#9ca3af;
