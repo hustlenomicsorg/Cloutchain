@@ -1,205 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1" />
-<title>CLOUTCHAIN | Home</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>CLOUTCHAIN | Home</title>
 
-<!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&family=Pacifico&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 
-<style>
-:root {
-  --primary:#3b82f6;
-  --orange:#f97316;
-  --muted:#9ca3af;
-  --dark:#0a0a0a;
-  --dark-2:#121212;
-}
+  <style>
+    :root {
+      --primary:#0073e6;
+      --orange:#f97316;
+      --muted:#9ca3af;
+      --dark:#0a0a0a;
+      --dark-2:#121212;
+      --accent-grad: linear-gradient(135deg,#0073e6,#6a11cb,#ff4d6d);
+    }
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{font-family:"DM Sans",sans-serif;background:linear-gradient(180deg,var(--dark),var(--dark-2));color:#fff;line-height:1.6;overflow-x:hidden}
 
-/* Reset */
-*{margin:0;padding:0;box-sizing:border-box}
-html,body{overflow-x:hidden}
-body {
-  font-family:"DM Sans",sans-serif;
-  background:linear-gradient(180deg,var(--dark) 0%,var(--dark-2) 100%);
-  color:#fff;
-  display:flex;
-  flex-direction:column;
-  min-height:100vh;
-}
+    /* Notice banner */
+    .notice-banner {
+      position:fixed;top:0;left:0;right:0;
+      background:var(--primary);color:#fff;
+      font-size:0.85rem;padding:4px 0;text-align:center;
+      z-index:1200;overflow:hidden;white-space:nowrap;line-height:1.4;
+    }
+    .notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 14s linear infinite;}
+    @keyframes scroll-left{0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
 
-/* Background shapes */
-.bg-shape {
-  position:absolute;
-  border-radius:50%;
-  filter:blur(80px);
-  opacity:0.12;
-  z-index:0;
-}
-.bg-shape.one {width:380px;height:380px;background:var(--primary);top:-100px;left:-120px;}
-.bg-shape.two {width:280px;height:280px;background:var(--orange);bottom:-80px;right:-60px;}
-@media(max-width:600px){
-  .bg-shape.one,.bg-shape.two{display:none} /* hide on small devices */
-}
+    /* Header */
+    .header{position:fixed;left:20px;right:20px;top:40px;display:flex;align-items:center;justify-content:space-between;z-index:1100}
+    .logo img{height:64px}
+    .hamburger{cursor:pointer;display:flex;flex-direction:column;gap:6px}
+    .hamburger div{width:30px;height:3px;background:#fff;border-radius:3px}
 
-/* Notice banner */
-.notice-banner {
-  position:fixed;top:0;left:0;right:0;
-  background:var(--primary);color:#fff;
-  font-size:0.85rem;padding:6px;text-align:center;
-  z-index:1500;overflow:hidden;white-space:nowrap;
-}
-.notice-banner span {display:inline-block;padding-left:100%;animation:scroll-left 12s linear infinite;}
-@keyframes scroll-left {0%{transform:translateX(0)}100%{transform:translateX(-100%)}}
+    /* Sidebar */
+    .sidebar{position:fixed;top:0;right:-280px;width:240px;height:100%;background:#111;padding-top:100px;transition:right .3s;z-index:1150}
+    .sidebar.active{right:0}
+    .sidebar a{display:block;padding:14px 22px;text-decoration:none;color:#fff;font-weight:600}
+    .sidebar a:hover{background:#1e1e1e;border-left:4px solid var(--orange)}
 
-/* Header */
-.header {
-  position:fixed;top:36px;left:20px;right:20px;
-  display:flex;justify-content:space-between;align-items:center;
-  z-index:1600;
-}
-.logo img {height:68px}
-.hamburger {cursor:pointer;display:flex;flex-direction:column;gap:6px}
-.hamburger div {width:28px;height:3px;background:#fff;border-radius:3px}
+    /* Hero */
+    .hero{padding-top:160px;text-align:center;padding:100px 20px 40px}
+    .hero h1{font-family:"Sora";font-size:2.4rem;font-weight:800;margin-bottom:20px}
+    .hero h1 span{color:var(--orange)}
+    .hero p{max-width:650px;margin:auto;font-size:1.1rem;color:#ddd}
 
-/* Hero */
-.hero {
-  margin-top:200px;
-  text-align:center;
-  max-width:900px;
-  margin-left:auto;
-  margin-right:auto;
-  padding:20px;
-}
-.hero h1 {
-  font-family:"Sora";
-  font-size:2.6rem;
-  font-weight:800;
-  margin-bottom:14px;
-  animation:fadeDown 0.9s ease both;
-}
-.hero h1 span {
-  font-family:"Pacifico",cursive;
-  font-size:2.8rem;
-  background:linear-gradient(90deg,var(--orange),var(--primary));
-  -webkit-background-clip:text;
-  -webkit-text-fill-color:transparent;
-}
-.hero p {
-  font-size:1.15rem;
-  color:var(--muted);
-  margin-bottom:24px;
-  animation:fadeUp 1s ease both;
-}
+    /* Launch Section */
+    .launch-section {
+      text-align: center;
+      margin: 80px auto;
+      padding: 60px 20px;
+      background: linear-gradient(135deg, #111, #1e1e1e);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+      max-width: 800px;
+      animation: fadeIn 1.2s ease-out;
+    }
+    .launch-title {
+      font-family: "Sora", sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+      color: #fff;
+    }
+    .launch-title span { color: var(--orange); }
+    .launch-sub {
+      font-size: 1.1rem;
+      color: #ccc;
+      margin-bottom: 28px;
+    }
+    .launch-btn {
+      display: inline-block;
+      padding: 14px 30px;
+      background: var(--accent-grad);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 12px;
+      transition: transform .3s, box-shadow .3s;
+      animation: pulse 2s infinite;
+    }
+    .launch-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.6);
+    }
 
-/* Countdown */
-.countdown {
-  display:flex;
-  justify-content:center;
-  gap:12px;
-  margin:30px auto;
-  flex-wrap:wrap;
-  max-width:100%;
-}
-.count-box {
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  padding:14px 12px;
-  border-radius:12px;
-  min-width:70px;
-  text-align:center;
-  box-shadow:0 6px 18px rgba(0,0,0,0.4);
-}
-.count-box span {
-  display:block;
-  font-size:1.4rem;
-  font-weight:800;
-}
-.count-box label {
-  font-size:0.75rem;
-  color:var(--muted);
-  margin-top:4px;
-}
+    @keyframes fadeIn {
+      from { opacity:0; transform:translateY(20px);}
+      to { opacity:1; transform:translateY(0);}
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(249,115,22,0.7); }
+      50% { box-shadow: 0 0 0 12px rgba(249,115,22,0); }
+    }
 
-/* Button */
-.uiverse-btn {
-  position:relative;display:inline-block;
-  padding:14px 30px;
-  border-radius:14px;
-  border:2px solid var(--orange);
-  color:var(--orange);
-  font-weight:700;
-  background:transparent;
-  text-decoration:none;
-  overflow:hidden;
-  transition:color .35s ease;
-  z-index:1;
-  margin-top:20px;
-}
-.uiverse-btn::before {
-  content:"";
-  position:absolute;top:0;left:-100%;width:100%;height:100%;
-  background:linear-gradient(90deg,var(--orange),var(--primary));
-  transition:left .35s ease;
-  z-index:-1;
-}
-.uiverse-btn:hover {color:#fff}
-.uiverse-btn:hover::before {left:0}
+    /* Supported Platforms */
+    .platforms{text-align:center;margin:60px 20px}
+    .platforms h3{font-size:1.4rem;margin-bottom:20px;color:#fff}
+    .platform-logos{display:flex;justify-content:center;gap:30px;flex-wrap:wrap}
+    .platform-logos i{font-size:2rem}
 
-/* Supported platforms */
-.platforms {
-  margin-top:50px;
-  text-align:center;
-}
-.platforms h2 {
-  font-family:"Sora";
-  font-size:1.6rem;
-  margin-bottom:16px;
-}
-.platform-icons {
-  display:flex;
-  justify-content:center;
-  gap:28px;
-  flex-wrap:wrap;
-}
-.platform-icons i {
-  font-size:2.2rem;
-}
+    /* Footer placeholder */
+    #footer-placeholder{margin-top:60px}
 
-/* Video */
-.video-section {
-  margin-top:50px;
-  text-align:center;
-}
-.video-section video {
-  max-width:95%;
-  border-radius:16px;
-  box-shadow:0 10px 30px rgba(0,0,0,0.6);
-}
-
-/* Animations */
-@keyframes fadeUp {from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
-@keyframes fadeDown {from{opacity:0;transform:translateY(-20px)}to{opacity:1;transform:none}}
-
-/* Responsive */
-@media(max-width:768px){
-  .hero h1{font-size:2rem}
-  .hero h1 span{font-size:2.2rem}
-  .countdown{gap:6px}
-  .count-box{min-width:60px;padding:10px 10px}
-  .count-box span{font-size:1.1rem}
-}
-</style>
+    /* Responsive */
+    @media(max-width:768px){
+      .hero h1{font-size:1.8rem}
+      .launch-title{font-size:1.7rem}
+      .platform-logos{gap:20px}
+    }
+  </style>
 </head>
 <body>
 
-<!-- Background shapes -->
-<div class="bg-shape one"></div>
-<div class="bg-shape two"></div>
-
-<!-- Notice banner -->
+<!-- Banner -->
 <div class="notice-banner"><span>This is a temporary launch website. A full professional site is under development.</span></div>
 
 <!-- Header -->
@@ -213,63 +131,43 @@ body {
 
 <!-- Hero -->
 <section class="hero">
-  <h1><span>Creators</span> Get Paid Right</h1>
-  <p>CloutChain ensures <span style="color:var(--orange);font-weight:600">fair pay</span> and <span style="color:var(--primary);font-weight:600">real opportunities</span> for every creator.</p>
-  
-  <div class="countdown" id="countdown">
-    <div class="count-box"><span id="days">00</span><label>Days</label></div>
-    <div class="count-box"><span id="hours">00</span><label>Hours</label></div>
-    <div class="count-box"><span id="minutes">00</span><label>Minutes</label></div>
-    <div class="count-box"><span id="seconds">00</span><label>Seconds</label></div>
-  </div>
+  <h1><span>Finally, Creators</span> Get Paid Right</h1>
+  <p>CloutChain is the ultimate platform for creators to monetize their influence with fairness, transparency, and guaranteed opportunities.</p>
+</section>
 
-  <a href="#" class="uiverse-btn">Join Waitlist</a>
+<!-- Launch Section -->
+<section class="launch-section">
+  <h2 class="launch-title">🚀 We Are Finally <span>Launched!</span></h2>
+  <p class="launch-sub">Join now and become part of the ultimate creator program.</p>
+  <a href="onboarding.html" class="launch-btn">Start Onboarding</a>
 </section>
 
 <!-- Supported Platforms -->
 <section class="platforms">
-  <h2>Currently Supported Platforms</h2>
-  <div class="platform-icons">
+  <h3>Currently Supported Platforms</h3>
+  <div class="platform-logos">
     <i class="fab fa-youtube" style="color:#ff0000"></i>
-    <i class="fab fa-instagram" style="color:#e1306c"></i>
+    <i class="fab fa-instagram" style="color:#c13584"></i>
   </div>
-</section>
-
-<!-- Demo Video -->
-<section class="video-section">
-  <video src="videoasset1.mp4" autoplay muted loop playsinline></video>
 </section>
 
 <!-- Footer placeholder -->
 <div id="footer-placeholder"></div>
 
 <script>
-// Sidebar & footer load
+// Load shared sidebar & footer
 Promise.all([
-  fetch("sidebar.html").then(r=>r.text()),
-  fetch("footer.html").then(r=>r.text())
-]).then(([sb,ft])=>{
-  document.getElementById("sidebar-placeholder").innerHTML=sb;
-  document.getElementById("footer-placeholder").innerHTML=ft;
-  document.getElementById("hamburger").addEventListener("click",()=>{
+  fetch("sidebar.html").then(res => res.text()),
+  fetch("footer.html").then(res => res.text())
+]).then(([sidebarHTML, footerHTML]) => {
+  document.getElementById("sidebar-placeholder").innerHTML = sidebarHTML;
+  document.getElementById("footer-placeholder").innerHTML = footerHTML;
+
+  // Attach toggle AFTER sidebar exists
+  document.getElementById("hamburger").addEventListener("click", () => {
     document.getElementById("sidebar").classList.toggle("active");
   });
 });
-
-// Countdown Timer
-const targetDate = new Date("Sep 27, 2025 18:00:00").getTime();
-setInterval(()=>{
-  const now=new Date().getTime();
-  const distance=targetDate-now;
-  const days=Math.floor(distance/(1000*60*60*24));
-  const hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  const minutes=Math.floor((distance%(1000*60*60))/(1000*60));
-  const seconds=Math.floor((distance%(1000*60))/1000);
-  document.getElementById("days").innerText=days;
-  document.getElementById("hours").innerText=hours;
-  document.getElementById("minutes").innerText=minutes;
-  document.getElementById("seconds").innerText=seconds;
-},1000);
 </script>
 </body>
 </html>
